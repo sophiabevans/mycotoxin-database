@@ -1,0 +1,109 @@
+<html>
+
+	<head> <!-- You might link CSS here -->
+		<title> Example Database Output </title>
+	</head>
+
+	<body>
+
+		<h1> Table </h1>
+
+		<table border=1>
+			<thead>
+				<tr>
+					<th>Organism</th>
+					<th>Target Mycotoxin</th>
+					<th>Removal Mechanism</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Saccharomyces sensu stricto</td>
+					<td>Ochratoxin A </td>
+					<td>absorption</td>
+				</tr>
+				<tr>
+				<td>Aspergillus species</td>
+				<td>Ochratoxin A </td>
+				<td>biotransformation</td>
+				</tr>
+				<tr>
+				<td>Phanerochaete sordida</td>
+				<td>Aflatoxin B1</td>
+				<td>biotransformation</td>
+				</tr>
+				<tr>
+				<td>Pichia occidentalis</td>
+				<td>Aflatoxin B1</td>
+				<td>absorption</td>
+				</tr>
+				<tr>
+				<td>Debaryomyces hansenii</td>
+				<td>Ochratoxin A </td>
+				<td>Transcriptional regulation of OTA producer genes</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h1>New Query</h1>
+
+		<form name="Form" action="https://bioed.bu.edu/cgi-bin/students_22/sbevans/lab11.py" method="get">
+
+			Fields to include:
+			<input type="checkbox" name="fields" value="organism"> Organism Name
+			<input type="checkbox" name="fields" value="domain"> Organism Domain
+			<input type="checkbox" name="fields" value="pathogen"> Organism Pathogenicity
+			<input type="checkbox" name="fields" value="environment"> Organism Environment
+			<input type="checkbox" name="fields" value="aeran"> Aerobic/Anaerobic Organism
+			<input type="checkbox" name="fields" value="mycotoxin"> Target Mycotoxin Name
+			<input type="checkbox" name="fields" value="removal"> Removal Mechanism
+			<input type="checkbox" name="fields" value="enzymatic"> Mycotoxin Enzymatic?
+			<input type="checkbox" name="fields" value="intraextra"> Intracellular or Extracellular Mycotoxin?
+			<input type="checkbox" name="fields" value="context"> Mycotoxin Characterization Context
+			<input type="checkbox" name="fields" value="assay"> Mycotoxin Characterization Assay
+			<input type="checkbox" name="fields" value="contributor"> Contributor
+			<input type="checkbox" name="fields" value="curator"> Curator
+			<input type="checkbox" name="fields" value="Source"> Source
+			<input type="checkbox" name="fields" value="Link"> Link
+			<br>
+			<br>
+
+			Limit Search By: <br>
+			<!-- Drop boxes - maybe these would be checkboxes -->
+			Organism Domain:
+			<select name="choose_domain">
+				<option value="all">Include All</option>
+				<option value="eukarya">Eukarya</option>
+				<option value="bacteria">Bacteria</option>
+				<option value="archaea">Archaea</option>
+			</select><br>
+
+			Organism Pathogenicity:
+			<select name="choose_path">
+				<option value="all">Include All</option>
+				<option value="pathogenic">Pathogenic</option>
+				<option value="non-path">Non-Pathogenic</option>
+				<option value="opportunistic">Opportunistic</option>
+			</select><br>
+
+			Aerobic or Anaerobic Organism:
+			<select name="choose_aeran">
+				<option value="all">Include All</option>
+				<option value="aerobic">Aerobic</option>
+				<option value="anaerobic">Anaerobic</option>
+				<option value="facultative">Facultative</option>
+			</select><br>
+			<br>
+			<!-- radio buttons -->
+			Download Format:
+			<input type="radio" name="download" value="csv"> .csv
+			<input type="radio" name="download" value="txt"> .txt
+			<input type="radio" name="download" value="tsv"> .tsv
+			<br>
+
+			<!-- Submit Button-->
+			<button ... > Submit </button>
+
+		</form>
+	</body>
+</html>
