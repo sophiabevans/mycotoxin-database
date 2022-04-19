@@ -102,6 +102,7 @@ cursor.execute("select Link from Literature;")
 lnames = cursor.fetchall()
 
 organism_dict = {i[0]:j[0] for i,j in zip(onames, oids)}
+#TODO: fix multiple ids to be in list
 mycotoxin_dict = {i[0]:j[0] for i,j in zip(mnames, mids)}
 lit_dict = {i[0]:j[0] for i,j in zip(lnames, lids)}
 
