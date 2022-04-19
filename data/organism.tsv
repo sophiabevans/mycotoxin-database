@@ -1,0 +1,84 @@
+Organism	Domain	Pathogenicity	Respiration	Environment
+Acinetobacter calcoaceticus	Bacteria	Opportunistic	Aerobic	Human GI; Soil
+Alcaligenes faecalis	Bacteria	Non-Pathogenic	Aerobic	Soil; Water; Human environment
+Bacillus amyloliquefaciens	Bacteria	Non-Pathogenic	Aerobic	Soil
+Flavobacterium aurantiacum	Bacteria	Non-Pathogenic	Aerobic	soils; water
+Rhodococcus erythropolis	Bacteria	Non-Pathogenic	Aerobic	soils
+Rhodococcus pyridinivorans	Bacteria	Non-Pathogenic	Aerobic	Water
+Myobacterium smegmatis	Bacteria	Non-Pathogenic	Aerobic	soil; water; plants
+Saccharomyces sensu stricto	Eukarya	Non-Pathogenic	Facultative	soil, human environment
+Lactobacillus rhamnosus	Bacteria	Non-Pathogenic	Anaerobic	human GI
+Aspergillus species	Eukarya	Opportunistic	Aerobic	soil, plants, wide spread in nature
+Stenotrophomonas maltophilia	Bacteria	Opportunistic	Aerobic	aqueous environments
+Propionibacterium freudenreichii	Bacteria	Non-Pathogenic	Anaerobic	Soil; plants; ruminant GI
+Bacillus subtilis	Bacteria	Non-Pathogenic	Aerobic	Soil; human and ruminant GI
+Phanerochaete sordida	Eukarya	Non-Pathogenic	Aerobic	Soil; plants
+Pseudomonas putida	Bacteria	Opportunistic	Aerobic	soil; water
+Bacillus velezensis	Bacteria	Non-Pathogenic	Aerobic	Soil (rhizosphere)
+Pichia occidentalis	Eukarya	Non-Pathogenic	Anaerobic	soil; water
+Bacillus subtilis	Bacteria	Non-Pathogenic	Aerobic	soil, plants, animal GI
+Nocardia corynebacteroides	Bacteria	Non-Pathogenic	Aerobic	soil, water
+Lactobacillus plantarum	Bacteria	Non-Pathogenic	Anaerobic	plants, human and ruminat GI
+Alicyclobacillus acidoterrestris	Bacteria	Non-Pathogenic	Aerobic	thermal/acidic soil & aqeous environments
+Debaryomyces hansenii	Eukarya	Opportunistic	Aerobic	Human skin and mucus membranes; certain foods
+Trichosporon mycotoxinivorans	Eukarya	Non-Pathogenic	Aerobic	Termite Hindgut
+Rhodosporidium paludigenum	Eukarya	Non-Pathogenic	Aerobic	Oceans and rivers
+Bacillus licheniformis	Bacteria	Pathogenic	Facultative	soil
+Bacillus amyloliquefaciens	Bacteria	Non-Pathogenic	Facultative	soil
+Lactobacillus plantarum	Bacteria	Non-Pathogenic	Facultative	soil/human GI, plants
+Bacillus velezensis	Bacteria	Non-Pathogenic	Aerobic	soil
+Pseudomonas putida	Bacteria	Opportunistic	Aerobic	soil/water
+S. cerevisiae	Eukarya	Non-Pathogenic	Aerobic	human GI
+Lactobacillus casei	Bacteria	Non-Pathogenic	Facultative	Human GI tract, mouth, and dairy products and isolated from fermented saurkraut in this experiment
+Trametes versicolor	Eukarya	Non-Pathogenic	Aerobic	plants (trees)
+Candida guilliermondii	Eukarya	Opportunistic	Aerobic	wide spread in nature
+Lactobacillus helviticus	Bacteria	Non-Pathogenic	Anaerobic	Human GI
+Lactobacillus fermentum	Bacteria	Non-Pathogenic	Anaerobic	Human GI, animal GI tract such as cows, and mouth
+Aspergillus niger	Eukarya	Pathogenic	Anaerobic	Soil, plants, foods
+Lactobacillus brevis, L. paracasei	Bacteria	Non-Pathogenic	Anaerobic	soil, plants, food
+Lactobacillus acidophilus	Bacteria	Non-Pathogenic	Anaerobic	soil, plants, food
+Enterococcus faecium	Bacteria	Opportunistic	Anaerobic	food
+Sphingosinicella microcystinivorans	Bacteria	Non-Pathogenic	Aerobic	soil
+Gluconobacter oxydans	Bacteria	Non-Pathogenic	Aerobic	soil, fruits, sugar-rich environments, isolated from apples
+Saccharomyces cerevisiae	Eukarya	Opportunistic	Facultative	soil, plants/fruits
+Aspergillus oryzae	Eukarya	Non-Pathogenic	Aerobic	soil; plants
+Escheria coli CG1061	Bacteria	Non-Pathogenic	Facultative	Human GI tract, Animal GI tract,
+Pseudomonas aeruginosa M19	Bacteria	Opportunistic	Facultative	soil, water, skin flora, and most man-made environments throughout the world
+Cladosporium uredinicola	Eukarya	Opportunistic	Aerobic	soil and organic matter; widely dispersed through air
+Lactobacillus pentosus X8	Bacteria	Non-Pathogenic	Facultative	human GI tract, human vaginal tract, foods
+Sphingopyxis sp. MTA144	Bacteria	Non-Pathogenic	Aerobic	Soil, wastewater, dumpsite
+Triticum durum	Eukarya	Non-Pathogenic	Aerobic	Wheat fields
+Devosia mutans	Bacteria	Non-Pathogenic	Aerobic	soil
+Arabidopsis thaliana	Eukarya	Non-Pathogenic	Aerobic	soil, roadside weed. grows in rocky, sandy terrains
+Lactobacillus rhamnosus	Bacteria	Non-Pathogenic	Aerobic	Human GI
+Aspergillus niger	Eukarya	Pathogenic	Aerobic	soil, plants, food
+Saccharomyces cerevisiae	Eukarya	Non-Pathogenic	Aerobic	High sugar environments (grape/cane juice)
+Pichia Pastoris	Eukarya	Non-Pathogenic	Aerobic	soil, plants, food
+Aspergillus oryzae	Eukarya	Non-Pathogenic	Aerobic	soil(usually from rice soil or rice plants), plants, food
+Flavobacterium aurantiacum	Bacteria	Opportunistic	Aerobic	soil, water (often freshwater), variety of environments
+stenotrophomonas Maltophilia	Bacteria	Opportunistic	Aerobic	soil, plant, food, animals, aqueous habitats, human skin, hospital environments, and respiratory and GI tracts
+Yarrowia lipolytica	Eukarya	Opportunistic	Aerobic	soil, plants, seawater, human lungs, mouth, intestinal tract
+Rhizopus stolonifer	Eukarya	Opportunistic	Facultative	Soil, bread, decaying fruits; moist and warm environments
+Pleurotus ostreatus	Eukarya	Non-Pathogenic	Aerobic	Decaying logs/trees
+Bacillus cereus	Bacteria	Opportunistic	Facultative	Soil, food
+Clonostachys rosea	Eukarya	Opportunistic	Aerobic	Soil, plants
+Escherichia coli	Bacteria	Pathogenic	Facultative	Human/animal GI tract
+Saccharomyces cerevisiae	Eukarya	Opportunistic	Facultative	soil, plants/fruit
+Saccharomyces pastorianus	Eukarya	Opportunistic	Facultative	fruits and sugar rich environments
+Pediococcus parvulus	Bacteria	Non-Pathogenic	Anaerobic	food
+Lactobacillius plantarum	Bacteria	Non-Pathogenic	Anaerobic	animal GI tract, saliva, and food products
+Sterptomyces (multiple strains)	Bacteria	Pathogenic	Aerobic	soil
+Paradevosia shaoguanensis	Bacteria	Non-Pathogenic	Aerobic	soil
+Bacterial Consortium SAAS79	Bacteria	Pathogenic	Aerobic	mushrooms/soil
+Rhodotorula mucilaginosa	Eukarya	Pathogenic	Aerobic	food
+Lactobacillus mesenteroides	Bacteria	Opportunistic	Facultative	dairy products
+Clonostachys rosea	Eukarya	Opportunistic	Aerobic	soil, plants
+Lactobacillus acidophilus	Bacteria	Non-Pathogenic	Anaerobic	human GI
+Irpex lacteus	Eukarya	Opportunistic	Aerobic	plants, rotting woods, soil
+Rhodococcus erythropolis	Bacteria	Non-Pathogenic	Aerobic	water, soil
+Bacillus licheniformis	Bacteria	Opportunistic	Facultative	soil,bird feathers
+Rhizopus and Aspergillus strains	Eukarya	Pathogenic	Aerobic	Soil, decaying logs/trees
+Lactobcillus brevis	Bacteria	Non-Pathogenic	Anaerobic	dairy, plants, meat, GI of humans/rats
+Saccharomyces cerevisiae	Eukarya	Opportunistic	Facultative	fruits, sugar environments, soil, plants, trees, insects, humans
+Lactobacillus pentosus	Bacteria	Non-Pathogenic	Anaerobic	dairy, plants, meat, GI tract
+Gliocladium roseum	Eukarya	Non-Pathogenic	Aerobic	decaying vegetation
