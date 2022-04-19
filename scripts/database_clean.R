@@ -50,6 +50,9 @@ mycotoxin_df <- mycotoxin_df %>%
   rename("Environment" = "Native environment")
   
 
+#Environment
+types <- c("Soil", "Water", "Plant", "Human", "Animal", "GI", "Food")
+
 write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.tsv")
 
 org <- mycotoxin_df %>%
