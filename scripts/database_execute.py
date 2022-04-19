@@ -90,8 +90,8 @@ for q in queries:
 
 oid = cursor.execute("select OID from Organism;")
 onames = cursor.execute("select Name from Organism;")
-mid = cursor.execute("select MID from Organism;")
-lid = cursor.execute("select LID from Organism;")
+mid = cursor.execute("select MID from Mycotoxin;")
+lid = cursor.execute("select LID from Literature;")
 
 print(oid)
 print(onames)
