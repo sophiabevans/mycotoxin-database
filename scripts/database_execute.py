@@ -97,7 +97,7 @@ mid = cursor.fetchall()
 cursor.execute("select LID from Literature;")
 lid = cursor.fetchall()
 
-organism_dict = {i[0] for i in onames: j[0] for j in oid}
+organism_dict = {i[0]:j[0] for i,j in zip(onames, oid)}
 
 print(organism_dict)
 
