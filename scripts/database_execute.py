@@ -35,6 +35,15 @@ PRIMARY KEY(LID)
 );
 """,
 """
+CREATE TABLE Mycotoxin (
+MID INTEGER NOT NULL AUTO_INCREMENT,
+Removal_mech VARCHAR(30),
+Enzymatic_or_not VARCHAR(20),
+Location VARCHAR(30),
+PRIMARY KEY(MID)
+);
+""",
+"""
 CREATE TABLE Organism (
 OID INTEGER NOT NULL AUTO_INCREMENT,
 Domain VARCHAR(20),
@@ -43,15 +52,6 @@ Pathogenicity VARCHAR(30),
 Respiration VARCHAR(30),
 Environment VARCHAR(30),
 PRIMARY KEY(OID)
-);
-""",
-"""
-CREATE TABLE Mycotoxin (
-MID INTEGER NOT NULL AUTO_INCREMENT,
-Removal_mech VARCHAR(30),
-Enzymatic_or_not VARCHAR(20),
-Location VARCHAR(30),
-PRIMARY KEY(MID)
 );
 """,
 """
