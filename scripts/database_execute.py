@@ -88,8 +88,8 @@ for q in queries:
 	except pymysql.Error as e:
 	    print(e)
 
-oid = cursor.execute("select OID from Organism;")
-onames = cursor.execute("select Name from Organism;")
+oid = cursor.fetchall(cursor.execute("select OID from Organism;"))
+onames = cursor.fetchall(cursor.execute("select Name from Organism;"))
 mid = cursor.execute("select MID from Mycotoxin;")
 lid = cursor.execute("select LID from Literature;")
 
