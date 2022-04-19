@@ -78,7 +78,7 @@ FOREIGN KEY(LID) REFERENCES Literature(LID)
 );
 """,
 'load data local infile "../data/curation.tsv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
-'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Removal_mech, Enzymatic_or_not, Location);',
+'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
 'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Domain, Name, Pathogenicity, Respiration, Environment);',
 'load data local infile "../data/literature.tsv" into table Literature ignore 1 lines (Context, Assay, Source, Link);']
 
