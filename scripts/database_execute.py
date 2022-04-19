@@ -37,9 +37,10 @@ PRIMARY KEY(LID)
 """
 CREATE TABLE Mycotoxin (
 MID INTEGER NOT NULL AUTO_INCREMENT,
+Name VARCHAR(50)
 Removal_mech VARCHAR(30),
 Enzymatic_or_not VARCHAR(20),
-Location VARCHAR(30),
+Location VARCHAR(100),
 PRIMARY KEY(MID)
 );
 """,

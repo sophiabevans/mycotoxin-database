@@ -53,7 +53,7 @@ mycotoxin_df <- mycotoxin_df %>%
 write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.tsv")
 
 org <- mycotoxin_df %>%
-  select(Organism, Domain, Pathogenicity, Respiration, Environment)
+  select(Domain, Organism, Pathogenicity, Respiration, Environment)
 write_tsv(distinct(org), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/organism.tsv")
 
 lit <- mycotoxin_df %>%
