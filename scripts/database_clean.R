@@ -50,22 +50,22 @@ mycotoxin_df <- mycotoxin_df %>%
   rename("Environment" = "Native environment")
   
 
-write_csv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/database_project/mycotoxin_removal.csv")
+write_csv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.csv")
 
 org <- mycotoxin_df %>%
   select(Organism, Domain, Pathogenicity, Respiration, Environment)
-write_csv(org, file = "~/BostonUniversity/BF768/homework/database_project/organism.csv")
+write_csv(distinct(org), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/organism.csv")
 
 lit <- mycotoxin_df %>%
   select(`Characterization context`, `Characterization assay`, Source, Link, `Additional information`)
-write_csv(lit, file = "~/BostonUniversity/BF768/homework/database_project/literature.csv")
+write_csv(distinct(lit), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/literature.csv")
   
 cur_cont <- mycotoxin_df %>%
   select(Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`)
-write_csv(cur_cont, file = "~/BostonUniversity/BF768/homework/database_project/curation.csv")
+write_csv(distinct(cur_cont), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/curation.csv")
 
 mycotoxin <- mycotoxin_df %>%
   select(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
-write_csv(mycotoxin, file = "~/BostonUniversity/BF768/homework/database_project/mycotoxin.csv")
+write_csv(distinct(mycotoxin), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin.csv")
 
 

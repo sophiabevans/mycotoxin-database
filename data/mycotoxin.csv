@@ -1,24 +1,15 @@
 Mycotoxin,Removal mechanism,Enzymatic?,Location
 Ochratoxin,biotransformation,Yes,Unknown
-Ochratoxin,biotransformation,Yes,Unknown
 Zearalenone,biotransformation,Yes,Unknown
-Ochratoxin,biotransformation,Yes,Unknown
 Aflatoxin B1,biotransformation,Yes,Unknown
-Aflatoxin B1,biotransformation,Yes,Extracellular
-Zearalenone,biotransformation,Yes,Unknown
 Aflatoxin B1,biotransformation,Yes,Extracellular
 Ochratoxin A,absorption,No,Intracellular
 Aflatoxin B1,absorption,No,Unknown
 Ochratoxin A,biotransformation,Yes,Extracellular
 Aflatoxin B(1),unknown,Yes,Intracellular
 Zearalenone,adsorption,No,Unknown
-Aflatoxin B1,biotransformation,Yes,Unknown
-Aflatoxin B1,biotransformation,Yes,Extracellular
-Zearalenone,biotransformation,Yes,Unknown
-Aflatoxin B1,biotransformation,Yes,Extracellular
 Aflatoxin B1,adsorption,Yes,Unknown
 Zearalenone,biotransformation,No,Unknown
-Aflatoxin B1,biotransformation,No,Unknown
 Aflatoxin B1,biotransformation,No,Unknown
 Patulin,biotransformation,No,Unknown
 Ochratoxin A,Transcriptional regulation of OTA producer genes,No,Extracellular
@@ -27,37 +18,25 @@ Patulin,biotransformation,Yes,Intracellular
 Zearalenone,adsorption,No,Extracellular
 Zearalenone,"adsorption, degradation",No,Intracellular
 Patulin,adsorption,No,Extracellular
-Zearalenone,biotransformation,No,Unknown
-Aflatoxin B1,biotransformation,Yes,Unknown
 Ochratoxin A,biotransformation,No,Unknown
 Patulin,biotransformation,Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Extracellular
 Patulin,biotransformation,No,Intracellular
-Aflatoxin B1,biotransformation,No,Unknown
 Aflatoxin B1,adsorption,No,Extracellular
 Zearalenone,adsorption/biotransformation,Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Extracellular
 "Patulin, Ochratoxin A",biotransformation,No,Extracellular
 Patulin/Aflatoxin B1,biotransformation,No,Intracellular
 Ochratoxin A / Fumonisin B1,biotransformation,Yes,Unknown
 Patulin,biotransformation,Unknown,Unknown
 Fumonisin B1 And Aflatoxin B1,adsorption,No,Unknown
-Zearalenone,biotransformation,Yes,Unknown
 Aflatoxin B1,biotransformation (AFB1 was bio-transformed to the product C16H14O5 and other metabolites),Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Extracellular
 Fumonisins B1 And B2,Adsorption,No,Extracellular
 Fumonisin B1,Biotransformation,Yes,Unknown
 Toxins T2 And Ht2,Biotransformation,Yes,Unknown
 Deoxynivalenol,Biotransformation,Yes,Unknown
-Deoxynivalenol,Biotransformation,Yes,Unknown
 Deoxynivalenol,Biotransformation,No,Extracellular
-Ochratoxin A,Adsorption,No,Intracellular
 Ochratoxin A,Adsorption,No,Intracellular
 Zearalenone,Adsorption,Yes,Intracellular
 Deoxynivalenol,biotransformation,Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Extracellular
-Aflatoxin B1,biotransformation,Yes,Unknown
 Ochratoxin A,biotransformation,Yes,Intracellular
 Ochratoxin A,Biotransformation,Yes,Unknown
 Aflatoxin B1,Biotransformation,Yes,Extracellular
@@ -71,15 +50,9 @@ Zearalenone,Biodegradation and Adsorption,Yes,Unknown
 "Aflotoxin B1, Zearalone",Biotransformation,Yes,Intracellular
 Deoxynivalenol,biotransformation,Unknown,Unknown
 Fumonisin B1,biotransformation,Yes,Intracellular
-Patulin,biotransformation,Yes,Intracellular
 Aflatoxin G1,biotransformation,No,Extracellular
 Zearalenone,biotransformation,Yes,Extracellular
-Zearalenone,biotransformation,No,Unknown
-Aflatoxin B1,biotransformation,Yes,Extracellular
 Aflatoxin B1,biotransformation,Yes,Intracellular
-Aflatoxin B1,biotransformation,Yes,Intracellular
-Zearalenone,Biotransformation,Yes,Unknown
 Tenuazonic Acid,adsorption,No,Extracellular
 Ochratoxin A,"Adsorption, Yeast-OTA bound to cell surface",No,Intracellular
-Zearalenone,adsorption,No,Extracellular
 Zearalenone,biotransformation,Yes,Intracellular
