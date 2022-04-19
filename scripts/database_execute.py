@@ -89,17 +89,33 @@ for q in queries:
 	    print(e)
 
 cursor.execute("select OID from Organism;")
-oid = cursor.fetchall()
+oids = cursor.fetchall()
 cursor.execute("select Name from Organism;")
 onames = cursor.fetchall()
 cursor.execute("select MID from Mycotoxin;")
-mid = cursor.fetchall()
+mids = cursor.fetchall()
+cursor.execute("select Name from Mycotoxin;")
+mnames = cursor.fetchall()
 cursor.execute("select LID from Literature;")
-lid = cursor.fetchall()
+lids = cursor.fetchall()
+cursor.execute("select Link from Literature;")
+lnames = cursor.fetchall()
 
-organism_dict = {i[0]:j[0] for i,j in zip(onames, oid)}
+organism_dict = {i[0]:j[0] for i,j in zip(onames, oids)}
+mycotoxin_dict = {i[0]:j[0] for i,j in zip(mnames, mids)}
+lit_dict {i[0]:j[0] for i,j in zip(lnames, lids)}
 
-print(organism_dict)
+with open("../data/mycotoxin_removal.tsv", r) as f:
+    line = f.readline()
+    line = f.readline()
+    while line:
+        fields = line.strip().split("\t")
+        lid = lit_dict[line[1]]
+        oid= lit_dict[line[2]]
+        mid = lit_dict[line[7]]
+        cursor.execute(f"""insert into Removal (OID, MID, LID)
+        values ({oid}, {mid}, {lid})""")
+        line = f.readline()
 
 #commit changes
 connection.commit()
