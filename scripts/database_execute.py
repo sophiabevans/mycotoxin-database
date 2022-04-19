@@ -76,10 +76,10 @@ FOREIGN KEY(MID) REFERENCES Mycotoxin(MID),
 FOREIGN KEY(LID) REFERENCES Literature(LID)
 );
 """,
-'load data local infile "curation.csv" into table Curation_Contribution fields terminated by "," (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
-'load data local infile "mycotoxin.csv" into table Mycotoxin fields terminated by "," (Removal_mech, Enzymatic_or_not, Location);',
-'load data local infile "organism.csv" into table Organism fields terminated by "," (Domain, Name, Pathogenicity, Respiration, Environment);',
-'load data local infile "literature.csv" into table Literature fields terminated by "," (Context, Assay, Source, Link);']
+'load data local infile "../data/curation.csv" into table Curation_Contribution fields terminated by "," (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
+'load data local infile "../data/mycotoxin.csv" into table Mycotoxin fields terminated by "," (Removal_mech, Enzymatic_or_not, Location);',
+'load data local infile "../data/organism.csv" into table Organism fields terminated by "," (Domain, Name, Pathogenicity, Respiration, Environment);',
+'load data local infile "../data/literature.csv" into table Literature fields terminated by "," (Context, Assay, Source, Link);']
 
 for q in queries:
 	try:
