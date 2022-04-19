@@ -111,8 +111,8 @@ with open("../data/mycotoxin_removal.tsv", "r") as f:
     while line:
         fields = line.strip().split("\t")
         lid = lit_dict[fields[1]]
-        oid= lit_dict[fields[2]]
-        mid = lit_dict[fields[7]]
+        oid= organism_dict[fields[2]]
+        mid = mycotoxin_dict[fields[7]]
         cursor.execute(f"""insert into Removal (OID, MID, LID)
         values ({oid}, {mid}, {lid})""")
         line = f.readline()
