@@ -78,7 +78,7 @@ FOREIGN KEY(LID) REFERENCES Literature(LID)
 );
 """,
 'load data local infile "../data/curation.csv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
-'load data local infile "../data/mycotoxin.csv" into table Mycotoxin ignore 1 lines (Name Removal_mech, Enzymatic_or_not, Location);',
+'load data local infile "../data/mycotoxin.csv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
 'load data local infile "../data/organism.csv" into table Organism ignore 1 lines (Domain, Name, Pathogenicity, Respiration, Environment);',
 'load data local infile "../data/literature.csv" into table Literature ignore 1 lines (Context, Assay, Source, Link);']
 
@@ -89,10 +89,12 @@ for q in queries:
 	    print(e)
 
 oid = cursor.execute("select OID from Organism;")
-onames = cursor.execute("select ")
+onames = cursor.execute("select Name from Organism;")
 mid = cursor.execute("select MID from Organism;")
 lid = cursor.execute("select LID from Organism;")
 
+print(oid)
+print(onames)
 
 #commit changes
 connection.commit()
