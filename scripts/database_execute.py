@@ -92,10 +92,12 @@ cursor.execute("select OID from Organism;")
 oid = cursor.fetchall()
 cursor.execute("select Name from Organism;")
 onames = cursor.fetchall()
-mid = cursor.execute("select MID from Mycotoxin;")
-lid = cursor.execute("select LID from Literature;")
+cursor.execute("select MID from Mycotoxin;")
+mid = cursor.fetchall()
+cursor.execute("select LID from Literature;")
+lid = cursor.fetchall()
 
-print(oid)
+print(class(oid[0]))
 print(onames)
 
 #commit changes
