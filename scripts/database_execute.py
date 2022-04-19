@@ -37,11 +37,11 @@ PRIMARY KEY(LID)
 """
 CREATE TABLE Organism (
 OID INTEGER NOT NULL AUTO_INCREMENT,
-Domain VARCHAR(20),
-Name VARCHAR(30),
-Pathogenicity VARCHAR(30),
+Domain VARCHAR(40),
+Name VARCHAR(40),
+Pathogenicity VARCHAR(50),
 Respiration VARCHAR(30),
-Environment VARCHAR(30),
+Environment VARCHAR(100),
 PRIMARY KEY(OID)
 );
 """,
@@ -86,6 +86,12 @@ for q in queries:
 	    cursor.execute(q)
 	except pymysql.Error as e:
 	    print(e)
+
+oid = cursor.execute("select OID from Organism;")
+onames = cursor.execute("select ")
+mid = cursor.execute("select MID from Organism;")
+lid = cursor.execute("select LID from Organism;")
+
 
 #commit changes
 connection.commit()
