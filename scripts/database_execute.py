@@ -38,7 +38,7 @@ PRIMARY KEY(LID)
 CREATE TABLE Organism (
 OID INTEGER NOT NULL AUTO_INCREMENT,
 Domain VARCHAR(40),
-Name VARCHAR(40),
+Name VARCHAR(100),
 Pathogenicity VARCHAR(50),
 Respiration VARCHAR(30),
 Environment VARCHAR(100),
@@ -48,10 +48,10 @@ PRIMARY KEY(OID)
 """
 CREATE TABLE Mycotoxin (
 MID INTEGER NOT NULL AUTO_INCREMENT,
-Name VARCHAR(50),
-Removal_mech VARCHAR(30),
+Name VARCHAR(100),
+Removal_mech VARCHAR(50),
 Enzymatic_or_not VARCHAR(20),
-Location VARCHAR(30),
+Location VARCHAR(50),
 PRIMARY KEY(MID)
 );
 """,
@@ -79,7 +79,7 @@ FOREIGN KEY(LID) REFERENCES Literature(LID)
 """,
 'load data local infile "../data/curation.tsv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
 'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
-'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Domain, Name, Pathogenicity, Respiration, Environment);',
+'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Name, Domain, Pathogenicity, Respiration, Environment);',
 'load data local infile "../data/literature.tsv" into table Literature ignore 1 lines (Context, Assay, Source, Link);']
 
 for q in queries:
