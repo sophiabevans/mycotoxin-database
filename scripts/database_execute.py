@@ -97,8 +97,9 @@ mid = cursor.fetchall()
 cursor.execute("select LID from Literature;")
 lid = cursor.fetchall()
 
-print(class(oid[0]))
-print(onames)
+organism_dict = {i[0] for i in onames: j[0] for j in oid}
+
+print(organism_dict)
 
 #commit changes
 connection.commit()
