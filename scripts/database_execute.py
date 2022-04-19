@@ -103,7 +103,7 @@ lnames = cursor.fetchall()
 
 organism_dict = {i[0]:j[0] for i,j in zip(onames, oids)}
 mycotoxin_dict = {i[0]:j[0] for i,j in zip(mnames, mids)}
-lit_dict {i[0]:j[0] for i,j in zip(lnames, lids)}
+lit_dict = {i[0]:j[0] for i,j in zip(lnames, lids)}
 
 with open("../data/mycotoxin_removal.tsv", r) as f:
     line = f.readline()
