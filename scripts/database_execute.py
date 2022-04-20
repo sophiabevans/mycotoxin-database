@@ -95,12 +95,7 @@ organism_dict = {}
 mycotoxin_dict = {}
 lit_dict = {}
 
-print(onames, oids)
-print(mnames, mids)
-print(lnames, lids)
-
 for i, j in zip(onames, oids):
-    print(i[0], j[0])
     if i[0] in organism_dict:
         organism_dict[i[0]].append(j[0])
     else:
@@ -130,9 +125,13 @@ with open("../data/mycotoxin_removal.tsv", "r") as f:
         lid = lit_dict[fields[1]]
         oid = organism_dict[fields[2]]
         mid = mycotoxin_dict[fields[7]]
-        print(lid, oid, mid)
-        cursor.execute(f"""insert into Removal (OID, MID, LID)
-        values ({oid}, {mid}, {lid})""")
+        #there can be multiple ids for the same key, need multiple rows
+        #these are all lists, usually of length 1
+        for i in oid:
+            for j in mid:
+                for k in lid:
+                    cursor.execute(f"""insert into Removal (OID, MID, LID)
+                    values ({i}, {j}, {k})""")
         line = f.readline()
 
 #commit changes
