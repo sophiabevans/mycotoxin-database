@@ -65,7 +65,8 @@ cur_cont <- mycotoxin_df %>%
 write_tsv(distinct(cur_cont), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/curation.tsv")
 
 mycotoxin <- mycotoxin_df %>%
-  select(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
+  select(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location) %>%
+  separate_rows(Mycotoxin, sep = "(/|,|And)+")
 write_tsv(distinct(mycotoxin), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin.tsv")
 
 
