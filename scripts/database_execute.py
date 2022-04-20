@@ -24,18 +24,15 @@ connection = pymysql.connect(
 cursor = connection.cursor()
 
 queries = ['DROP TABLE IF EXISTS Removal, Curation_Contribution, Organism, Mycotoxin, Literature;',
-           """
-CREATE TABLE Literature (
+"""CREATE TABLE Literature (
 LID INTEGER NOT NULL AUTO_INCREMENT,
 Context VARCHAR(100),
 Assay VARCHAR(100),
 Source VARCHAR(100),
 Link VARCHAR(100),
 PRIMARY KEY(LID)
-);
-""",
-           """
-CREATE TABLE Organism (
+);""",
+"""CREATE TABLE Organism (
 OID INTEGER NOT NULL AUTO_INCREMENT,
 Domain VARCHAR(40),
 Name VARCHAR(100),
@@ -43,20 +40,16 @@ Pathogenicity VARCHAR(50),
 Respiration VARCHAR(30),
 Environment VARCHAR(100),
 PRIMARY KEY(OID)
-);
-""",
-           """
-CREATE TABLE Mycotoxin (
+);""",
+"""CREATE TABLE Mycotoxin (
 MID INTEGER NOT NULL AUTO_INCREMENT,
 Name VARCHAR(100),
 Removal_mech VARCHAR(50),
 Enzymatic_or_not VARCHAR(20),
 Location VARCHAR(50),
 PRIMARY KEY(MID)
-);
-""",
-           """
-CREATE TABLE Curation_Contribution (
+);""",
+"""CREATE TABLE Curation_Contribution (
 CID INTEGER NOT NULL AUTO_INCREMENT,
 Con_name VARCHAR(30),
 Con_date DATE,
@@ -64,10 +57,8 @@ Cur_name VARCHAR(30),
 Cur_date DATE,
 Cur_notes VARCHAR(200),
 PRIMARY KEY(CID)
-);
-""",
-           """
-CREATE TABLE Removal (
+);""",
+"""CREATE TABLE Removal (
 OID INT NOT NULL,
 MID INT NOT NULL,
 LID INT NOT NULL,
@@ -75,12 +66,11 @@ PRIMARY KEY(OID,MID),
 FOREIGN KEY(OID) REFERENCES Organism(OID),
 FOREIGN KEY(MID) REFERENCES Mycotoxin(MID),
 FOREIGN KEY(LID) REFERENCES Literature(LID)
-);
-""",
-           'load data local infile "../data/curation.tsv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
-           'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
-           'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Name, Domain, Pathogenicity, Respiration, Environment);',
-           'load data local infile "../data/literature.tsv" into table Literature ignore 1 lines (Context, Assay, Source, Link);']
+);""",
+'load data local infile "../data/curation.tsv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
+'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
+'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Name, Domain, Pathogenicity, Respiration, Environment);',
+'load data local infile "../data/literature.tsv" into table Literature ignore 1 lines (Context, Assay, Source, Link);']
 
 for q in queries:
 	try:
@@ -123,6 +113,10 @@ for i, j in zip(lnames, lids):
     else:
         lit_dict[i] = [j]
 
+print(organism_dict)
+print(mycotoxin_dict)
+print(lit_dict)
+
 with open("../data/mycotoxin_removal.tsv", "r") as f:
     line = f.readline()  # skip header
     line = f.readline()
@@ -131,6 +125,7 @@ with open("../data/mycotoxin_removal.tsv", "r") as f:
         lid = lit_dict[fields[1]]
         oid = organism_dict[fields[2]]
         mid = mycotoxin_dict[fields[7]]
+        print(lid, oid, mid)
         cursor.execute(f"""insert into Removal (OID, MID, LID)
         values ({oid}, {mid}, {lid})""")
         line = f.readline()
