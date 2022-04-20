@@ -96,22 +96,22 @@ mycotoxin_dict = {}
 lit_dict = {}
 
 for i, j in zip(onames, oids):
-    if i in organism_dict:
-        organism_dict[i] += j
+    if i[0] in organism_dict:
+        organism_dict[i[0]] += j[0]
     else:
-        organism_dict[i] = [j]
+        organism_dict[i[0]] = [j[0]]
 
 for i, j in zip(mnames, mids):
-    if i in mycotoxin_dict:
-        mycotoxin_dict[i] += j
+    if i[0] in mycotoxin_dict:
+        mycotoxin_dict[i[0]] += j[0]
     else:
-        mycotoxin_dict[i] = [j]
+        mycotoxin_dict[i[0]] = [j[0]]
 
 for i, j in zip(lnames, lids):
-    if i in lit_dict:
-        lit_dict[i] += j
+    if i[0] in lit_dict:
+        lit_dict[i[0]] += j[0]
     else:
-        lit_dict[i] = [j]
+        lit_dict[i[0]] = [j[0]]
 
 print(organism_dict)
 print(mycotoxin_dict)
