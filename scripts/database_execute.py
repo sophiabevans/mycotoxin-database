@@ -113,10 +113,6 @@ for i, j in zip(lnames, lids):
     else:
         lit_dict[i[0]] = [j[0]]
 
-print(organism_dict)
-print(mycotoxin_dict)
-print(lit_dict)
-
 with open("../data/mycotoxin_removal.tsv", "r") as f:
     line = f.readline()  # skip header
     line = f.readline()
