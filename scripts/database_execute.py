@@ -120,7 +120,7 @@ with open("../data/mycotoxin_removal.tsv", "r") as f:
         fields = line.strip().split("\t")
         lid = lit_dict[fields[1]]
         oid = organism_dict[fields[2]]
-        mid = mycotoxin_dict[fields[7]]
+        mid = mycotoxin_dict[fields[18]]
         #there can be multiple ids for the same key, need multiple rows
         #these are all lists, usually of length 1
         for i in oid:
