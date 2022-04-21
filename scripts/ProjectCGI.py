@@ -28,9 +28,9 @@ print("Content-type: text/html\n")
 if (form):
     connection = pymysql.connect(host='bioed.bu.edu', 
                                  port=4253, 
-                                 user='mranawee', 
+                                 user='', 
                                  database='miRNA', 
-                                 password = 'Megaspyguy4')
+                                 password = '')
     cursor = connection.cursor()
     query = """
             """
