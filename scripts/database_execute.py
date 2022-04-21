@@ -62,7 +62,7 @@ PRIMARY KEY(CID)
 OID INT NOT NULL,
 MID INT NOT NULL,
 LID INT NOT NULL,
-PRIMARY KEY(OID,MID),
+PRIMARY KEY(OID,MID,LID),
 FOREIGN KEY(OID) REFERENCES Organism(OID),
 FOREIGN KEY(MID) REFERENCES Mycotoxin(MID),
 FOREIGN KEY(LID) REFERENCES Literature(LID)
@@ -126,9 +126,11 @@ with open("../data/mycotoxin_removal.tsv", "r") as f:
         for i in oid:
             for j in mid:
                 for k in lid:
-                    cursor.execute(f"""insert into Removal (OID, MID, LID)
-                    values ({i}, {j}, {k})""")
-        line = f.readline()
+                    try:
+                    	cursor.execute(f"""insert into Removal (OID, MID, LID) values ({i}, {j}, {k})""")
+                    except pymysql.Error as e:
+                        print(e) 
+       	line = f.readline()
 
 #commit changes
 connection.commit()
