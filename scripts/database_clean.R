@@ -48,6 +48,7 @@ mycotoxin_df <- mycotoxin_df %>%
          `Location` = cell %>% replace_na("Unknown"),
          `Enzyme identified?`= str_to_title(`Enzyme identified?`)) %>%
   separate_rows(Mycotoxin, sep = "(/|,|And)+") %>%
+  separate_rows(Organism, sep = "(/|,)+") %>%
   select(-c(`Intracellular or Extracellular?`, `Pathogen?`, `Target mycotoxin`, `Aerobic or Anaerobic?`)) %>%
   rename("Environment" = "Native environment")
   
