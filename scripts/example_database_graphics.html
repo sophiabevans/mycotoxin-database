@@ -2,6 +2,23 @@
 
 	<head> <!-- You might link CSS here -->
 		<title> Mycotoxin Removal Data Interface </title>
+		<style>
+		table {
+			border: 1px solid;
+		}
+		table {
+		border-collapse: collapse;
+		}
+		th, td {
+		padding: 15px;
+		text-align: left;
+		}
+		tr:nth-child(even) {background-color: #f2f2f2;}
+		th {
+		background-color: #04AA6D;
+		color: white;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -69,41 +86,37 @@
 		
 		<h1> Example Output </h1>
 
-		<table border=1>
-			<thead>
-				<tr>
-					<th>Organism</th>
-					<th>Target Mycotoxin</th>
-					<th>Removal Mechanism</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Saccharomyces sensu stricto</td>
-					<td>Ochratoxin A </td>
-					<td>absorption</td>
-				</tr>
-				<tr>
+		<table id='ex_table'>
+			<tr id='ex_table_head'>
+				<th class='headrow'>Organism</th>
+				<th class='headrow'>Target Mycotoxin</th>
+				<th class='headrow'>Removal Mechanism</th>
+			</tr>
+			<tr id='ex_table_row1'>
+				<td>Saccharomyces sensu stricto</td>
+				<td>Ochratoxin A </td>
+				<td>absorption</td>
+			</tr>
+			<tr id='ex_table_row2'>
 				<td>Aspergillus species</td>
 				<td>Ochratoxin A </td>
 				<td>biotransformation</td>
-				</tr>
-				<tr>
+			</tr>
+			<tr id='ex_table_row3'>
 				<td>Phanerochaete sordida</td>
 				<td>Aflatoxin B1</td>
 				<td>biotransformation</td>
-				</tr>
-				<tr>
+			</tr>
+			<tr id='ex_table_row4'>
 				<td>Pichia occidentalis</td>
 				<td>Aflatoxin B1</td>
 				<td>absorption</td>
-				</tr>
-				<tr>
+			</tr>
+			<tr id='ex_table_row5'>
 				<td>Debaryomyces hansenii</td>
 				<td>Ochratoxin A </td>
 				<td>Transcriptional regulation of OTA producer genes</td>
-				</tr>
-			</tbody>
+			</tr>
 		</table>
 	</body>
 </html>
