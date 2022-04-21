@@ -24,6 +24,13 @@ aran<- str_replace_all(string = aran, pattern = ".*Facult.*", replacement = "Fac
 aran<- str_replace_all(string = aran, pattern = ".*Anaer.*", replacement = "Anaerobic")
 aran<- str_replace_all(string = aran, pattern = ".*Aer.*", replacement = "Aerobic")
 
+#Text input: source, link, organism name, mycotoxin, characterization assay, 
+  #identified enzyme col, additional info,
+  #curator, contributor, notes
+#dropdown: domain, char context, enzymatic, enzyme identified, pathogenicity, respiration, location
+#radio: environment- text box for other, removal mechanism
+#calendar: curation and contribution dates
+
 #native environment: lots of info in this one so add column with all values in 
 #("Human", "Soil", "Water", "Plants", "Other")
 
