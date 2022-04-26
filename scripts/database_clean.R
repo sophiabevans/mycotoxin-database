@@ -59,8 +59,6 @@ mycotoxin_df <- mycotoxin_df %>%
   select(-c(`Intracellular or Extracellular?`, `Pathogen?`, `Target mycotoxin`, `Aerobic or Anaerobic?`)) %>%
   rename("Environment" = "Native environment")
   
-
-<<<<<<< HEAD
 #Environment
 types <- c("Soil", "Water", "Plant", "Human", "Animal", "GI", "Food")
 
@@ -68,12 +66,6 @@ write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-data
 
 org <- mycotoxin_df %>%
   select(Domain, Organism, Pathogenicity, Respiration, Environment)
-=======
-write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.tsv")
-
-org <- mycotoxin_df %>%
-  select(Organism, Domain, Pathogenicity, Respiration, Environment)
->>>>>>> foreignkeys
 write_tsv(distinct(org), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/organism.tsv")
 
 lit <- mycotoxin_df %>%
