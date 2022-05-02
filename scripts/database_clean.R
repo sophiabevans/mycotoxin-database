@@ -1,5 +1,5 @@
-library(tidyverse)
 library(readxl)
+library(tidyverse)
 
 mycotoxin_df <- read_excel("~/BostonUniversity/BF768/homework/database_project/BiologicalRemovalOfMycotoxins.xlsx")
 
@@ -7,7 +7,7 @@ col_info <- mycotoxin_df[1,]
 
 mycotoxin_df <- mycotoxin_df %>% 
   filter(!is.na(`#`)) %>%
-  select(-`#`)
+  dplyr::select(-`#`)
 
 #make domains consistent
 dom <- str_replace_all(str_to_title(mycotoxin_df$Domain), pattern = "Eukary.*", replacement = "Eukarya")
