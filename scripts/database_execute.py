@@ -1,22 +1,12 @@
 #!/usr/bin/python3
 import pymysql
-import sys
-
-# to print program usage when called with no parameters
-# note that sys.arv[0] is the program name
-if len(sys.argv) != 3:  # number of parameters +1 for program name
-   print("Usage is: %s username password" % sys.argv[0])
-   sys.exit(0)
-
-usr = sys.argv[1]
-pswd = sys.argv[2]
 
 # connecting Python to MySQL
 connection = pymysql.connect(
     host="bioed.bu.edu",
     db="Group_M",
-    user=usr,
-    passwd=pswd,
+    user="Group_M",
+    passwd="Group_M",
     port=4253,
     local_infile=True)
 
