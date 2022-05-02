@@ -90,4 +90,15 @@ mycotoxin <- mycotoxin_df %>%
   select(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
 write_tsv(distinct(mycotoxin), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin.tsv")
 
+#mycotoxin df keep organism
+m <- mycotoxin_df %>% 
+  select(Organism, Domain, Environment, Mycotoxin, `Removal mechanism`, `Enzymatic?`, Pathogenicity, Respiration, Location) %>%
+  group_by(Organism, Mycotoxin) %>%
+  unique() %>%
+  mutate(count = n()) %>%
+  arrange(desc(count), desc(Domain), desc(Environment), desc(`Removal mechanism`), 
+          desc(`Enzymatic?`), desc(Pathogenicity), desc(Respiration), desc(Location))
+
+write_csv(m, file = "~/Downloads/mycotoxin_duplicates.csv")
+  
 
