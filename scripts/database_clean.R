@@ -25,16 +25,20 @@ aran<- str_replace_all(string = aran, pattern = ".*Anaer.*", replacement = "Anae
 aran<- str_replace_all(string = aran, pattern = ".*Aer.*", replacement = "Aerobic")
 
 #Text input: source, link, organism name, mycotoxin, characterization assay, 
-  #identified enzyme col, additional info,
+  #identified enzyme col, additional info, char context,
   #curator, contributor, notes
-#dropdown: domain, char context, enzymatic, enzyme identified, pathogenicity, respiration, location
-#radio: environment- text box for other, removal mechanism
+#dropdown: domain, enzymatic, enzyme identified, pathogenicity, respiration, location
+#checkbox: environment- text box for other, removal mechanism
 #calendar: curation and contribution dates
 
-#native environment: lots of info in this one so add column with all values in 
-#("Human", "Soil", "Water", "Plants", "Other")
+#Environment;
+#("Human", "Soil", "Water", "Plants", "Animal", "Food", Other")
 
 #removal mechanism in ("Biotransformation", "Absorption", "Adsorption", "Degradation", "Regulation", Unknown")
+rem <-str_to_title(mycotoxin_df$`Removal mechanism`)
+rem <- str_replace_all(string = rem, pattern = ".*Regulation.*", replacement = "Regulation")
+rem <- str_replace_all(string = rem, pattern = "Adsorption,.*", replacement = "Adsorption")
+rem <- str_replace_all(string = rem, pattern = "Biotransformation \\(.*", replacement = "Biotransformation")
 
 #enzymatic
 enz <- str_to_title(mycotoxin_df$`Enzymatic?`)
@@ -47,20 +51,26 @@ cell <- str_replace(string = cell, pattern = "Extra.*", replacement = "Extracell
 cell <- str_replace(string = cell, pattern = "Intra.*", replacement = "Intracellular")
 
 mycotoxin_df <- mycotoxin_df %>%
+  rename("Environment" = "Native environment") %>%
   mutate(Domain = dom, 
          `Pathogenicity` = paths, 
          `Respiration` = aran, 
          `Mycotoxin` = str_to_title(`Target mycotoxin`),
+         `Mycotoxin` = str_trim(`Mycotoxin`),
          `Enzymatic?` = enz,
          `Location` = cell %>% replace_na("Unknown"),
-         `Enzyme identified?`= str_to_title(`Enzyme identified?`)) %>%
+         `Enzyme identified?`= str_to_title(`Enzyme identified?`),
+         `Removal mechanism` = rem) %>%
   separate_rows(Mycotoxin, sep = "(/|,|And)+") %>%
-  separate_rows(Organism, sep = "(/|,)+") %>%
-  select(-c(`Intracellular or Extracellular?`, `Pathogen?`, `Target mycotoxin`, `Aerobic or Anaerobic?`)) %>%
-  rename("Environment" = "Native environment")
-  
-#Environment
-types <- c("Soil", "Water", "Plant", "Human", "Animal", "GI", "Food")
+  separate_rows(Organism, sep = "(/|,)+") %>% 
+  mutate(Environment = str_to_title(Environment), 
+         Environment = str_replace_all(Environment, ",", ";"),
+         Environment = str_replace_all(Environment, " ", ""),
+         Environment = str_split(Environment, ";")) %>%
+  rowwise() %>%
+  mutate(Environment = str_c(str_sort(Environment), collapse = ";"),
+         Environment = substring(Environment, 2)) %>%
+  select(-c(`Intracellular or Extracellular?`, `Pathogen?`, `Target mycotoxin`, `Aerobic or Anaerobic?`))
 
 write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.tsv")
 
