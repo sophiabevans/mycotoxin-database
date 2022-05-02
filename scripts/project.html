@@ -1,0 +1,223 @@
+<html>
+
+	<head> <!-- You might link CSS here -->
+		<title> Mycotoxin Removal Data Interface </title>
+		<style>
+		table {
+			border: 1px solid;
+		}
+		table {
+		border-collapse: collapse;
+		}
+		th, td {
+		padding: 15px;
+		text-align: left;
+		}
+		tr:nth-child(even) {background-color: #f2f2f2;}
+		th {
+		background-color: #04AA6D;
+		color: white;
+		}
+		</style>
+	</head>
+
+	<body>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+		<h1>Query Preparation</h1>
+		<h2>Please select the data fields you would like to include in your results.</h2>
+		Fields: <br>
+			<input type="checkbox" id = "organism" name="fields" value="organism"> Organism Name
+			<input type="checkbox" id = "domain" name="fields" value="domain"> Organism Domain
+			<input type="checkbox" id = "pathogen" name="fields" value="pathogen"> Organism Pathogenicity
+			<input type="checkbox" id = "environment" name="fields" value="environment"> Organism Environment
+			<input type="checkbox" id = "aeran" name="fields" value="aeran"> Organism Respiration Type <br>
+			<input type="checkbox" id = "mycotoxin" name="fields" value="mycotoxin"> Target Mycotoxin Name
+			<input type="checkbox" id = "removal" name="fields" value="removal"> Removal Mechanism
+			<input type="checkbox" id = "enzymatic" name="fields" value="enzymatic"> Enzymatic vs. Non-enzymatic Removal
+			<input type="checkbox" id = "intraextra" name="fields" value="intraextra"> Intracellular vs. Extracellular Mycotoxin
+			<input type="checkbox" id = "context" name="fields" value="context"> Mycotoxin Characterization Context <br>
+			<input type="checkbox" id = "assay" name="fields" value="assay"> Mycotoxin Characterization Assay
+			<input type="checkbox" id = "contributor" name="fields" value="contributor"> Contributor Name
+			<input type="checkbox" id = "curator" name="fields" value="curator"> Curator Name
+			<input type="checkbox" id = "Source" name="fields" value="Source"> Literature Source
+			<input type="checkbox" id = "Link" name="fields" value="Link"> Literature Link
+			<br>
+			<br>
+
+		Limit Search By: <br>
+		<!-- Drop boxes - maybe these would be checkboxes -->
+		Organism Domain:
+		<select id = "choose_domain" name="choose_domain">
+			<option id = "all_dom" value="all">Include All Domains</option>
+			<option id = "eukarya" value="eukarya">Eukarya</option>
+			<option id = "bacteria" value="bacteria">Bacteria</option>
+			<option id = "archaea" value="archaea">Archaea</option>
+		</select><br>
+
+		Organism Pathogenicity:
+		<select id = "choose_path" name="choose_path">
+			<option id = "all_path" value="all">Include All Pathogenicities</option>
+			<option id = "pathogenic" value="pathogenic">Pathogenic</option>
+			<option id = "non_path" value="non_path">Non-Pathogenic</option>
+			<option id = "opportunistic" value="opportunistic">Opportunistic</option>
+		</select><br>
+
+		Organism Respiration Type:
+		<select id = "choose_aeran" name="choose_aeran">
+			<option id = "all_type" value="all">Include All Types</option>
+			<option id = "aerobic" value="aerobic">Aerobic</option>
+			<option id = "anaerobic" value="anaerobic">Anaerobic</option>
+			<option id = "facultative" value="facultative">Facultative</option>
+		</select><br>
+		
+		Mycotoxin Removal Mechanism:
+		<select id = "choose_removal" name = "choose_removal">
+			<option id = "all_removal" value="all_removal">Include All Removal Mechanisms</option>
+			<option id = "biotransformation" value = "biotransformation">Biotransformation</option>
+			<option id = "regulation" value = "regulation">Regulation</option>
+			<option id = "adsorption" value = "adsorption">Adsorption</option>
+			<option id = "absorption" value = "absorption">Absorption</option>
+			<option id = "biodegredation" value = "biodegredation">Biodegradation</option>
+		</select><br>
+		
+		Whether Mycotoxin is Enzymatic:
+		<select id = "choose__enz" name = "choose_enz">
+			<option id = "all_enz" value="all_enz">Include All Possibilities</option>
+			<option id = "yes" value = "yes">Yes</option>
+			<option id = "no" value = "no">No</option>
+			<option id = "unknown" value = "unknown">Unknown</option>
+		</select><br>
+		
+		Intracellular or Extracellular:
+		<select id = "choose_location" name = "choose_location">
+			<option id = "all_location" value="all_location">Include All Locations</option>
+			<option id = "intra" value = "intra">Intracellular</option>
+			<option id = "extra" value = "extra">Extracellular</option>
+		</select><br>
+		<!-- radio buttons -->
+		
+		<h2>Optional: Search by Name</h2>
+		<p>To search for data pertaining to a *specific value* for one of the fields listed in the checkboxes above,
+		please enter that value in the text box below and select the appropriate field in the dropdown menu.
+		Examples might include the name of a mycotoxin, a characterization assay, or a microbial environment!</p>
+		<input type = "text" id = "where_input" name = "where_input"><br>
+		<select id = "choose_spec_value" name = "choose_spec_value"><br></br>
+			<option id = "organism_input" value="organism_input">Organism Name</option>
+			<option id = "environment_input" value="environment_input">Organism Environment</option>
+			<option id = "mycotoxin_input" value="mycotoxin_input">Target Mycotoxin Name</option>
+			<option id = "context_input" value="context_input">Characterization Context</option>
+			<option id = "assay_input" value="assay_input">Characterization Assay</option>
+			<option id = "contributor_input" value="contributor_input">Contributor Name</option>
+			<option id = "curator_input" value="curator_input">Curator Name</option>
+			<option id = "Source_input" value="Source_input">Literature Source</option>
+			<option id = "Link_input" value="Link_input">Literature Link</option>
+		</select><br><br>
+		
+		Download Format:
+		<input type="radio" id = "csv" name="download" value="csv"> .csv
+		<input type="radio" id = "txt" name="download" value="txt"> .txt
+		<input type="radio" id = "tsv" name="download" value="tsv"> .tsv
+		<br>
+		<div id="chart_id"></div><br>
+		<div id="table_id"></div>
+		<!-- Submit Button-->
+		<button id="button" type="submit"> Submit </button><br><br>
+		<div id = "table"></div><br><br>
+		
+		<script>
+            
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+		
+		$(document).ready(function() {
+			$("#button").click(function() {
+				$.get(""https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py", { //<<< url
+							  {organism_check:$("#organism").val(), domain_check:$("#domain").val(), pathogenicity_check:$("#pathogenicity").val(), environment_check:$("#environment").val(),
+							  aeran_check:$("#aeran").val(), mycotoxin_check:$("#mycotoxin").val(), removal_check:$("#removal").val(), enzymatic_check:$("#enzymatic").val(), intraextra_check:$("#intraextra").val(),
+							  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(), 
+							  Link_check:$("#Link").val(), choose_domain:$("#choose_domain").val(), choose_path:$("#choose_path").val(), choose_aeran:$("#choose_aeran").val(), choose_removal:$("#choose_removal").val(),
+							  choose_enz:$("#choose__enz").(), choose_location:$("#choose_location").val(), where_input:$("#where_input").val(), choose_spec_value:$("#choose_spec_value").val(), 
+							  csv:$("#csv").val(), txt:$("#txt").val(), tsv:$("#tsv").val()},                                        //<<< input_data
+							  function(data){                                               //<<< callback function
+								create_table(data);
+							  },
+							  "json"
+						);
+			};
+		function create_table(data) {
+            //table column headers for primary queries 
+            let myco_header = $("#mycotoxin").val();
+
+            //initiate table body and gene name
+            let table_body_contents = "";
+            let sequences = "";
+
+            //clear out the contents of the miRNA_table div
+            $("#miRNA_table").empty();
+            document.getElementById("miRNA_table").innerHTML = "";
+			let miRNA_seq_input = $("#miRNA_seq").val();
+            //if data is returned from the AJAX call, build a new table
+            if (data != "") {
+                data = JSON.parse(data)
+                //loop through rows of the data
+                for (let row = 0; row < data.length; row++) {
+                    //miRNA name is the first element of each row
+                    miRNA_name = data[row][0];
+                    miRNA_seq = data[row][1];
+
+                    //construct the table data rows
+                    //for string substitution with ${variable name}, use back ticks, not single or double quotes
+                    table_body_contents += `<tr><td> ${miRNA_name}</td><td>${miRNA_seq}</td></tr>`;
+                    // back ticks doing something weird
+                }
+
+                //build the entire table template and susbstitute in the table data rows and the gene name 
+                let table_template = `<table><caption>Table of miRNA sequences matching ${miRNA_seq_input}</caption><thead><tr><th>miRNA</th><th>sequence</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+
+                //put the final table in the miRNA_table div
+                $("#miRNA_table").append(table_template);
+            }
+			else {
+				$("#miRNA_table").empty();
+                document.getElementById("miRNA_table").innerHTML = "";
+			}
+        }
+		<h1> Example Output </h1>
+		
+
+		<table id='ex_table'>
+			<tr id='ex_table_head'>
+				<th class='headrow'>Organism</th>
+				<th class='headrow'>Target Mycotoxin</th>
+				<th class='headrow'>Removal Mechanism</th>
+			</tr>
+			<tr id='ex_table_row1'>
+				<td>Saccharomyces sensu stricto</td>
+				<td>Ochratoxin A </td>
+				<td>absorption</td>
+			</tr>
+			<tr id='ex_table_row2'>
+				<td>Aspergillus species</td>
+				<td>Ochratoxin A </td>
+				<td>biotransformation</td>
+			</tr>
+			<tr id='ex_table_row3'>
+				<td>Phanerochaete sordida</td>
+				<td>Aflatoxin B1</td>
+				<td>biotransformation</td>
+			</tr>
+			<tr id='ex_table_row4'>
+				<td>Pichia occidentalis</td>
+				<td>Aflatoxin B1</td>
+				<td>absorption</td>
+			</tr>
+			<tr id='ex_table_row5'>
+				<td>Debaryomyces hansenii</td>
+				<td>Ochratoxin A </td>
+				<td>Transcriptional regulation of OTA producer genes</td>
+			</tr>
+		</table>
+	</body>
+</html>
