@@ -9,77 +9,104 @@ import cgitb
 import json
 cgitb.enable()
 
-query = """
+query1 = """
 
+"""
+query2 = """
+"""
+query3 = """
+"""
+query4 = """
+"""
+query5 = """
+"""
+query6 = """
 """
 
 form = cgi.FieldStorage(keep_blank_values=True)
 print("Content-type: text/html\n")
 
 if form:
-    organism = form.getvalue("organism", "")
-    domain = form.getvalue("domain", "")
-    pathogen = form.getvalue("pathogen", "")
-    environment = form.getvalue("environment", "")
-    aeran = form.getvalue("aeran", "")
-    mycotoxin = form.getvalue("mycotoxin", "")
-    removal = form.getvalue("removal", "")
-    enzymatic = form.getvalue("enzymatic", "")
-    intraextra = form.getvalue("intraextra", "")
-    context = form.getvalue("context", "")
-    assay = form.getvalue("assay", "")
-    contributor = form.getvalue("contributor", "")
-    curator = form.getvalue("curator", "")
-    Source = form.getvalue("Source", "")
-    Link = form.getvalue("Link", "")
+    organism_check = form.getvalue("organism_check", "")
+    domain_check = form.getvalue("domain_check", "")
+    pathogenicity_check = form.getvalue("pathogenicity_check", "")
+    environment_check = form.getvalue("environment_check", "")
+    aeran_check = form.getvalue("aeran_check", "")
+    mycotoxin_check = form.getvalue("mycotoxin_check", "")
+    removal_check = form.getvalue("removal_check", "")
+    enzymatic_check = form.getvalue("enzymatic_check", "")
+    intraextra_check = form.getvalue("intraextra_check", "")
+    context_check = form.getvalue("context_check", "")
+    assay_check = form.getvalue("assay_check", "")
+    contributor_check = form.getvalue("contributor_check", "")
+    curator_check = form.getvalue("curator_check", "")
+    Source_check = form.getvalue("Source_check", "")
+    Link_check = form.getvalue("Link_check", "")
+    choose_domain = form.getvalue("choose_domain", "")
+    choose_path = form.getvalue("choose_path", "")
+    choose_aeran = form.getvalue("choose_aeran", "")
+    choose_removal = form.getvalue("choose_removal", "")
+    choose_enz = form.getvalue("choose_enz", "")
+    choose_location = form.getvalue("choose_location", "")
+    where_input = form.getvalue("where_input", "")
+    choose_spec_value = form.getvalue("choose_spec_value", "")
+    csv = form.getvalue("csv", "")
+    txt = form.getvalue("txt", "")
+    tsv = form.getvalue("tsv", "")
 
     try:
       connection = pymysql.connect(
         host='bioed.bu.edu', 
         user='dgolden1',
         password='Square_Liters96', 
-        db='group_M',
+        db='Group_M',
         port = 4253) 
     except pymysql.Error as e: 
         print(e)
 
-      # get cursor
-      cursor = connection.cursor()
-      #execute query
-      try: 
-          cursor.execute(query1,[miRNA_seq_py])
-      except pymysql.Error as e: 
-          print(e,query1)
-
-      results_seq = cursor.fetchall() 
-
-      #format the output as json object
-      print(json.dumps(results_seq))
-  if (miRNA_name_py != ""):
-      #establish the connection on bioed
-      try:
-          connection = pymysql.connect(
-              host='bioed.bu.edu', 
-              user='dgolden1',
-              password='Square_Liters96', 
-              db='miRNA',
-              port = 4253) 
-      except pymysql.Error as e: 
-          print(e)
-
-      # get cursor
-      cursor = connection.cursor()
-      #execute query
-      try: 
-          cursor.execute(query2,[miRNA_name_py])
-      except pymysql.Error as e: 
-          print(e,query1)
-
-      results_name = cursor.fetchall() 
-      if (results_name != ()):
-          plot_data = [['target_score']]
-          for row in results_name:
-              plot_data.append([row[0]])
-          print(json.dumps(plot_data))
+    cursor = connection.cursor()
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+    if (QUERY1 CONDITION):
+        try: 
+            cursor.execute(query1, [SUB1])
+        except pymysql.Error as e: 
+            print(e)
+        results1 = cursor.fetchall() 
+        print(json.dumps(results1))
+  
 else:
   print("Content-type: text/html\n")
