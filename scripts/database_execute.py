@@ -155,44 +155,48 @@ with open("../data/mycotoxinN.csv", "r") as f:
         Cur_date = fields[18]
         Cur_notes = fields[19]
 
-        if N in litN:
-            try:
-                cursor.execute(f"""
-                insert into Literature (Context, Assay, Source, Link)
-                values ({Char_con}, {Char_assay}, {Source}, {Link})""")
-                cursor.execute("set @lid = LAST_INSERT_ID();")
-            except pymysql.Error as e:
-                print(e)
-        if N in mycN:
-            try:
-                cursor.execute(f"""
-                insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-                values ({Mycotoxin}, {Removal_mech}, {Enzymatic}, {Location})""")
-                cursor.execute("set @mid = LAST_INSERT_ID();")
-            except pymysql.Error as e:
-                print(e)
-        if N in orgN:
-            try:
-                cursor.execute(f"""
-                insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-                values ({Domain}, {Organism}, {Pathogenicity}, {Respiration}, {Environment})""")
-                cursor.execute("set @oid = LAST_INSERT_ID();")
-            except pymysql.Error as e:
-                print(e)
-        if N in curconN:
-            try:
-                cursor.execute(f"""
-                insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
-                values ({Contributor}, {Cont_date}, {Curator}, {Cur_date}, {Cur_notes})""")
-                cursor.execute("set @cid = LAST_INSERT_ID();")
-            except pymysql.Error as e:
-                print(e)
-        try:
-            cursor.execute(f"""
-            insert into Removal (OID, MID, LID, CID)
-            values (@oid @mid @lid @cid)""")
-        except pymysql.Error as e:
-            print(e)
+        print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
+        Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
+        Source, Link, Add_info, Contributor, Cont_date, Curator, Cur_date, Cur_notes)
+
+        # if N in litN:
+        #     try:
+        #         cursor.execute(f"""
+        #         insert into Literature (Context, Assay, Source, Link)
+        #         values ({Char_con}, {Char_assay}, {Source}, {Link})""")
+        #         cursor.execute("set @lid = LAST_INSERT_ID();")
+        #     except pymysql.Error as e:
+        #         print(e)
+        # if N in mycN:
+        #     try:
+        #         cursor.execute(f"""
+        #         insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
+        #         values ({Mycotoxin}, {Removal_mech}, {Enzymatic}, {Location})""")
+        #         cursor.execute("set @mid = LAST_INSERT_ID();")
+        #     except pymysql.Error as e:
+        #         print(e)
+        # if N in orgN:
+        #     try:
+        #         cursor.execute(f"""
+        #         insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
+        #         values ({Domain}, {Organism}, {Pathogenicity}, {Respiration}, {Environment})""")
+        #         cursor.execute("set @oid = LAST_INSERT_ID();")
+        #     except pymysql.Error as e:
+        #         print(e)
+        # if N in curconN:
+        #     try:
+        #         cursor.execute(f"""
+        #         insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
+        #         values ({Contributor}, {Cont_date}, {Curator}, {Cur_date}, {Cur_notes})""")
+        #         cursor.execute("set @cid = LAST_INSERT_ID();")
+        #     except pymysql.Error as e:
+        #         print(e)
+        # try:
+        #     cursor.execute(f"""
+        #     insert into Removal (OID, MID, LID, CID)
+        #     values (@oid @mid @lid @cid)""")
+        # except pymysql.Error as e:
+        #     print(e)
        	line = f.readline()
 
 #commit changes
