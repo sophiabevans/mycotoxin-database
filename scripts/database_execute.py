@@ -199,7 +199,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         try:
             cursor.execute(f"""
             insert into Removal (OID, MID, LID, CID)
-            values (@oid @mid @lid @cid);""")
+            values (@oid, @mid, @lid, @cid);""")
         except pymysql.Error as e:
             print(e)
        	line = f.readline()
