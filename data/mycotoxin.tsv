@@ -23,7 +23,7 @@ Ochratoxin A	Biotransformation	No	Unknown
 Patulin	Biotransformation	Yes	Extracellular
 Patulin	Biotransformation	No	Intracellular
 Aflatoxin B1	Adsorption	No	Extracellular
-Zearalenone	Adsorption/Biotransformation	Yes	Extracellular
+Zearalenone	Adsorption; Biotransformation	Yes	Extracellular
 Patulin	Biotransformation	No	Extracellular
  Ochratoxin A	Biotransformation	No	Extracellular
 Aflatoxin B1	Biotransformation	No	Intracellular
@@ -46,9 +46,9 @@ Ochratoxin A	Biotransformation	Yes	Intracellular
 Ochratoxin A	Biotransformation	Yes	Unknown
 Zearalenone	Biotransformation	Yes	Extracellular
 Fumonisin B1	Adsorption	No	Unknown
-Deoxynivalenol	Adsorption And Biotransformation During Fermentation: Further Study Needed But Both Seemed To Be Observed	Yes	Unknown
+Deoxynivalenol	Adsorption; Biotransformation;	Yes	Unknown
 Ochratoxin	Biotransformation	Yes	Intracellular
-Zearalenone	Biodegradation And Adsorption	Yes	Unknown
+Zearalenone	Biodegradation; Adsorption	Yes	Unknown
 Aflotoxin B1	Biotransformation	Yes	Intracellular
  Zearalone	Biotransformation	Yes	Intracellular
 Deoxynivalenol	Biotransformation	Unknown	Unknown
