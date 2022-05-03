@@ -1,27 +1,83 @@
 <html>
+<head>
+<style>
+* {box-sizing: border-box}
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
 
+/* Style tab links */
+.tablink {
+  background-color: green;
+  opacity: 0.9;
+  color: white;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+#About {background-color: green;}
+#Search {background-color: red;}
+#Data_insertion {background-color: blue;}
+#Help {background-color: Purple;}
+</style>
+</head>
+
+<script>
+function openPage(pageName, elmnt, color) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(pageName).style.display="block";
+
+  // Add the specific color to the button used to open the tab content
+  //elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
+
+<body>
+<button class="tablink" onclick="openPage('About', this, 'green')" id="defaultOpen">About</button>
+<button class="tablink" onclick="openPage('Search', this, 'red')">Search</button>
+<button class="tablink" onclick="openPage('Data_insertion', this, 'blue')">Data Insertion</button>
+<button class="tablink" onclick="openPage('Help', this, 'purple')">Help</button>
+<br><br>
+<div id="About" class="tabcontent">
+<h3>This is where we'll put the about page</h3>
+</div>
+<div id="Search" class="tabcontent">
 	<head> <!-- You might link CSS here -->
 		<title> Mycotoxin Removal Data Interface </title>
-		<style>
-		table {
-			border: 1px solid;
-		}
-		table {
-		border-collapse: collapse;
-		}
-		th, td {
-		padding: 15px;
-		text-align: left;
-		}
-		tr:nth-child(even) {background-color: #f2f2f2;}
-		th {
-		background-color: #04AA6D;
-		color: white;
-		}
-		</style>
 	</head>
-
-	<body>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
         <script src="https://www.gstatic.com/charts/loader.js"></script>
 		<h1>Query Preparation</h1>
@@ -145,7 +201,7 @@
 							  },
 							  "json"
 						);
-			};
+			});
 		function create_table(data) {
             //table column headers for primary queries 
             let myco_header = $("#mycotoxin").val();
@@ -184,40 +240,19 @@
                 document.getElementById("miRNA_table").innerHTML = "";
 			}
         }
-		<h1> Example Output </h1>
-		
+</div>
 
-		<table id='ex_table'>
-			<tr id='ex_table_head'>
-				<th class='headrow'>Organism</th>
-				<th class='headrow'>Target Mycotoxin</th>
-				<th class='headrow'>Removal Mechanism</th>
-			</tr>
-			<tr id='ex_table_row1'>
-				<td>Saccharomyces sensu stricto</td>
-				<td>Ochratoxin A </td>
-				<td>absorption</td>
-			</tr>
-			<tr id='ex_table_row2'>
-				<td>Aspergillus species</td>
-				<td>Ochratoxin A </td>
-				<td>biotransformation</td>
-			</tr>
-			<tr id='ex_table_row3'>
-				<td>Phanerochaete sordida</td>
-				<td>Aflatoxin B1</td>
-				<td>biotransformation</td>
-			</tr>
-			<tr id='ex_table_row4'>
-				<td>Pichia occidentalis</td>
-				<td>Aflatoxin B1</td>
-				<td>absorption</td>
-			</tr>
-			<tr id='ex_table_row5'>
-				<td>Debaryomyces hansenii</td>
-				<td>Ochratoxin A </td>
-				<td>Transcriptional regulation of OTA producer genes</td>
-			</tr>
-		</table>
-	</body>
+<div id="Data_insertion" class="tabcontent">
+<h3>Data Insertion!</h3>
+</div>
+
+<div id="Help" class="tabcontent">
+<head>
+<h1>FAQs</h1>
+<h2>Q1</h2>
+<h2>If the FAQ responses above are not sufficient to solve your problem, please direct further inquiries to Daniel Golden at the email address dgolden1@bu.edu</h2>
+</head>
+</div>
+
+</body>
 </html>
