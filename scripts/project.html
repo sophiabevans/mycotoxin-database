@@ -192,7 +192,7 @@ document.getElementById("defaultOpen").click();
 
 		$(document).ready(function() {
 			$("#button").click(function() {
-				$.get(""https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py", { //<<< url
+				$.get("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py", { //<<< url
 							  {organism_check:$("#organism").val(), domain_check:$("#domain").val(), pathogenicity_check:$("#pathogenicity").val(), environment_check:$("#environment").val(),
 							  aeran_check:$("#aeran").val(), mycotoxin_check:$("#mycotoxin").val(), removal_check:$("#removal").val(), enzymatic_check:$("#enzymatic").val(), intraextra_check:$("#intraextra").val(),
 							  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(),
@@ -243,74 +243,75 @@ document.getElementById("defaultOpen").click();
                 document.getElementById("miRNA_table").innerHTML = "";
 			}
         }
+    </script>
 </div>
 
 <div id="Data_insertion" class="tabcontent">
-<h3>Data Insertion!</h3>
-Literature Link:
-Literature Citation:
-Characterization Context:
-Characterization Assay:
-Curator Name:
-Curation Date:
-Curation Notes:
-Contributor Name:
-Contributaion Date:
-Organism Name:
-Organism Domain:
-<select name="input_domain">
-  <option value="eukarya">Eukarya</option>
-  <option value="bacteria">Bacteria</option>
-  <option value="archaea">Archaea</option>
-</select><br>
+  <h3>Data Insertion!</h3>
+  Literature Link:
+  Literature Citation:
+  Characterization Context:
+  Characterization Assay:
+  Curator Name:
+  Curation Date:
+  Curation Notes:
+  Contributor Name:
+  Contributaion Date:
+  Organism Name:
+  Organism Domain:
+  <select name="input_domain">
+    <option value="eukarya">Eukarya</option>
+    <option value="bacteria">Bacteria</option>
+    <option value="archaea">Archaea</option>
+  </select><br>
 
-Organism Pathogenicity:
-<select id="input_path" name="input_path">
-  <option value="pathogenic">Pathogenic</option>
-  <option value="non-path">Non-Pathogenic</option>
-  <option value="opportunistic">Opportunistic</option>
-</select><br>
+  Organism Pathogenicity:
+  <select id="input_path" name="input_path">
+    <option value="pathogenic">Pathogenic</option>
+    <option value="non-path">Non-Pathogenic</option>
+    <option value="opportunistic">Opportunistic</option>
+  </select><br>
 
-Organism Respiration Type:
-<select id="input_aeran" name="input_aeran">
-  <option value="aerobic">Aerobic</option>
-  <option value="anaerobic">Anaerobic</option>
-  <option value="facultative">Facultative</option>
-</select><br>
+  Organism Respiration Type:
+  <select id="input_aeran" name="input_aeran">
+    <option value="aerobic">Aerobic</option>
+    <option value="anaerobic">Anaerobic</option>
+    <option value="facultative">Facultative</option>
+  </select><br>
 
-Organism Environment:
-<input type="checkbox" name="env" value="human"> Human
-<input type="checkbox" name="env" value="animal"> Soil
-<input type="checkbox" name="env" value="food"> Food
-<input type="checkbox" name="env" value="plants"> Plants
-<input type="checkbox" name="env" value="soil"> Soil
-<input type="checkbox" name="env" value="water"> Water
-<input type="checkbox" name="env" value="other"> Other
+  Organism Environment:
+  <input type="checkbox" name="env" value="human"> Human
+  <input type="checkbox" name="env" value="animal"> Soil
+  <input type="checkbox" name="env" value="food"> Food
+  <input type="checkbox" name="env" value="plants"> Plants
+  <input type="checkbox" name="env" value="soil"> Soil
+  <input type="checkbox" name="env" value="water"> Water
+  <input type="checkbox" name="env" value="other"> Other
 
-Mycotoxin Name:
+  Mycotoxin Name:
 
-Mycotoxin Removal Mechanism:
-<select id = "input_removal" name = "input_removal">
-  <option id = "biotransformation" value = "biotransformation">Biotransformation</option>
-  <option id = "regulation" value = "regulation">Regulation</option>
-  <option id = "adsorption" value = "adsorption">Adsorption</option>
-  <option id = "absorption" value = "absorption">Absorption</option>
-  <option id = "biodegredation" value = "biodegredation">Biodegradation</option>
-</select><br>
+  Mycotoxin Removal Mechanism:
+  <select id = "input_removal" name = "input_removal">
+    <option id = "biotransformation" value = "biotransformation">Biotransformation</option>
+    <option id = "regulation" value = "regulation">Regulation</option>
+    <option id = "adsorption" value = "adsorption">Adsorption</option>
+    <option id = "absorption" value = "absorption">Absorption</option>
+    <option id = "biodegredation" value = "biodegredation">Biodegradation</option>
+  </select><br>
 
-Enzymatic Removal?:
-<select id = "input_enz" name = "input_enz">
-  <option id = "yes_enz" value = "yes_enz">Yes</option>
-  <option id = "no_enz" value = "no_enz">No</option>
-</select><br>
+  Enzymatic Removal?:
+  <select id = "input_enz" name = "input_enz">
+    <option id = "yes_enz" value = "yes_enz">Yes</option>
+    <option id = "no_enz" value = "no_enz">No</option>
+  </select><br>
 
-Location:
-<select id="input_loc" name="input_loc">
-  <option value="intracellular">Intracellular</option>
-  <option value="extracellular">Extracellular</option>
-  <option value="unknown">Unknown</option>
-</select><br>
-<br>
+  Location:
+  <select id="input_loc" name="input_loc">
+    <option value="intracellular">Intracellular</option>
+    <option value="extracellular">Extracellular</option>
+    <option value="unknown">Unknown</option>
+  </select><br>
+  <br>
 
 </div>
 
