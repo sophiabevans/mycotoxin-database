@@ -7,9 +7,9 @@ connection = pymysql.connect(
     #db="Group_M",
     #user="Group_M",
     #passwd="Group_M",
-    db ="sbevans"
-    user="sbevans"
-    passwd="3d3np33d3n"
+    db ="sbevans",
+    user="sbevans",
+    passwd="3d3np33d3n",
     port=4253,
     local_infile=True)
 
