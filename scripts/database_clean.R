@@ -55,13 +55,13 @@ mycotoxin_df <- mycotoxin_df %>%
          `Pathogenicity` = paths, 
          `Respiration` = aran, 
          `Mycotoxin` = str_to_title(`Target mycotoxin`),
-          Mycotoxin = str_trim(Mycotoxin, side = "both"),
+          Mycotoxin = str_squish(Mycotoxin),
          `Enzymatic?` = enz,
          `Location` = cell %>% replace_na("Unknown"),
          `Enzyme identified?`= str_to_title(`Enzyme identified?`),
          `Removal mechanism` = rem) %>%
-  separate_rows(Mycotoxin, sep = "(/|,|And)+") %>%
-  separate_rows(Organism, sep = "(/|,)+") %>% 
+  separate_rows(Mycotoxin, sep = "(/|, |And )+") %>%
+  separate_rows(Organism, sep = "(/|, )+") %>% 
   mutate(Environment = str_to_title(Environment), 
          Environment = str_replace_all(Environment, ",", ";"),
          Environment = str_replace_all(Environment, " ", ""),
