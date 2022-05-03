@@ -18,7 +18,7 @@ body, html {
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 25%;
+  width: 20%;
 }
 
 .tablink:hover {
@@ -27,15 +27,16 @@ body, html {
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
+  color: black;
   display: none;
   padding: 100px 20px;
   height: 100%;
 }
-#About {background-color: green;}
-#Search {background-color: red;}
-#Data_insertion {background-color: blue;}
-#Help {background-color: Purple;}
+#About {background-color: white;}
+#Search {background-color: white;}
+#Data_insertion {background-color: white;}
+#Help {background-color: white;}
+#Demographic_breakdown {background-color: white;}
 </style>
 </head>
 
@@ -66,10 +67,12 @@ document.getElementById("defaultOpen").click();
 </script>
 
 <body>
-<button class="tablink" onclick="openPage('About', this, 'green')" id="defaultOpen">About</button>
-<button class="tablink" onclick="openPage('Search', this, 'red')">Search</button>
-<button class="tablink" onclick="openPage('Data_insertion', this, 'blue')">Data Insertion</button>
-<button class="tablink" onclick="openPage('Help', this, 'purple')">Help</button>
+<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
+<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
+<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
+<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
+
 <br><br>
 <div id="About" class="tabcontent">
 <h3>This is where we'll put the about page</h3>
@@ -244,6 +247,10 @@ document.getElementById("defaultOpen").click();
 
 <div id="Data_insertion" class="tabcontent">
 <h3>Data Insertion!</h3>
+</div>
+
+<div id="Demographic_breakdown" class="tabcontent">
+<h3>maps!</h3>
 </div>
 
 <div id="Help" class="tabcontent">
