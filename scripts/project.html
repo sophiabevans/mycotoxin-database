@@ -247,7 +247,8 @@ document.getElementById("defaultOpen").click();
 </div>
 
 <div id="Data_insertion" class="tabcontent">
-  <h3>Data Insertion!</h3>
+  <h1>Data Insertion!</h1>
+  <h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database </h3>
   Literature Link: <input type="text" id="lit_link">
   <br>
   Literature Citation: <input type="text" id="lit_cite">
@@ -258,13 +259,13 @@ document.getElementById("defaultOpen").click();
   <br>
   Curator Name: <input type="text" id="cur_name">
   <br>
-  Curation Date: <input type="text" id="cur_date">
+  Curation Date: <input type="date" id="cur_date">
   <br>
   Curation Notes: <input type="text" id="cur_notes">
   <br>
   Contributor Name: <input type="text" id="con_name">
   <br>
-  Contributaion Date: <input type="text" id="con_date">
+  Contributaion Date: <input type="date" id="con_date">
   <br>
   Organism Name: <input type="text" id="org_name">
   <br>
@@ -324,6 +325,8 @@ document.getElementById("defaultOpen").click();
     <option value="unknown">Unknown</option>
   </select><br>
   <br>
+
+  <button id="submit_input">Submit Data Input</button><br><br>
 
 </div>
 
