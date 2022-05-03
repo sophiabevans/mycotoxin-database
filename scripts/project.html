@@ -81,7 +81,7 @@ document.getElementById("defaultOpen").click();
 	<head> <!-- You might link CSS here -->
 		<title> Mycotoxin Removal Data Interface </title>
 	</head>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://www.gstatic.com/charts/loader.js"></script>
 		<h1>Query Preparation</h1>
 		<h2>Please select the data fields you would like to include in your results.</h2>
@@ -129,7 +129,7 @@ document.getElementById("defaultOpen").click();
 			<option id = "anaerobic" value="anaerobic">Anaerobic</option>
 			<option id = "facultative" value="facultative">Facultative</option>
 		</select><br>
-		
+
 		Mycotoxin Removal Mechanism:
 		<select id = "choose_removal" name = "choose_removal">
 			<option id = "all_removal" value="all_removal">Include All Removal Mechanisms</option>
@@ -139,7 +139,7 @@ document.getElementById("defaultOpen").click();
 			<option id = "absorption" value = "absorption">Absorption</option>
 			<option id = "biodegredation" value = "biodegredation">Biodegradation</option>
 		</select><br>
-		
+
 		Whether Mycotoxin is Enzymatic:
 		<select id = "choose__enz" name = "choose_enz">
 			<option id = "all_enz" value="all_enz">Include All Possibilities</option>
@@ -147,7 +147,7 @@ document.getElementById("defaultOpen").click();
 			<option id = "no" value = "no">No</option>
 			<option id = "unknown" value = "unknown">Unknown</option>
 		</select><br>
-		
+
 		Intracellular or Extracellular:
 		<select id = "choose_location" name = "choose_location">
 			<option id = "all_location" value="all_location">Include All Locations</option>
@@ -155,7 +155,7 @@ document.getElementById("defaultOpen").click();
 			<option id = "extra" value = "extra">Extracellular</option>
 		</select><br>
 		<!-- radio buttons -->
-		
+
 		<h2>Optional: Search by Name</h2>
 		<p>To search for data pertaining to a *specific value* for one of the fields listed in the checkboxes above,
 		please enter that value in the text box below and select the appropriate field in the dropdown menu.
@@ -172,7 +172,7 @@ document.getElementById("defaultOpen").click();
 			<option id = "Source_input" value="Source_input">Literature Source</option>
 			<option id = "Link_input" value="Link_input">Literature Link</option>
 		</select><br><br>
-		
+
 		Download Format:
 		<input type="radio" id = "csv" name="download" value="csv"> .csv
 		<input type="radio" id = "txt" name="download" value="txt"> .txt
@@ -183,21 +183,21 @@ document.getElementById("defaultOpen").click();
 		<!-- Submit Button-->
 		<button id="button" type="submit"> Submit </button><br><br>
 		<div id = "table"></div><br><br>
-		
+
 		<script>
-            
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
-		
+
 		$(document).ready(function() {
 			$("#button").click(function() {
 				$.get(""https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py", { //<<< url
 							  {organism_check:$("#organism").val(), domain_check:$("#domain").val(), pathogenicity_check:$("#pathogenicity").val(), environment_check:$("#environment").val(),
 							  aeran_check:$("#aeran").val(), mycotoxin_check:$("#mycotoxin").val(), removal_check:$("#removal").val(), enzymatic_check:$("#enzymatic").val(), intraextra_check:$("#intraextra").val(),
-							  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(), 
+							  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(),
 							  Link_check:$("#Link").val(), choose_domain:$("#choose_domain").val(), choose_path:$("#choose_path").val(), choose_aeran:$("#choose_aeran").val(), choose_removal:$("#choose_removal").val(),
-							  choose_enz:$("#choose__enz").(), choose_location:$("#choose_location").val(), where_input:$("#where_input").val(), choose_spec_value:$("#choose_spec_value").val(), 
+							  choose_enz:$("#choose__enz").(), choose_location:$("#choose_location").val(), where_input:$("#where_input").val(), choose_spec_value:$("#choose_spec_value").val(),
 							  csv:$("#csv").val(), txt:$("#txt").val(), tsv:$("#tsv").val()},                                        //<<< input_data
 							  function(data){                                               //<<< callback function
 								create_table(data);
@@ -206,7 +206,7 @@ document.getElementById("defaultOpen").click();
 						);
 			});
 		function create_table(data) {
-            //table column headers for primary queries 
+            //table column headers for primary queries
             let myco_header = $("#mycotoxin").val();
 
             //initiate table body and gene name
@@ -232,7 +232,7 @@ document.getElementById("defaultOpen").click();
                     // back ticks doing something weird
                 }
 
-                //build the entire table template and susbstitute in the table data rows and the gene name 
+                //build the entire table template and susbstitute in the table data rows and the gene name
                 let table_template = `<table><caption>Table of miRNA sequences matching ${miRNA_seq_input}</caption><thead><tr><th>miRNA</th><th>sequence</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
 
                 //put the final table in the miRNA_table div
@@ -247,6 +247,71 @@ document.getElementById("defaultOpen").click();
 
 <div id="Data_insertion" class="tabcontent">
 <h3>Data Insertion!</h3>
+Literature Link:
+Literature Citation:
+Characterization Context:
+Characterization Assay:
+Curator Name:
+Curation Date:
+Curation Notes:
+Contributor Name:
+Contributaion Date:
+Organism Name:
+Organism Domain:
+<select name="input_domain">
+  <option value="eukarya">Eukarya</option>
+  <option value="bacteria">Bacteria</option>
+  <option value="archaea">Archaea</option>
+</select><br>
+
+Organism Pathogenicity:
+<select id="input_path" name="input_path">
+  <option value="pathogenic">Pathogenic</option>
+  <option value="non-path">Non-Pathogenic</option>
+  <option value="opportunistic">Opportunistic</option>
+</select><br>
+
+Organism Respiration Type:
+<select id="input_aeran" name="input_aeran">
+  <option value="aerobic">Aerobic</option>
+  <option value="anaerobic">Anaerobic</option>
+  <option value="facultative">Facultative</option>
+</select><br>
+
+Organism Environment:
+<input type="checkbox" name="env" value="human"> Human
+<input type="checkbox" name="env" value="animal"> Soil
+<input type="checkbox" name="env" value="food"> Food
+<input type="checkbox" name="env" value="plants"> Plants
+<input type="checkbox" name="env" value="soil"> Soil
+<input type="checkbox" name="env" value="water"> Water
+<input type="checkbox" name="env" value="other"> Other
+
+Mycotoxin Name:
+
+Mycotoxin Removal Mechanism:
+<select id = "input_removal" name = "input_removal">
+  <option id = "biotransformation" value = "biotransformation">Biotransformation</option>
+  <option id = "regulation" value = "regulation">Regulation</option>
+  <option id = "adsorption" value = "adsorption">Adsorption</option>
+  <option id = "absorption" value = "absorption">Absorption</option>
+  <option id = "biodegredation" value = "biodegredation">Biodegradation</option>
+</select><br>
+
+Enzymatic Removal?:
+<select id = "input_enz" name = "input_enz">
+  <option id = "yes_enz" value = "yes_enz">Yes</option>
+  <option id = "no_enz" value = "no_enz">No</option>
+</select><br>
+
+Location:
+<select id="input_loc" name="input_loc">
+  <option value="intracellular">Intracellular</option>
+  <option value="extracellular">Extracellular</option>
+  <option value="unknown">Unknown</option>
+</select><br>
+<br>
+
 </div>
 
 <div id="Demographic_breakdown" class="tabcontent">
