@@ -59,15 +59,15 @@ mycotoxin_df <- mycotoxin_df %>%
          `Enzymatic?` = enz,
          `Location` = cell %>% replace_na("Unknown"),
          `Enzyme identified?`= str_to_title(`Enzyme identified?`),
-         `Removal mechanism` = rem,
-         "N" = row_number()) %>%
+         `Removal mechanism` = rem) %>%
   separate_rows(Mycotoxin, sep = "(/|,|And)+") %>%
   separate_rows(Organism, sep = "(/|,)+") %>% 
   mutate(Environment = str_to_title(Environment), 
          Environment = str_replace_all(Environment, ",", ";"),
          Environment = str_replace_all(Environment, " ", ""),
          Environment = str_split(Environment, ";"),
-         Organism = str_trim(Organism, side = "both")) %>%
+         Organism = str_trim(Organism, side = "both"),
+         "N" = row_number()) %>%
   rowwise() %>%
   mutate(Environment = str_c(str_sort(Environment), collapse = ";"),
          Environment = substring(Environment, 2)) %>%
