@@ -129,7 +129,6 @@ with open("../data/curconN.txt", "r") as f:
 with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
 
-class(orgN[0])
 print(orgN)
 
 with open("../data/mycotoxinN.tsv", "r") as f:
