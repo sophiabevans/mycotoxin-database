@@ -21,7 +21,7 @@ queries = ['DROP TABLE IF EXISTS Removal, Curation_Contribution, Organism, Mycot
 LID INTEGER NOT NULL AUTO_INCREMENT,
 Context VARCHAR(100),
 Assay VARCHAR(100),
-Source VARCHAR(500),
+Source VARCHAR(250),
 Link VARCHAR(100),
 PRIMARY KEY(LID)
 );
@@ -52,7 +52,7 @@ Con_name VARCHAR(30),
 Con_date DATE,
 Cur_name VARCHAR(30),
 Cur_date DATE,
-Cur_notes VARCHAR(200),
+Cur_notes VARCHAR(250),
 PRIMARY KEY(CID)
 );""",
 """CREATE TABLE Removal (
