@@ -94,7 +94,7 @@ cur_cont <- mycotoxin_df %>%
 write_tsv(distinct(cur_cont), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/curation.tsv")
 
 mycotoxin <- mycotoxin_df %>%
-  dplyr::select(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
+  dplyr::select(N, `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
 write_tsv(distinct(mycotoxin), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin.tsv")
 
 #mycotoxin df keep organism
@@ -113,3 +113,5 @@ myc_df_N <- mycotoxin_df %>%
          `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location, 
          `Characterization context`, `Characterization assay`, Source, Link, `Additional information`, 
          Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`)
+
+write_csv(myc_df_N, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxinN.csv")
