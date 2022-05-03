@@ -168,7 +168,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
             try:
                 cursor.execute(f"""
                 insert into Literature (Context, Assay, Source, Link)
-                values ({Char_con}, {Char_assay}, {Source}, {Link});""")
+                values ('{Char_con}', '{Char_assay}', '{Source}', '{Link}');""")
                 cursor.execute("set @lid = LAST_INSERT_ID();")
             except pymysql.Error as e:
                 print(e)
@@ -176,7 +176,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
             try:
                 cursor.execute(f"""
                 insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-                values ({Mycotoxin}, {Removal_mech}, {Enzymatic}, {Location});""")
+                values ('{Mycotoxin}', '{Removal_mech}', '{Enzymatic}', '{Location}');""")
                 cursor.execute("set @mid = LAST_INSERT_ID();")
             except pymysql.Error as e:
                 print(e)
@@ -184,7 +184,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
             try:
                 cursor.execute(f"""
                 insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-                values ({Domain}, {Organism}, {Pathogenicity}, {Respiration}, {Environment});""")
+                values ('{Domain}', '{Organism}', '{Pathogenicity}', '{Respiration}', '{Environment}');""")
                 cursor.execute("set @oid = LAST_INSERT_ID();")
             except pymysql.Error as e:
                 print(e)
@@ -192,7 +192,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
             try:
                 cursor.execute(f"""
                 insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
-                values ({Contributor}, {Cont_date}, {Curator}, {Cur_date}, {Cur_notes});""")
+                values ('{Contributor}', '{Cont_date}', '{Curator}', '{Cur_date}', '{Cur_notes}');""")
                 cursor.execute("set @cid = LAST_INSERT_ID();")
             except pymysql.Error as e:
                 print(e)
