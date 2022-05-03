@@ -117,16 +117,16 @@ for q in queries:
 #     else:
 #         lit_dict[i[0]] = [j[0]]
 
-with open("../data/orgN.txt" "r") as f:
+with open("../data/orgN.txt", "r") as f:
     orgN = list(f.readline().strip().split(" "))
 
-with open("../data/mycN.txt" "r") as f:
+with open("../data/mycN.txt", "r") as f:
     mycN = list(f.readline().strip().split(" "))
 
-with open("../data/curconN.txt" "r") as f:
+with open("../data/curconN.txt", "r") as f:
     curconN = list(f.readline().strip().split(" "))
 
-with open("../data/litN.txt" "r") as f:
+with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
 
 with open("../data/mycotoxinN.csv", "r") as f:
