@@ -112,6 +112,9 @@ myc_df_N <- mycotoxin_df %>%
   dplyr::select(N, Domain, Organism, Pathogenicity, Respiration, Environment, 
          `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location, 
          `Characterization context`, `Characterization assay`, Source, Link, `Additional information`, 
-         Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`)
+         Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`) %>%
+  mutate(`Contribution date` = as.character(`Contribution date`), `Curation date` = as.character(`Curation date`)) %>%
+  replace(is.na(.), "NULL")
+
 
 write_tsv(myc_df_N, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxinN.tsv")
