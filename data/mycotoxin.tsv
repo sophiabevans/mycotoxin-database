@@ -1,13 +1,13 @@
 Mycotoxin	Removal mechanism	Enzymatic?	Location
 Ochratoxin	Biotransformation	Yes	Unknown
 Zearalenone	Biotransformation	Yes	Unknown
-Aflatoxin B1	Biotransformation	Yes	Unknown
 Aflatoxin B1	Biotransformation	Yes	Extracellular
 Ochratoxin A	Absorption	No	Intracellular
 Aflatoxin B1	Absorption	No	Unknown
 Ochratoxin A	Biotransformation	Yes	Extracellular
-Aflatoxin B(1)	Unknown	Yes	Intracellular
+Aflatoxin B1	Unknown	Yes	Intracellular
 Zearalenone	Adsorption	No	Unknown
+Aflatoxin B1	Biotransformation	Yes	Unknown
 Aflatoxin B1	Adsorption	Yes	Unknown
 Zearalenone	Biotransformation	No	Unknown
 Aflatoxin B1	Biotransformation	No	Unknown

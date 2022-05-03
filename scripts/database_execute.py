@@ -85,6 +85,10 @@ cursor.execute("select LID from Literature;")
 lids = cursor.fetchall()
 cursor.execute("select Link from Literature;")
 lnames = cursor.fetchall()
+cursor.execute("select CID from Curation_Contribution;")
+cids = cursor.fetchall()
+cursor.execute("select Con_name from Curation_Contribution;")
+cnames = cursor.fetchall()
 
 organism_dict = {}
 mycotoxin_dict = {}

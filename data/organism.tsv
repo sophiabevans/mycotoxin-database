@@ -1,81 +1,69 @@
 Domain	Organism	Pathogenicity	Respiration	Environment
 Bacteria	Acinetobacter calcoaceticus	Opportunistic	Aerobic	Human;Soil
 Bacteria	Alcaligenes faecalis	Non-Pathogenic	Aerobic	Human;Soil;Water
-Bacteria	Bacillus amyloliquefaciens	Non-Pathogenic	Aerobic	Soil
-Bacteria	Flavobacterium aurantiacum	Non-Pathogenic	Aerobic	Soil;Water
-Bacteria	Rhodococcus erythropolis	Non-Pathogenic	Aerobic	Soil
-Bacteria	Rhodococcus pyridinivorans	Non-Pathogenic	Aerobic	Water
-Bacteria	Myobacterium smegmatis	Non-Pathogenic	Aerobic	Plants;Soil;Water
-Eukarya	Saccharomyces sensu stricto	Non-Pathogenic	Facultative	Human;Soil
-Bacteria	Lactobacillus rhamnosus	Non-Pathogenic	Anaerobic	Human
-Eukarya	Aspergillus species	Opportunistic	Aerobic	Plants;Soil
-Bacteria	Stenotrophomonas maltophilia	Opportunistic	Aerobic	Water
-Bacteria	Propionibacterium freudenreichii	Non-Pathogenic	Anaerobic	Human;Plants;Soil
-Bacteria	Bacillus subtilis	Non-Pathogenic	Aerobic	Human;Soil
-Eukarya	Phanerochaete sordida	Non-Pathogenic	Aerobic	Plants;Soil
-Bacteria	Pseudomonas putida	Opportunistic	Aerobic	Soil;Water
-Bacteria	Bacillus velezensis	Non-Pathogenic	Aerobic	Soil
-Eukarya	Pichia occidentalis	Non-Pathogenic	Anaerobic	Soil;Water
-Bacteria	Bacillus subtilis	Non-Pathogenic	Aerobic	Animal;Plants;Soil
-Bacteria	Nocardia corynebacteroides	Non-Pathogenic	Aerobic	Soil;Water
-Bacteria	Lactobacillus plantarum	Non-Pathogenic	Anaerobic	Human;Plants
 Bacteria	Alicyclobacillus acidoterrestris	Non-Pathogenic	Aerobic	Soil;Water
-Eukarya	Debaryomyces hansenii	Opportunistic	Aerobic	Food;Human
-Eukarya	Trichosporon mycotoxinivorans	Non-Pathogenic	Aerobic	Animal
-Eukarya	Rhodosporidium paludigenum	Non-Pathogenic	Aerobic	Water
-Bacteria	Bacillus licheniformis	Pathogenic	Facultative	Soil
 Bacteria	Bacillus amyloliquefaciens	Non-Pathogenic	Facultative	Soil
-Bacteria	Lactobacillus plantarum	Non-Pathogenic	Facultative	Human;Plants;Soil
-Eukarya	S. cerevisiae	Non-Pathogenic	Aerobic	Human
-Bacteria	Lactobacillus casei	Non-Pathogenic	Facultative	Food;Human
-Eukarya	Trametes versicolor	Non-Pathogenic	Aerobic	Plants
-Eukarya	Candida guilliermondii	Opportunistic	Aerobic	Plants
-Bacteria	Lactobacillus helviticus	Non-Pathogenic	Anaerobic	Human
-Bacteria	Lactobacillus fermentum	Non-Pathogenic	Anaerobic	Animal;Human
-Eukarya	Aspergillus niger	Pathogenic	Anaerobic	Food;Plants;Soil
-Bacteria	Lactobacillus brevis	Non-Pathogenic	Anaerobic	Food;Plants;Soil
-Bacteria	 L. paracasei	Non-Pathogenic	Anaerobic	Food;Plants;Soil
-Bacteria	Lactobacillus acidophilus	Non-Pathogenic	Anaerobic	Food;Plants;Soil
-Bacteria	Enterococcus faecium	Opportunistic	Anaerobic	Food
-Bacteria	Sphingosinicella microcystinivorans	Non-Pathogenic	Aerobic	Soil
-Bacteria	Gluconobacter oxydans	Non-Pathogenic	Aerobic	Food;Soil
-Eukarya	Saccharomyces cerevisiae	Opportunistic	Facultative	Food;Plants;Soil
-Eukarya	Aspergillus oryzae	Non-Pathogenic	Aerobic	Plants;Soil
-Bacteria	Escheria coli CG1061	Non-Pathogenic	Facultative	Animal;Human
-Bacteria	Pseudomonas aeruginosa M19	Opportunistic	Facultative	Human;Soil;Water
-Eukarya	Cladosporium uredinicola	Opportunistic	Aerobic	Soil
-Bacteria	Lactobacillus pentosus X8	Non-Pathogenic	Facultative	Food;Human
-Bacteria	Sphingopyxis sp. MTA144	Non-Pathogenic	Aerobic	Soil;Water
-Eukarya	Triticum durum	Non-Pathogenic	Aerobic	Plants
-Bacteria	Devosia mutans	Non-Pathogenic	Aerobic	Soil
-Eukarya	Arabidopsis thaliana	Non-Pathogenic	Aerobic	Plants;Soil
-Bacteria	Lactobacillus rhamnosus	Non-Pathogenic	Aerobic	Human
-Eukarya	Aspergillus niger	Pathogenic	Aerobic	Food;Plants;Soil
-Eukarya	Saccharomyces cerevisiae	Non-Pathogenic	Aerobic	Food
-Eukarya	Pichia Pastoris	Non-Pathogenic	Aerobic	Food;Plants;Soil
-Eukarya	Aspergillus oryzae	Non-Pathogenic	Aerobic	Food;Plants;Soil
-Bacteria	Flavobacterium aurantiacum	Opportunistic	Aerobic	Soil;Water
-Bacteria	stenotrophomonas Maltophilia	Opportunistic	Aerobic	Animals;Food;Human;Plant;Soil;Water
-Eukarya	Yarrowia lipolytica	Opportunistic	Aerobic	Human;Plants;Soil;Water
-Eukarya	Rhizopus stolonifer	Opportunistic	Facultative	Food;Soil
-Eukarya	Pleurotus ostreatus	Non-Pathogenic	Aerobic	Plants
 Bacteria	Bacillus cereus	Opportunistic	Facultative	Food;Soil
-Eukarya	Clonostachys rosea	Opportunistic	Aerobic	Plants;Soil
-Bacteria	Escherichia coli	Pathogenic	Facultative	Animal;Human
-Eukarya	Saccharomyces pastorianus	Opportunistic	Facultative	Food
-Bacteria	Pediococcus parvulus	Non-Pathogenic	Anaerobic	Food
-Bacteria	Lactobacillius plantarum	Non-Pathogenic	Anaerobic	Animal;Food
-Bacteria	Sterptomyces (multiple strains)	Pathogenic	Aerobic	Soil
-Bacteria	Paradevosia shaoguanensis	Non-Pathogenic	Aerobic	Soil
+Bacteria	Bacillus licheniformis	Pathogenic	Facultative	Animal;Soil
+Bacteria	Bacillus subtilis	Non-Pathogenic	Aerobic	Animal;Human;Plants;Soil
+Bacteria	Bacillus velezensis	Non-Pathogenic	Aerobic	Soil
 Bacteria	Bacterial Consortium SAAS79	Pathogenic	Aerobic	Soil
-Eukarya	Rhodotorula mucilaginosa	Pathogenic	Aerobic	Food
+Bacteria	Devosia mutans	Non-Pathogenic	Aerobic	Soil
+Bacteria	Enterococcus faecium	Opportunistic	Anaerobic	Food
+Bacteria	Escheria coli CG1061	Non-Pathogenic	Facultative	Animal;Human
+Bacteria	Escherichia coli	Pathogenic	Facultative	Animal;Human
+Bacteria	Flavobacterium aurantiacum	Opportunistic	Aerobic	Soil;Water
+Bacteria	Gluconobacter oxydans	Non-Pathogenic	Aerobic	Food;Soil
+Bacteria	Lactobacillius plantarum	Non-Pathogenic	Anaerobic	Animal;Food
+Bacteria	Lactobacillus acidophilus	Non-Pathogenic	Anaerobic	Food;Human;Plants;Soil
+Bacteria	Lactobacillus brevis	Non-Pathogenic	Anaerobic	Food;Plants;Soil
+Bacteria	Lactobacillus casei	Non-Pathogenic	Facultative	Food;Human
+Bacteria	Lactobacillus fermentum	Non-Pathogenic	Anaerobic	Animal;Human
+Bacteria	Lactobacillus helviticus	Non-Pathogenic	Anaerobic	Human
 Bacteria	Lactobacillus mesenteroides	Opportunistic	Facultative	Food
-Bacteria	Lactobacillus acidophilus	Non-Pathogenic	Anaerobic	Human
-Eukarya	Irpex lacteus	Opportunistic	Aerobic	Plants;Soil
-Bacteria	Rhodococcus erythropolis	Non-Pathogenic	Aerobic	Soil;Water
-Bacteria	Bacillus licheniformis	Opportunistic	Facultative	Animal;Soil
-Eukarya	Rhizopus and Aspergillus strains	Pathogenic	Aerobic	Soil
-Bacteria	Lactobcillus brevis	Non-Pathogenic	Anaerobic	Food;Human
-Eukarya	Saccharomyces cerevisiae	Opportunistic	Facultative	Animal;Food;Human;Plants;Soil
+Bacteria	Lactobacillus paracasei	Non-Pathogenic	Anaerobic	Food;Plants;Soil
 Bacteria	Lactobacillus pentosus	Non-Pathogenic	Anaerobic	Food;Human;Plants
+Bacteria	Lactobacillus pentosus X8	Non-Pathogenic	Facultative	Food;Human
+Bacteria	Lactobacillus plantarum	Non-Pathogenic	Facultative	Human;Plants;Soil
+Bacteria	Lactobacillus rhamnosus	Non-Pathogenic	Facultative	Human
+Bacteria	Lactobcillus brevis	Non-Pathogenic	Anaerobic	Food;Human
+Bacteria	Myobacterium smegmatis	Non-Pathogenic	Aerobic	Plants;Soil;Water
+Bacteria	Nocardia corynebacteroides	Non-Pathogenic	Aerobic	Soil;Water
+Bacteria	Paradevosia shaoguanensis	Non-Pathogenic	Aerobic	Soil
+Bacteria	Pediococcus parvulus	Non-Pathogenic	Anaerobic	Food
+Bacteria	Propionibacterium freudenreichii	Non-Pathogenic	Anaerobic	Human;Plants;Soil
+Bacteria	Pseudomonas aeruginosa M19	Opportunistic	Facultative	Human;Soil;Water
+Bacteria	Pseudomonas putida	Opportunistic	Aerobic	Soil;Water
+Bacteria	Rhodococcus erythropolis	Non-Pathogenic	Aerobic	Soil;Water
+Bacteria	Rhodococcus pyridinivorans	Non-Pathogenic	Aerobic	Water
+Bacteria	Sphingopyxis sp. MTA144	Non-Pathogenic	Aerobic	Soil;Water
+Bacteria	Sphingosinicella microcystinivorans	Non-Pathogenic	Aerobic	Soil
+Bacteria	Stenotrophomonas maltophilia	Opportunistic	Aerobic	Animal;Food;Human;Plants;Soil;Water
+Bacteria	Stenotrophomonas maltophilia	Opportunistic	Aerobic	Animals;Food;Human;Plants;Soil;Water
+Bacteria	Sterptomyces spp.	Pathogenic	Aerobic	Soil
+Eukarya	Arabidopsis thaliana	Non-Pathogenic	Aerobic	Plants;Soil
+Eukarya	Aspergillus	Pathogenic	Aerobic	Soil
+Eukarya	Aspergillus niger	Pathogenic	Aerobic	Food;Plants;Soil
+Eukarya	Aspergillus oryzae	Non-Pathogenic	Aerobic	Food;Plants;Soil
+Eukarya	Aspergillus species	Opportunistic	Aerobic	Plants;Soil
+Eukarya	Candida guilliermondii	Opportunistic	Aerobic	Plants
+Eukarya	Cladosporium uredinicola	Opportunistic	Aerobic	Soil
+Eukarya	Clonostachys rosea	Opportunistic	Aerobic	Plants;Soil
+Eukarya	Debaryomyces hansenii	Opportunistic	Aerobic	Food;Human
 Eukarya	Gliocladium roseum	Non-Pathogenic	Aerobic	Plants
+Eukarya	Irpex lacteus	Opportunistic	Aerobic	Plants;Soil
+Eukarya	Phanerochaete sordida	Non-Pathogenic	Aerobic	Plants;Soil
+Eukarya	Pichia occidentalis	Non-Pathogenic	Anaerobic	Soil;Water
+Eukarya	Pichia Pastoris	Non-Pathogenic	Aerobic	Food;Plants;Soil
+Eukarya	Pleurotus ostreatus	Non-Pathogenic	Aerobic	Plants
+Eukarya	Rhizopus	Pathogenic	Aerobic	Soil
+Eukarya	Rhizopus stolonifer	Opportunistic	Facultative	Food;Soil
+Eukarya	Rhodosporidium paludigenum	Non-Pathogenic	Aerobic	Water
+Eukarya	Rhodotorula mucilaginosa	Pathogenic	Aerobic	Food
+Eukarya	Saccharomyces cerevisiae	Opportunistic	Facultative	Animal;Food;Human;Plants;Soil
+Eukarya	Saccharomyces pastorianus	Opportunistic	Facultative	Food
+Eukarya	Saccharomyces sensu stricto	Non-Pathogenic	Facultative	Human;Soil
+Eukarya	Trametes versicolor	Non-Pathogenic	Aerobic	Plants
+Eukarya	Trichosporon mycotoxinivorans	Non-Pathogenic	Aerobic	Animal
+Eukarya	Triticum durum	Non-Pathogenic	Aerobic	Plants
+Eukarya	Yarrowia lipolytica	Opportunistic	Aerobic	Human;Plants;Soil;Water
