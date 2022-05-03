@@ -248,17 +248,27 @@ document.getElementById("defaultOpen").click();
 
 <div id="Data_insertion" class="tabcontent">
   <h3>Data Insertion!</h3>
-  Literature Link: <br>
-  Literature Citation: <br>
-  Characterization Context: <br>
-  Characterization Assay: <br>
-  Curator Name: <br>
-  Curation Date: <br>
-  Curation Notes: <br>
-  Contributor Name: <br>
-  Contributaion Date: <br>
-  Organism Name: <br>
-  Organism Domain: <br>
+  Literature Link: <input type="text" id="lit_link">
+  <br>
+  Literature Citation: <input type="text" id="lit_cite">
+  <br>
+  Characterization Context: <input type="text" id="char_con">
+  <br>
+  Characterization Assay: <input type="text" id="char_assay">
+  <br>
+  Curator Name: <input type="text" id="cur_name">
+  <br>
+  Curation Date: <input type="text" id="cur_date">
+  <br>
+  Curation Notes: <input type="text" id="cur_notes">
+  <br>
+  Contributor Name: <input type="text" id="con_name">
+  <br>
+  Contributaion Date: <input type="text" id="con_date">
+  <br>
+  Organism Name: <input type="text" id="org_name">
+  <br>
+  Organism Domain:
   <select name="input_domain">
     <option value="eukarya">Eukarya</option>
     <option value="bacteria">Bacteria</option>
@@ -289,7 +299,8 @@ document.getElementById("defaultOpen").click();
   <input type="checkbox" name="env" value="other"> Other
   <br>
 
-  Mycotoxin Name: <br>
+  Mycotoxin Name: <input type="text" id="myc_name">
+  <br>
 
   Mycotoxin Removal Mechanism:
   <select id = "input_removal" name = "input_removal">
