@@ -129,6 +129,9 @@ with open("../data/curconN.txt", "r") as f:
 with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
 
+class(orgN[0])
+print(orgN)
+
 with open("../data/mycotoxinN.tsv", "r") as f:
     line = f.readline()  # skip header
     line = f.readline()
@@ -155,11 +158,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         Cur_date = fields[18]
         Cur_notes = fields[19]
 
-        print(fields)
-        
-        print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
-        Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
-        Source, Link, Add_info, Contributor, Cont_date, Curator, Cur_date, Cur_notes)
+        # print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
+        # Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
+        # Source, Link, Add_info, Contributor, Cont_date, Curator, Cur_date, Cur_notes)
 
         # if N in litN:
         #     try:
