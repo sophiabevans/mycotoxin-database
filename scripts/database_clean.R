@@ -114,4 +114,4 @@ myc_df_N <- mycotoxin_df %>%
          `Characterization context`, `Characterization assay`, Source, Link, `Additional information`, 
          Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`)
 
-write_csv(myc_df_N, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxinN.csv")
+write_csv(myc_df_N, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxinN.tsv")
