@@ -129,11 +129,11 @@ with open("../data/curconN.txt", "r") as f:
 with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
 
-with open("../data/mycotoxinN.csv", "r") as f:
+with open("../data/mycotoxinN.tsv", "r") as f:
     line = f.readline()  # skip header
     line = f.readline()
     while line:
-        fields = line.strip().split(",")
+        fields = line.strip().split("\t")
         N = fields[0]
         Domain = fields[1]
         Organism = fields[2]
