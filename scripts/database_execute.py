@@ -21,7 +21,7 @@ queries = ['DROP TABLE IF EXISTS Removal, Curation_Contribution, Organism, Mycot
 LID INTEGER NOT NULL AUTO_INCREMENT,
 Context VARCHAR(100),
 Assay VARCHAR(100),
-Source VARCHAR(100),
+Source VARCHAR(500),
 Link VARCHAR(100),
 PRIMARY KEY(LID)
 );
