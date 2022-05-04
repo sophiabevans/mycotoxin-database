@@ -1,381 +1,380 @@
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-* {box-sizing: border-box}
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
+	<title>DoMI Website</title>
+	<script>
+	function openPage(pageName, elmnt, color) {
+	  // Hide all elements with class="tabcontent" by default */
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
 
-/* Style tab links */
-.tablink {
-  background-color: green;
-  opacity: 0.9;
-  color: white;
-  float: left;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 20%;
-}
+	  // Remove the background color of all tablinks/buttons
+	  tablinks = document.getElementsByClassName("tablink");
+	  for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].style.backgroundColor = "";
+	  }
 
-.tablink:hover {
-  background-color: #777;
-}
+	  // Show the specific tab content
+	  document.getElementById(pageName).style.display="block";
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: black;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-#About {background-color: white;}
-#Search {background-color: white;}
-#Data_insertion {background-color: white;}
-#Help {background-color: white;}
-#Demographic_breakdown {background-color: white;}
-</style>
+	  // Add the specific color to the button used to open the tab content
+	  //elmnt.style.backgroundColor = color;
+	}
+	// Get the element with id="defaultOpen" and click on it
+
+	</script>
+	<style>
+		h1 {
+			text-decoration: underline;
+		}
+		* {box-sizing: border-box}
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		  font-family: Arial;
+		}
+
+		/* Style tab links */
+		.tablink {
+		  background-color: green;
+		  opacity: 0.9;
+		  color: white;
+		  float: left;
+		  outline: none;
+		  cursor: pointer;
+		  padding: 14px 16px;
+		  font-size: 17px;
+		  width: 20%;
+		}
+
+		.tablink:hover {
+		  background-color: #777;
+		}
+
+		/* Style the tab content (and add height:100% for full page content) */
+		.tabcontent {
+		  color: black;
+		  display: none;
+		  padding: 100px 20px;
+		  height: 100%;
+		}
+		#About {background-color: white;}
+		#Search {background-color: white;}
+		#Data_insertion {background-color: white;}
+		#Help {background-color: white;}
+		#Demographic_breakdown {background-color: white;}
+	</style>
+
+	<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
+	<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
+	<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
+	<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+	<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
+
 </head>
 
-<script>
-function openPage(pageName, elmnt, color) {
-  // Hide all elements with class="tabcontent" by default */
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Remove the background color of all tablinks/buttons
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-
-  // Show the specific tab content
-  document.getElementById(pageName).style.display="block";
-
-  // Add the specific color to the button used to open the tab content
-  //elmnt.style.backgroundColor = color;
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-
-</script>
-
 <body>
-<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
-<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
-<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
-<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
-<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
 
-<br><br>
-<div id="About" class="tabcontent">
-<h3>This is where we'll put the about page</h3>
-</div>
-<div id="Search" class="tabcontent">
-	<head> <!-- You might link CSS here -->
-		<title> Mycotoxin Removal Data Interface </title>
-	</head>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
-		<h1>Query Preparation</h1>
-		<h2>Please select the data fields you would like to include in your results.</h2>
-		Fields: <br>
-			<input type="checkbox" id = "organism" name="fields" value="organism"> Organism Name
-			<input type="checkbox" id = "domain" name="fields" value="domain"> Organism Domain
-			<input type="checkbox" id = "pathogen" name="fields" value="pathogen"> Organism Pathogenicity
-			<input type="checkbox" id = "environment" name="fields" value="environment"> Organism Environment
-			<input type="checkbox" id = "aeran" name="fields" value="aeran"> Organism Respiration Type <br>
-			<input type="checkbox" id = "mycotoxin" name="fields" value="mycotoxin"> Target Mycotoxin Name
-			<input type="checkbox" id = "removal" name="fields" value="removal"> Removal Mechanism
-			<input type="checkbox" id = "enzymatic" name="fields" value="enzymatic"> Enzymatic vs. Non-enzymatic Removal
-			<input type="checkbox" id = "intraextra" name="fields" value="intraextra"> Intracellular vs. Extracellular Mycotoxin
-			<input type="checkbox" id = "context" name="fields" value="context"> Mycotoxin Characterization Context <br>
-			<input type="checkbox" id = "assay" name="fields" value="assay"> Mycotoxin Characterization Assay
-			<input type="checkbox" id = "contributor" name="fields" value="contributor"> Contributor Name
-			<input type="checkbox" id = "curator" name="fields" value="curator"> Curator Name
-			<input type="checkbox" id = "Source" name="fields" value="Source"> Literature Source
-			<input type="checkbox" id = "Link" name="fields" value="Link"> Literature Link
+	<script>
+	// Moved this call down here because it was throwing an error about the defaultOpen id not existing when placed above the button objects, although that shouldn't matter
+	document.getElementById("defaultOpen").click();
+	</script>
+
+	<div id="Search" class="tabcontent">
+		<head> <!-- You might link CSS here -->
+			<title> Mycotoxin Removal Data Interface </title>
+		</head>
+		<body>
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script src="https://www.gstatic.com/charts/loader.js"></script>
+			<h1>Query Preparation</h1>
+			<h2>Please select the data fields you would like to include in your results.</h2>
+			Fields: <br>
+			<input type="checkbox" class = "search_input" id = "organism" name="fields" value="organism"> Organism Name
+			<input type="checkbox" class = "search_input" id = "domain" name="fields" value="domain"> Organism Domain
+			<input type="checkbox" class = "search_input" id = "pathogen" name="fields" value="pathogen"> Organism Pathogenicity
+			<input type="checkbox" class = "search_input" id = "environment" name="fields" value="environment"> Organism Environment
+			<input type="checkbox" class = "search_input" id = "aeran" name="fields" value="aeran"> Organism Respiration Type <br>
+			<input type="checkbox" class = "search_input" id = "mycotoxin" name="fields" value="mycotoxin"> Target Mycotoxin Name
+			<input type="checkbox" class = "search_input" id = "removal" name="fields" value="removal"> Removal Mechanism
+			<input type="checkbox" class = "search_input" id = "enzymatic" name="fields" value="enzymatic"> Enzymatic vs. Non-enzymatic Removal
+			<input type="checkbox" class = "search_input" id = "intraextra" name="fields" value="intraextra"> Intracellular vs. Extracellular Mycotoxin
+			<input type="checkbox" class = "search_input" id = "context" name="fields" value="context"> Mycotoxin Characterization Context <br>
+			<input type="checkbox" class = "search_input" id = "assay" name="fields" value="assay"> Mycotoxin Characterization Assay
+			<input type="checkbox" class = "search_input" id = "contributor" name="fields" value="contributor"> Contributor Name
+			<input type="checkbox" class = "search_input" id = "curator" name="fields" value="curator"> Curator Name
+			<input type="checkbox" class = "search_input" id = "Source" name="fields" value="Source"> Literature Source
+			<input type="checkbox" class = "search_input" id = "Link" name="fields" value="Link"> Literature Link
 			<br>
 			<br>
 
-		Limit Search By: <br>
-		<!-- Drop boxes - maybe these would be checkboxes -->
+			Limit Search By: <br>
+			<!-- Drop boxes - maybe these would be checkboxes -->
+			Organism Domain:
+			<select class = "search_input" id = "choose_domain" name="choose_domain">
+				<option id = "all_dom" value="all">Include All Domains</option>
+				<option id = "eukarya" value="eukarya">Eukarya</option>
+				<option id = "bacteria" value="bacteria">Bacteria</option>
+				<option id = "archaea" value="archaea">Archaea</option>
+			</select><br>
+
+			Organism Pathogenicity:
+			<select class = "search_input" id = "choose_path" name="choose_path">
+				<option id = "all_path" value="all">Include All Pathogenicities</option>
+				<option id = "pathogenic" value="pathogenic">Pathogenic</option>
+				<option id = "non_path" value="non_path">Non-Pathogenic</option>
+				<option id = "opportunistic" value="opportunistic">Opportunistic</option>
+			</select><br>
+
+			Organism Respiration Type:
+			<select class = "search_input" id = "choose_aeran" name="choose_aeran">
+				<option id = "all_type" value="all">Include All Types</option>
+				<option id = "aerobic" value="aerobic">Aerobic</option>
+				<option id = "anaerobic" value="anaerobic">Anaerobic</option>
+				<option id = "facultative" value="facultative">Facultative</option>
+			</select><br>
+
+			Mycotoxin Removal Mechanism:
+			<select class = "search_input" id = "choose_removal" name = "choose_removal">
+				<option id = "all_removal" value="all_removal">Include All Removal Mechanisms</option>
+				<option id = "biotransformation" value = "biotransformation">Biotransformation</option>
+				<option id = "regulation" value = "regulation">Regulation</option>
+				<option id = "adsorption" value = "adsorption">Adsorption</option>
+				<option id = "absorption" value = "absorption">Absorption</option>
+				<option id = "biodegredation" value = "biodegredation">Biodegradation</option>
+			</select><br>
+
+			Whether Mycotoxin is Enzymatic:
+			<select class = "search_input" id = "choose__enz" name = "choose_enz">
+				<option id = "all_enz" value="all_enz">Include All Possibilities</option>
+				<option id = "yes" value = "yes">Yes</option>
+				<option id = "no" value = "no">No</option>
+				<option id = "unknown" value = "unknown">Unknown</option>
+			</select><br>
+
+			Intracellular or Extracellular:
+			<select class = "search_input" id = "choose_location" name = "choose_location">
+				<option id = "all_location" value="all_location">Include All Locations</option>
+				<option id = "intra" value = "intra">Intracellular</option>
+				<option id = "extra" value = "extra">Extracellular</option>
+			</select><br>
+			<!-- radio buttons -->
+
+			<h2>Optional: Search by Name</h2>
+			<p>To search for data pertaining to a *specific value* for one of the fields listed in the checkboxes above,
+			please enter that value in the text box below and select the appropriate field in the dropdown menu.
+			Examples might include the name of a mycotoxin, a characterization assay, or a microbial environment!</p>
+			<input type = "text" class = "search_input" id = "where_input" name = "where_input"><br>
+			<select id = "choose_spec_value" name = "choose_spec_value"><br></br>
+				<option id = "organism_input" value="organism_input">Organism Name</option>
+				<option id = "environment_input" value="environment_input">Organism Environment</option>
+				<option id = "mycotoxin_input" value="mycotoxin_input">Target Mycotoxin Name</option>
+				<option id = "context_input" value="context_input">Characterization Context</option>
+				<option id = "assay_input" value="assay_input">Characterization Assay</option>
+				<option id = "contributor_input" value="contributor_input">Contributor Name</option>
+				<option id = "curator_input" value="curator_input">Curator Name</option>
+				<option id = "Source_input" value="Source_input">Literature Source</option>
+				<option id = "Link_input" value="Link_input">Literature Link</option>
+			</select><br><br>
+
+			Download Format:
+			<input type="radio" class = "search_input" id = "csv" name="download" value="csv"> .csv
+			<input type="radio" class = "search_input" id = "txt" name="download" value="txt"> .txt
+			<input type="radio" class = "search_input" id = "tsv" name="download" value="tsv"> .tsv
+			<br>
+			<div id="chart_id"></div><br>
+			<div id="table_id"></div>
+			<!-- Submit Button-->
+			<button id="button" type="submit"> Submit </button><br><br>
+			<button id="clear" onclick="reset_search()"> Clear All Input </button><br>
+			<input type="submit" name="clearmore" Onclick="reset_search()">REALLY clear
+					
+			<script>
+				//$("#clear").click(function() {
+				//	$("#Search").reset();
+				//});
+
+				function reset_search() {
+					document.getElementsByClassName("search_input").value = "";
+				}
+
+
+				google.charts.load('current', {
+					'packages': ['corechart']
+				});
+
+				//$(document).ready(function() {
+				//	$("#button").click(function() {
+				//		$.get("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py", {
+				//					  {organism_check:$("#organism").val(), domain_check:$("#domain").val(), pathogenicity_check:$("#pathogenicity").val(), environment_check:$("#environment").val(),
+				//					  aeran_check:$("#aeran").val(), mycotoxin_check:$("#mycotoxin").val(), removal_check:$("#removal").val(), enzymatic_check:$("#enzymatic").val(), intraextra_check:$("#intraextra").val(),
+				//					  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(),
+				//					  Link_check:$("#Link").val(), choose_domain:$("#choose_domain").val(), choose_path:$("#choose_path").val(), choose_aeran:$("#choose_aeran").val(), choose_removal:$("#choose_removal").val(),
+				//					  choose_enz:$("#choose__enz").(), choose_location:$("#choose_location").val(), where_input:$("#where_input").val(), choose_spec_value:$("#choose_spec_value").val(),
+				//					  csv:$("#csv").val(), txt:$("#txt").val(), tsv:$("#tsv").val()},                                       
+				//					  function(data){                                             
+				//						create_table(data);
+				//					  },
+				//					  "json"
+				//		});	
+				//	});
+				//});
+				function create_table(data) {
+					//table column headers for primary queries
+					let myco_header = $("#mycotoxin").val();
+
+					//initiate table body and gene name
+					let table_body_contents = "";
+					let sequences = "";
+
+					//clear out the contents of the miRNA_table div
+					$("#miRNA_table").empty();
+					document.getElementById("miRNA_table").innerHTML = "";
+					let miRNA_seq_input = $("#miRNA_seq").val();
+					//if data is returned from the AJAX call, build a new table
+					if (data != "") {
+						data = JSON.parse(data)
+						//loop through rows of the data
+						for (let row = 0; row < data.length; row++) {
+							//miRNA name is the first element of each row
+							miRNA_name = data[row][0];
+							miRNA_seq = data[row][1];
+
+							//construct the table data rows
+							//for string substitution with ${variable name}, use back ticks, not single or double quotes
+							table_body_contents += `<tr><td> ${miRNA_name}</td><td>${miRNA_seq}</td></tr>`;
+							// back ticks doing something weird
+						}
+
+						//build the entire table template and susbstitute in the table data rows and the gene name
+						let table_template = `<table><caption>Table of miRNA sequences matching ${miRNA_seq_input}</caption><thead><tr><th>miRNA</th><th>sequence</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+
+						//put the final table in the miRNA_table div
+						$("#miRNA_table").append(table_template);
+					}
+					else {
+						$("#miRNA_table").empty();
+						document.getElementById("miRNA_table").innerHTML = "";
+					}
+				}
+			</script>
+		</body>
+	</div>
+
+	<div id="Data_insertion" class="tabcontent">
+		<h1>Data Insertion!</h1>
+		<h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database.</h3>
+		<h3>Please, *double check* the accuracy of all data entered into the input fields below! Typos could prevent your data from being found in future searches.</h3>
+		Literature Link: <input type="text" id="lit_link">
+		<br>
+		Literature Citation: <input type="text" id="lit_cite">
+		<br>
+		Characterization Context: <input type="text" id="char_con">
+		<br>
+		Characterization Assay: <input type="text" id="char_assay">
+		<br>
+		Curator Name: <input type="text" id="cur_name">
+		<br>
+		Curation Date: <input type="date" id="cur_date">
+		<br>
+		Curation Notes: <input type="text" id="cur_notes">
+		<br>
+		Contributor Name: <input type="text" id="con_name">
+		<br>
+		Contributaion Date: <input type="date" id="con_date">
+		<br>
+		Organism Name: <input type="text" id="org_name">
+		<br>
 		Organism Domain:
-		<select id = "choose_domain" name="choose_domain">
-			<option id = "all_dom" value="all">Include All Domains</option>
-			<option id = "eukarya" value="eukarya">Eukarya</option>
-			<option id = "bacteria" value="bacteria">Bacteria</option>
-			<option id = "archaea" value="archaea">Archaea</option>
+		<select id="input_domain" name="input_domain">
+			<option value="eukarya">Eukarya</option>
+			<option value="bacteria">Bacteria</option>
+			<option value="archaea">Archaea</option>
 		</select><br>
 
 		Organism Pathogenicity:
-		<select id = "choose_path" name="choose_path">
-			<option id = "all_path" value="all">Include All Pathogenicities</option>
-			<option id = "pathogenic" value="pathogenic">Pathogenic</option>
-			<option id = "non_path" value="non_path">Non-Pathogenic</option>
-			<option id = "opportunistic" value="opportunistic">Opportunistic</option>
+		<select id="input_path" name="input_path">
+			<option value="pathogenic">Pathogenic</option>
+			<option value="non-path">Non-Pathogenic</option>
+			<option value="opportunistic">Opportunistic</option>
 		</select><br>
 
 		Organism Respiration Type:
-		<select id = "choose_aeran" name="choose_aeran">
-			<option id = "all_type" value="all">Include All Types</option>
-			<option id = "aerobic" value="aerobic">Aerobic</option>
-			<option id = "anaerobic" value="anaerobic">Anaerobic</option>
-			<option id = "facultative" value="facultative">Facultative</option>
+		<select id="input_aeran" name="input_aeran">
+			<option value="aerobic">Aerobic</option>
+			<option value="anaerobic">Anaerobic</option>
+			<option value="facultative">Facultative</option>
 		</select><br>
+
+		Organism Environment:
+		<input type="checkbox" name="env" value="human"> Human
+		<input type="checkbox" name="env" value="animal"> Soil
+		<input type="checkbox" name="env" value="food"> Food
+		<input type="checkbox" name="env" value="plants"> Plants
+		<input type="checkbox" name="env" value="soil"> Soil
+		<input type="checkbox" name="env" value="water"> Water
+		<input type="checkbox" name="env" value="other"> Other
+		<br>
+
+		Mycotoxin Name: <input type="text" id="myc_name">
+		<br>
 
 		Mycotoxin Removal Mechanism:
-		<select id = "choose_removal" name = "choose_removal">
-			<option id = "all_removal" value="all_removal">Include All Removal Mechanisms</option>
-			<option id = "biotransformation" value = "biotransformation">Biotransformation</option>
-			<option id = "regulation" value = "regulation">Regulation</option>
-			<option id = "adsorption" value = "adsorption">Adsorption</option>
-			<option id = "absorption" value = "absorption">Absorption</option>
-			<option id = "biodegredation" value = "biodegredation">Biodegradation</option>
+		<select id = "input_removal" name = "input_removal">
+			<option id = "biotransformation_insert" value = "biotransformation">Biotransformation</option>
+			<option id = "regulation_insert" value = "regulation">Regulation</option>
+			<option id = "adsorption_insert" value = "adsorption">Adsorption</option>
+			<option id = "absorption_insert" value = "absorption">Absorption</option>
+			<option id = "biodegredation_insert" value = "biodegredation">Biodegradation</option>
 		</select><br>
 
-		Whether Mycotoxin is Enzymatic:
-		<select id = "choose__enz" name = "choose_enz">
-			<option id = "all_enz" value="all_enz">Include All Possibilities</option>
-			<option id = "yes" value = "yes">Yes</option>
-			<option id = "no" value = "no">No</option>
-			<option id = "unknown" value = "unknown">Unknown</option>
+		Enzymatic Removal?:
+		<select id = "input_enz" name = "input_enz">
+			<option id = "yes_enz" value = "yes_enz">Yes</option>
+			<option id = "no_enz" value = "no_enz">No</option>
 		</select><br>
 
-		Intracellular or Extracellular:
-		<select id = "choose_location" name = "choose_location">
-			<option id = "all_location" value="all_location">Include All Locations</option>
-			<option id = "intra" value = "intra">Intracellular</option>
-			<option id = "extra" value = "extra">Extracellular</option>
+		Location:
+		<select id="input_loc" name="input_loc">
+			<option value="intracellular">Intracellular</option>
+			<option value="extracellular">Extracellular</option>
+			<option value="unknown">Unknown</option>
 		</select><br>
-		<!-- radio buttons -->
-
-		<h2>Optional: Search by Name</h2>
-		<p>To search for data pertaining to a *specific value* for one of the fields listed in the checkboxes above,
-		please enter that value in the text box below and select the appropriate field in the dropdown menu.
-		Examples might include the name of a mycotoxin, a characterization assay, or a microbial environment!</p>
-		<input type = "text" id = "where_input" name = "where_input"><br>
-		<select id = "choose_spec_value" name = "choose_spec_value"><br></br>
-			<option id = "organism_input" value="organism_input">Organism Name</option>
-			<option id = "environment_input" value="environment_input">Organism Environment</option>
-			<option id = "mycotoxin_input" value="mycotoxin_input">Target Mycotoxin Name</option>
-			<option id = "context_input" value="context_input">Characterization Context</option>
-			<option id = "assay_input" value="assay_input">Characterization Assay</option>
-			<option id = "contributor_input" value="contributor_input">Contributor Name</option>
-			<option id = "curator_input" value="curator_input">Curator Name</option>
-			<option id = "Source_input" value="Source_input">Literature Source</option>
-			<option id = "Link_input" value="Link_input">Literature Link</option>
-		</select><br><br>
-
-		Download Format:
-		<input type="radio" id = "csv" name="download" value="csv"> .csv
-		<input type="radio" id = "txt" name="download" value="txt"> .txt
-		<input type="radio" id = "tsv" name="download" value="tsv"> .tsv
 		<br>
-		<div id="chart_id"></div><br>
-		<div id="table_id"></div>
-		<!-- Submit Button-->
-		<button id="button" type="submit"> Submit </button><br><br>
-		<div id = "table"></div><br><br>
 
-		<script>
+		<button id="submit_input">Submit Data Input</button><br><br>
 
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
+	</div>
 
-		$(document).ready(function() {
-			$("#button").click(function() {
-				$.get("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/project_CGI.py",
-							  {organism_check:$("#organism").val(), domain_check:$("#domain").val(), pathogenicity_check:$("#pathogenicity").val(), environment_check:$("#environment").val(),
-							  aeran_check:$("#aeran").val(), mycotoxin_check:$("#mycotoxin").val(), removal_check:$("#removal").val(), enzymatic_check:$("#enzymatic").val(), intraextra_check:$("#intraextra").val(),
-							  context_check:$("#context_check").val(), assay_check:$("#assay_check").val(), contributor_check:$("#contributor").val(), curator_check:$("#curator").val(), Source_check:$("#Source").val(),
-							  Link_check:$("#Link").val(), choose_domain:$("#choose_domain").val(), choose_path:$("#choose_path").val(), choose_aeran:$("#choose_aeran").val(), choose_removal:$("#choose_removal").val(),
-							  choose_enz:$("#choose__enz").(), choose_location:$("#choose_location").val(), where_input:$("#where_input").val(), choose_spec_value:$("#choose_spec_value").val(),
-							  csv:$("#csv").val(), txt:$("#txt").val(), tsv:$("#tsv").val()},                                        //<<< input_data
-							  function(data){                                               //<<< callback function
-								create_table(data);
-							  },
-							  "json"
-						);
-			});
-    });
-		function create_table(data) {
-            //table column headers for primary queries
-            let myco_header = $("#mycotoxin").val();
+	<div id="Demographic_breakdown" class="tabcontent">
+		<h3>maps!</h3>
+	</div>
 
-            //initiate table body and gene name
-            let table_body_contents = "";
-            let sequences = "";
+	<div id="About" class="tabcontent">
+		<h1>More about the DoMI:</h1><br>
+		<h2>For whom is the DoMI useful?</h2>
+		<p>This database may be useful for you if you are seeking to identify microbes that can remove certain mycotoxins from their environments, or if you want to know what mycotoxins are removed by a specific microbe. 
+		It has many other useful applications beyond these, however.</p>
+		<h2>Who contributes data to the DoMI?</h2>
+		<p>This database has been constructed from a dataset generated by students in Boston College's microbiology course BIOL4140 in academic years 2018 and 2019, as well as two students working in the 
+		Momeni lab (Joy Zou and Kyle Wiant). If you would like to learn more about the Momeni lab, click the link <a href="http://www.momenilab.org/">here</a>.
+		<h2>Where can I find more information about mycotoxins?</h2>
+		<p>The World Health Organization provides comprehensive information and resources on the topic of mycotoxins. If you're curious, click the link <a href="https://www.who.int/news-room/fact-sheets/detail/mycotoxins">here</a>.
+	</div>
 
-            //clear out the contents of the miRNA_table div
-            $("#miRNA_table").empty();
-            document.getElementById("miRNA_table").innerHTML = "";
-			let miRNA_seq_input = $("#miRNA_seq").val();
-            //if data is returned from the AJAX call, build a new table
-            if (data != "") {
-                data = JSON.parse(data)
-                //loop through rows of the data
-                for (let row = 0; row < data.length; row++) {
-                    //miRNA name is the first element of each row
-                    miRNA_name = data[row][0];
-                    miRNA_seq = data[row][1];
-
-                    //construct the table data rows
-                    //for string substitution with ${variable name}, use back ticks, not single or double quotes
-                    table_body_contents += `<tr><td> ${miRNA_name}</td><td>${miRNA_seq}</td></tr>`;
-                    // back ticks doing something weird
-                }
-
-                //build the entire table template and susbstitute in the table data rows and the gene name
-                let table_template = `<table><caption>Table of miRNA sequences matching ${miRNA_seq_input}</caption><thead><tr><th>miRNA</th><th>sequence</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
-
-                //put the final table in the miRNA_table div
-                $("#miRNA_table").append(table_template);
-            }
-			else {
-				$("#miRNA_table").empty();
-                document.getElementById("miRNA_table").innerHTML = "";
-			}
-        }
-    </script>
-</div>
-
-<div id="Data_insertion" class="tabcontent">
-  <h1>Data Insertion!</h1>
-  <h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database </h3>
-  Literature Link: <input type="text" id="lit_link">
-  <br>
-  Literature Citation: <input type="text" id="lit_cite">
-  <br>
-  Characterization Context: <input type="text" id="char_con">
-  <br>
-  Characterization Assay: <input type="text" id="char_assay">
-  <br>
-  Curator Name: <input type="text" id="cur_name">
-  <br>
-  Curation Date: <input type="date" id="cur_date">
-  <br>
-  Curation Notes: <input type="text" id="cur_notes">
-  <br>
-  Contributor Name: <input type="text" id="con_name">
-  <br>
-  Contributaion Date: <input type="date" id="con_date">
-  <br>
-  Organism Name: <input type="text" id="org_name">
-  <br>
-  Organism Domain:
-  <select id = "input_domain" name="input_domain">
-    <option value="eukarya">Eukarya</option>
-    <option value="bacteria">Bacteria</option>
-    <option value="archaea">Archaea</option>
-  </select><br>
-
-  Organism Pathogenicity:
-  <select id="input_path" name="input_path">
-    <option value="pathogenic">Pathogenic</option>
-    <option value="non-path">Non-Pathogenic</option>
-    <option value="opportunistic">Opportunistic</option>
-  </select><br>
-
-  Organism Respiration Type:
-  <select id="input_aeran" name="input_aeran">
-    <option value="aerobic">Aerobic</option>
-    <option value="anaerobic">Anaerobic</option>
-    <option value="facultative">Facultative</option>
-  </select><br>
-
-  Organism Environment:
-  <input type="checkbox" name="env" id = "human" value="human"> Human
-  <input type="checkbox" name="env" id = "animal" value="animal"> Soil
-  <input type="checkbox" name="env" id = "food" value="food"> Food
-  <input type="checkbox" name="env" id = "plants" value="plants"> Plants
-  <input type="checkbox" name="env" id = "soil" value="soil"> Soil
-  <input type="checkbox" name="env" id = "water" value="water"> Water
-  <input type="checkbox" name="env" id = "other" value="other"> Other
-  <br>
-
-  Mycotoxin Name: <input type="text" id="myc_name">
-  <br>
-
-  Mycotoxin Removal Mechanism:
-  <select id = "input_removal" name = "input_removal">
-    <option id = "biotransformation" value = "biotransformation">Biotransformation</option>
-    <option id = "regulation" value = "regulation">Regulation</option>
-    <option id = "adsorption" value = "adsorption">Adsorption</option>
-    <option id = "absorption" value = "absorption">Absorption</option>
-    <option id = "biodegredation" value = "biodegredation">Biodegradation</option>
-  </select><br>
-
-  Enzymatic Removal?:
-  <select id = "input_enz" name = "input_enz">
-    <option id = "yes_enz" value = "yes_enz">Yes</option>
-    <option id = "no_enz" value = "no_enz">No</option>
-  </select><br>
-
-  Location:
-  <select id="input_loc" name="input_loc">
-    <option value="intracellular">Intracellular</option>
-    <option value="extracellular">Extracellular</option>
-    <option value="unknown">Unknown</option>
-  </select><br>
-  <br>
-
-  <button id="submit_input">Submit Data Input</button><br><br>
-
-  <script>
-
-  $(document).ready(function() {
-    $("#submit_input").click(function() {
-      $.get("https://bioed.bu.edu/cgi-bin/students_22/sbevans/data_insert.py",
-              {link:$("#lit_link").val(), cite:$("#lit_cite").val(),
-              context:$("#char_con").val(), assay:$("#char_assay").val(),
-              curator:$("#cur_name").val(), cur_notes:$("#cur_notes").val(),
-              cur_date:$("#cur_date").val(), con_name:$("#con_name").val(),
-              con_date:$("#con_date").val(), org_name:$("#org_name").val(),
-              input_domain:$("#input_domain").val(), input_path:$("#input_path").val(),
-              input_aeran:$("#input_aeran").val(), env_hum:$("#human").val(),
-              env_anim:$("#animal").val(), env_plant:$("#plant").val(),
-              env_soil:$("#soil").val(), env_water:$("#water").val(),
-              env_food:$("#food").val(), env_other:$("#other").val(),
-              myc_name:$("#myc_name").(), removal:$("#input_removal").val(),
-              enzymatic:$("#input_enz").val(),loc:$("#input_loc").val()},
-              function(data){
-                input_success(data);
-                },
-              "json"
-          );
-    });
-  });
-
-  function input_success (data) {
-    if (data != "") {
-      return true;
-    }
-    return false;
-  }
-
-  </script>
-
-</div>
-
-<div id="Demographic_breakdown" class="tabcontent">
-<h3>maps!</h3>
-</div>
-
-<div id="Help" class="tabcontent">
-<head>
-<h1>FAQs</h1>
-<h2>Q1</h2>
-<h2>If the FAQ responses above are not sufficient to solve your problem, please direct further inquiries to Daniel Golden at the email address dgolden1@bu.edu</h2>
-</head>
-</div>
+	<div id="Help" class="tabcontent">
+		<h1>FAQs</h1>
+		<h2>1: I'm getting no results for what I wrote in the input text box!</h2>
+		<p>In this scenario, the explanation is most likely either (1) you have mistyped your input, or (2) there is no value in our database matching the input that you have provided.</p>
+		<br>
+		<h2>2: I've looked closely at the search and/or data insertion pages, but I'm *still* not sure how to search and/or add data!</h2>
+		<p>If you're struggling for any reason to use the interface, you might find it helpful to refer to the walkthrough Youtube video at this link: <YOUTUBE_URL></p>
+		<br>
+		<h2>If the FAQ responses above are not sufficient to solve your problem, please direct further inquiries to Daniel Golden at the email address dgolden1@bu.edu</h2>
+	</div>
 
 </body>
 </html>
