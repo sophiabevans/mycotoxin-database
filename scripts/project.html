@@ -84,6 +84,7 @@
 	</script>
 
 	<div id="Search" class="tabcontent">
+		<form action="/action_page.php">
 		<head> <!-- You might link CSS here -->
 			<title> Mycotoxin Removal Data Interface </title>
 		</head>
@@ -185,12 +186,10 @@
 			<input type="radio" class = "search_input" id = "txt" name="download" value="txt"> .txt
 			<input type="radio" class = "search_input" id = "tsv" name="download" value="tsv"> .tsv
 			<br>
-			<div id="chart_id"></div><br>
 			<div id="table_id"></div>
 			<!-- Submit Button-->
 			<button id="button" type="submit"> Submit </button><br><br>
-			<button id="clear" onclick="reset_search()"> Clear All Input </button><br>
-			<input type="submit" name="clearmore" Onclick="reset_search()">REALLY clear
+			<input type="reset" value="Reset">
 					
 			<script>
 				//$("#clear").click(function() {
@@ -224,7 +223,7 @@
 				//});
 				function create_table(data) {
 					//table column headers for primary queries
-					let myco_header = $("#mycotoxin").val();
+					l//et myco_header = $("#mycotoxin").val();
 
 					//initiate table body and gene name
 					let table_body_contents = "";
@@ -262,6 +261,7 @@
 				}
 			</script>
 		</body>
+	</form>
 	</div>
 
 	<div id="Data_insertion" class="tabcontent">
