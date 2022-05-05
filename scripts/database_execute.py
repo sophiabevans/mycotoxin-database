@@ -137,7 +137,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 insert into Literature (Context, Assay, Source, Link)
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
                 cursor.execute("select LAST_INSERT_ID();")
-                lid = cursor.fetchall()
+                lid = cursor.fetchall()[0]
                 print(lid)
                 lit_dict[N] = lid
                 print(lit_dict)
