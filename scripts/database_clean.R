@@ -76,43 +76,43 @@ mycotoxin_df <- mycotoxin_df %>%
 write_tsv(mycotoxin_df, file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin_removal.tsv")
 
 org <- mycotoxin_df %>%
+  dplyr::select(N, Domain, Organism, Pathogenicity, Respiration, Environment) %>%
   group_by(Domain, Organism, Pathogenicity, Respiration, Environment) %>%
-  summarize(N = min(N)) %>%
-  ungroup() %>%
-  dplyr::select(Domain, Organism, Pathogenicity, Respiration, Environment)
-write_tsv(distinct(org), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/organism.tsv")
+  mutate(OrgN = min(N)) %>%
+  ungroup()
+  #rename(OrgN = N)
 
 lit <- mycotoxin_df %>%
+  dplyr::select(N, `Characterization context`, `Characterization assay`, Source, Link, `Additional information`) %>%
   group_by(`Characterization context`, `Characterization assay`, Source, Link, `Additional information`) %>%
-  summarize(N = min(N)) %>%
-  ungroup() %>%
-  dplyr::select(`Characterization context`, `Characterization assay`, Source, Link, `Additional information`)
-write_tsv(distinct(lit), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/literature.tsv")
+  mutate(LitN = min(N)) %>%
+  ungroup() 
+  #rename(litN = N)
   
 cur_cont <- mycotoxin_df %>%
-  dplyr::select(Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`)
-write_tsv(distinct(cur_cont), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/curation.tsv")
+  dplyr::select(N, Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`) %>%
+  group_by(Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`) %>%
+  mutate(CurN = min(N)) %>%
+  ungroup() 
+
 
 mycotoxin <- mycotoxin_df %>%
-  dplyr::select(N, `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)
-write_tsv(distinct(mycotoxin), file = "~/BostonUniversity/BF768/homework/mycotoxin-database/data/mycotoxin.tsv")
+  dplyr::select(N, `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location)%>% 
+  group_by(`Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location) %>%
+  mutate(MycN = min(N)) %>%
+  ungroup() 
 
-#mycotoxin df keep organism
-# m <- mycotoxin_df %>% 
-#   select(Organism, Domain, Environment, Mycotoxin, `Removal mechanism`, `Enzymatic?`, Pathogenicity, Respiration, Location) %>%
-#   group_by(Organism, Mycotoxin) %>%
-#   unique() %>%
-#   mutate(count = n()) %>%
-#   arrange(desc(count), desc(Domain), desc(Environment), desc(`Removal mechanism`), 
-#           desc(`Enzymatic?`), desc(Pathogenicity), desc(Respiration), desc(Location))
-# 
-# write_csv(m, file = "~/Downloads/mycotoxin_duplicates.csv")
-  
-myc_df_N <- mycotoxin_df %>%
+
+m <- inner_join(org, mycotoxin, by = "N") %>%
+  inner_join(lit, by = "N") %>%
+  inner_join(cur_cont, by = "N")
+
+
+myc_df_N <- m %>%
   dplyr::select(N, Domain, Organism, Pathogenicity, Respiration, Environment, 
          `Mycotoxin`, `Removal mechanism`, `Enzymatic?`, Location, 
          `Characterization context`, `Characterization assay`, Source, Link, `Additional information`, 
-         Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`) %>%
+         Contributor, `Contribution date`, `Curator(s)`, `Curation date`, `Curation notes`, OrgN, MycN, LitN, CurN) %>%
   mutate(`Contribution date` = as.character(`Contribution date`), `Curation date` = as.character(`Curation date`)) %>%
   replace(is.na(.), "NULL")
 

@@ -64,55 +64,12 @@ FOREIGN KEY(LID) REFERENCES Literature(LID),
 FOREIGN KEY(CID) REFERENCES Curation_Contribution(CID)
 );
 ''']
-#'load data local infile "../data/curation.tsv" into table Curation_Contribution ignore 1 lines (Con_name, Con_date, Cur_name, Cur_date, Cur_notes);',
-#'load data local infile "../data/mycotoxin.tsv" into table Mycotoxin ignore 1 lines (Name, Removal_mech, Enzymatic_or_not, Location);',
-#'load data local infile "../data/organism.tsv" into table Organism ignore 1 lines (Domain, Name, Pathogenicity, Respiration, Environment);',
-#'load data local infile "../data/literature.tsv" into table Literature ignore 1 lines (Context, Assay, Source, Link);'
 
 for q in queries:
 	try:
 	    cursor.execute(q)
 	except pymysql.Error as e:
 	    print(e)
-
-# cursor.execute("select OID from Organism;")
-# oids = cursor.fetchall()
-# cursor.execute("select Name from Organism;")
-# onames = cursor.fetchall()
-# cursor.execute("select MID from Mycotoxin;")
-# mids = cursor.fetchall()
-# cursor.execute("select Name from Mycotoxin;")
-# mnames = cursor.fetchall()
-# cursor.execute("select LID from Literature;")
-# lids = cursor.fetchall()
-# cursor.execute("select Link from Literature;")
-# lnames = cursor.fetchall()
-# cursor.execute("select CID from Curation_Contribution;")
-# cids = cursor.fetchall()
-# cursor.execute("select Con_name from Curation_Contribution;")
-# cnames = cursor.fetchall()
-#
-# organism_dict = {}
-# mycotoxin_dict = {}
-# lit_dict = {}
-#
-# for i, j in zip(onames, oids):
-#     if i[0] in organism_dict:
-#         organism_dict[i[0]].append(j[0])
-#     else:
-#         organism_dict[i[0]] = [j[0]]
-#
-# for i, j in zip(mnames, mids):
-#     if i[0] in mycotoxin_dict:
-#         mycotoxin_dict[i[0]].append(j[0])
-#     else:
-#         mycotoxin_dict[i[0]] = [j[0]]
-#
-# for i, j in zip(lnames, lids):
-#     if i[0] in lit_dict:
-#         lit_dict[i[0]].append(j[0])
-#     else:
-#         lit_dict[i[0]] = [j[0]]
 
 orgN = []
 mycN = []
