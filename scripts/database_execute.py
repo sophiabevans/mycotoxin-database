@@ -18,7 +18,7 @@ queries = ['DROP TABLE IF EXISTS Removal, Curation_Contribution, Organism, Mycot
 LID INTEGER NOT NULL AUTO_INCREMENT,
 Context VARCHAR(100),
 Assay VARCHAR(100),
-Source VARCHAR(500),
+Source VARCHAR(500) character set utf8,
 Link VARCHAR(100),
 PRIMARY KEY(LID)
 );
@@ -138,9 +138,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 lid = cursor.fetchall()[0][0]
-                print(lid)
                 lit_dict[N] = lid
-                print(lit_dict)
             except pymysql.Error as e:
                 print(e)
         if N in mycN:
@@ -150,9 +148,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 values ("{Mycotoxin}", "{Removal_mech}", "{Enzymatic}", "{Location}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 mid = cursor.fetchall()[0][0]
-                print(mid)
                 myc_dict[N] = mid
-                print(myc_dict)
             except pymysql.Error as e:
                 print(e)
         if N in orgN:
