@@ -77,7 +77,7 @@ mycN = []
 curconN = []
 litN = []
 
-with open("../data/N.txt", "r") as f:
+with open("../data/allN.txt", "r") as f:
     allN = list(f.readline().strip().split(" "))
 
 with open("../data/orgN.txt", "r") as f:
@@ -174,7 +174,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         try:
             cursor.execute(f'''
             insert into Removal (OID, MID, LID, CID)
-            values ({org_dict[N]}, {myc_dict[N]}, {lit_dict[N]}, {cur_dict[N]});''')
+            values ({org_dict[ON]}, {myc_dict[MN]}, {lit_dict[LN]}, {cur_dict[CN]});''')
         except pymysql.Error as e:
             print(e)
        	line = f.readline()
