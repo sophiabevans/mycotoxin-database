@@ -4,9 +4,9 @@ import pymysql
 # connecting Python to MySQL
 connection = pymysql.connect(
     host="bioed.bu.edu",
-    db="Group_M",
-    user="Group_M",
-    passwd="Group_M",
+    db="sbevans",
+    user="sbevans",
+    passwd="3d3np33d3n",
     port=4253,
     local_infile=True)
 
@@ -71,10 +71,14 @@ for q in queries:
 	except pymysql.Error as e:
 	    print(e)
 
+allN = []
 orgN = []
 mycN = []
 curconN = []
 litN = []
+
+with open("../data/N.txt", "r") as f:
+    allN = list(f.readline().strip().split(" "))
 
 with open("../data/orgN.txt", "r") as f:
     orgN = list(f.readline().strip().split(" "))
@@ -87,6 +91,11 @@ with open("../data/curconN.txt", "r") as f:
 
 with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
+
+org_dict = {}
+myc_dict = {}
+lit_dict = {}
+cur_dict = {}
 
 with open("../data/mycotoxinN.tsv", "r") as f:
     line = f.readline()  # skip header
@@ -113,6 +122,10 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         Curator = fields[17]
         Cur_date = fields[18]
         Cur_notes = fields[19]
+        ON = fields[20]
+        MN = fields[21]
+        LN = fields[22]
+        CN = fields [23]
 
         # print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
         # Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
@@ -123,7 +136,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute(f'''
                 insert into Literature (Context, Assay, Source, Link)
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
-                cursor.execute("set @lid = LAST_INSERT_ID();")
+                cursor.execute("select LAST_INSERT_ID();")
+                lid = cursor.fetchall()
+                lit_dict[N] = lid
             except pymysql.Error as e:
                 print(e)
         if N in mycN:
@@ -131,7 +146,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute(f'''
                 insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
                 values ("{Mycotoxin}", "{Removal_mech}", "{Enzymatic}", "{Location}");''')
-                cursor.execute("set @mid = LAST_INSERT_ID();")
+                cursor.execute("select LAST_INSERT_ID();")
+                mid = cursor.fetchall()
+                myc_dict[N] = mid
             except pymysql.Error as e:
                 print(e)
         if N in orgN:
@@ -139,7 +156,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute(f'''
                 insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
                 values ("{Domain}", "{Organism}", "{Pathogenicity}", "{Respiration}", "{Environment}");''')
-                cursor.execute("set @oid = LAST_INSERT_ID();")
+                cursor.execute("select LAST_INSERT_ID();")
+                oid = cursor.fetchall()
+                org_dict[N] = oid
             except pymysql.Error as e:
                 print(e)
         if N in curconN:
@@ -147,13 +166,15 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute(f'''
                 insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
                 values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}");''')
-                cursor.execute("set @cid = LAST_INSERT_ID();")
+                cursor.execute("select LAST_INSERT_ID();")
+                cid = cursor.fetchall()
+                cur_dict[N] = cid
             except pymysql.Error as e:
                 print(e)
         try:
             cursor.execute(f'''
             insert into Removal (OID, MID, LID, CID)
-            values (@oid, @mid, @lid, @cid);''')
+            values ({org_dict[N]}, {myc_dict[N]}, {lit_dict[N]}, {cur_dict[N]});''')
         except pymysql.Error as e:
             print(e)
        	line = f.readline()
