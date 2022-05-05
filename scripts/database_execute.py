@@ -150,7 +150,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 values ("{Mycotoxin}", "{Removal_mech}", "{Enzymatic}", "{Location}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 mid = cursor.fetchall()[0][0]
+                print(mid)
                 myc_dict[N] = mid
+                print(myc_dict)
             except pymysql.Error as e:
                 print(e)
         if N in orgN:
@@ -165,9 +167,14 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 print(e)
         if N in curconN:
             try:
-                cursor.execute(f'''
-                insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
-                values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}");''')
+                if Cont_date == "NULL" and Cur_date == "NULL":
+                    cursor.execute(f'''
+                    insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
+                    values ("{Contributor}", NULL, "{Curator}", NULL, "{Cur_notes}");''')
+                else:
+                    cursor.execute(f'''
+                    insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
+                    values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 cid = cursor.fetchall()[0][0]
                 cur_dict[N] = cid
