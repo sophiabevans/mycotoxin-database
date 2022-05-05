@@ -137,7 +137,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 insert into Literature (Context, Assay, Source, Link)
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
                 cursor.execute("select LAST_INSERT_ID();")
-                lid = cursor.fetchall()[0]
+                lid = cursor.fetchall()[0][0]
                 print(lid)
                 lit_dict[N] = lid
                 print(lit_dict)
@@ -149,7 +149,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
                 values ("{Mycotoxin}", "{Removal_mech}", "{Enzymatic}", "{Location}");''')
                 cursor.execute("select LAST_INSERT_ID();")
-                mid = cursor.fetchall()
+                mid = cursor.fetchall()[0][0]
                 myc_dict[N] = mid
             except pymysql.Error as e:
                 print(e)
@@ -159,7 +159,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
                 values ("{Domain}", "{Organism}", "{Pathogenicity}", "{Respiration}", "{Environment}");''')
                 cursor.execute("select LAST_INSERT_ID();")
-                oid = cursor.fetchall()
+                oid = cursor.fetchall()[0][0]
                 org_dict[N] = oid
             except pymysql.Error as e:
                 print(e)
@@ -169,7 +169,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
                 values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}");''')
                 cursor.execute("select LAST_INSERT_ID();")
-                cid = cursor.fetchall()
+                cid = cursor.fetchall()[0][0]
                 cur_dict[N] = cid
             except pymysql.Error as e:
                 print(e)
