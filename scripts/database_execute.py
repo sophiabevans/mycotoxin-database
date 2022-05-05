@@ -138,7 +138,9 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 lid = cursor.fetchall()
+                print(lid)
                 lit_dict[N] = lid
+                print(lit_dict)
             except pymysql.Error as e:
                 print(e)
         if N in mycN:
