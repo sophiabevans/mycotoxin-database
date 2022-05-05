@@ -49,7 +49,7 @@ Con_name VARCHAR(30),
 Con_date DATE,
 Cur_name VARCHAR(30),
 Cur_date DATE,
-Cur_notes VARCHAR(500),
+Cur_notes VARCHAR(500) character set utf8,
 PRIMARY KEY(CID)
 );''',
 '''CREATE TABLE Removal (
