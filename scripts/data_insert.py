@@ -24,7 +24,6 @@ print("Content-type: text/html\n")
 
 if (form):
       link = form.getvalue("link", "")
-      success = (link != "")
       # cite = form.getvalue("cite", "")
       # context = form.getvalue("context", "")
       # assay = form.getvalue("assay", "")
@@ -55,8 +54,8 @@ if (form):
       #     if e != "":
       #         env += f"{e};"
 
-      #if link != "": #and org_name != "" and myc_name != "":
-        #  pass
+      if link != "": #and org_name != "" and myc_name != "":
+          pass
           # try:
           #     cursor.execute(f'''
           #     insert into Literature (Context, Assay, Source, Link)
@@ -96,8 +95,8 @@ if (form):
           # except pymysql.Error as e:
           #     print(e)
           #     success = False
-      #else:
-          #success = False
+      else:
+          success = False
 
 if success:
      results = f"Entry into database successful! entered: {link}"
