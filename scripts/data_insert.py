@@ -15,6 +15,8 @@ try:
       password='3d3np33d3n',
       db='sbevans',
       port=4253)
+  cursor = connection.cursor()
+
 except pymysql.Error as e:
   print(e)
 
