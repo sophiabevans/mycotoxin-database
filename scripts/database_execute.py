@@ -79,19 +79,21 @@ curconN = []
 litN = []
 
 with open("../data/allN.txt", "r") as f:
-    allN = list(f.readlines().strip().split(" "))
+    allN = list(f.readline().strip().split(" "))
 
 with open("../data/orgN.txt", "r") as f:
-    orgN = list(f.readlines().strip().split(" "))
+    orgN = list(f.readline().strip().split(" "))
 
 with open("../data/mycN.txt", "r") as f:
-    mycN = list(f.readlines().strip().split(" "))
+    mycN = list(f.readline().strip().split(" "))
 
 with open("../data/curconN.txt", "r") as f:
-    curconN = list(f.readlines().strip().split(" "))
+    curconN = list(f.readline().strip().split(" "))
 
 with open("../data/litN.txt", "r") as f:
-    litN = list(f.readlines().strip().split(" "))
+    litN = list(f.readline().strip().split(" "))
+
+print(litN)
 
 org_dict = {}
 myc_dict = {}
