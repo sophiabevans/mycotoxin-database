@@ -17,7 +17,7 @@ queries = ['DROP TABLE IF EXISTS Removal, Curation_Contribution, Organism, Mycot
 '''CREATE TABLE Literature (
 LID INTEGER NOT NULL AUTO_INCREMENT,
 Context VARCHAR(100),
-Assay VARCHAR(100),
+Assay VARCHAR(100) character set utf8,
 Source VARCHAR(500) character set utf8,
 Link VARCHAR(100),
 PRIMARY KEY(LID)
