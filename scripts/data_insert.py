@@ -8,6 +8,16 @@ cgitb.enable()
 form = cgi.FieldStorage()
 success = True
 
+try:
+  connection = pymysql.connect(
+      host='bioed.bu.edu',
+      user="sbevans",
+      password='3d3np33d3n',
+      db='sbevans',
+      port=4253)
+except pymysql.Error as e:
+  print(e)
+
 #next line is always required as first part of http output
 print("Content-type: text/html\n")
 
@@ -44,15 +54,6 @@ if (form):
               env += f"{e};"
 
       if link != "" and org_name != "" and myc_name != "":
-          try:
-              connection = pymysql.connect(
-                  host='bioed.bu.edu',
-                  user="sbevans",
-                  password='3d3np33d3n',
-                  db='sbevans',
-                  port=4253)
-          except pymysql.Error as e:
-              print(e)
           try:
               cursor.execute(f'''
               insert into Literature (Context, Assay, Source, Link)
