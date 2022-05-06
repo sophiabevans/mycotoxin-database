@@ -5,7 +5,7 @@ import cgitb
 import json
 
 cgitb.enable()
-form = cgi.FieldStorage()
+form = cgi.FieldStorage(keep_blank_values=True)
 success = True
 
 try:
