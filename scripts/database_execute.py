@@ -50,6 +50,7 @@ Con_date DATE,
 Cur_name VARCHAR(30),
 Cur_date DATE,
 Cur_notes VARCHAR(500) character set utf8,
+Additional_info VARCHAR(500) character set utf8,
 PRIMARY KEY(CID)
 );''',
 '''CREATE TABLE Removal (
@@ -141,6 +142,8 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 lid = cursor.fetchall()[0][0]
                 lit_dict[N] = lid
+                print("lit_dict:", lit_dict, "\n")
+
             except pymysql.Error as e:
                 print(e)
         if N in mycN:
@@ -151,6 +154,8 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 mid = cursor.fetchall()[0][0]
                 myc_dict[N] = mid
+                print("myc_dict", myc_dict, "\n")
+
             except pymysql.Error as e:
                 print(e)
         if N in orgN:
@@ -161,6 +166,8 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 oid = cursor.fetchall()[0][0]
                 org_dict[N] = oid
+                print("org_dict", org_dict, "\n")
+
             except pymysql.Error as e:
                 print(e)
         if N in curconN:
@@ -171,14 +178,15 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                     values ("{Contributor}", NULL, "{Curator}", NULL, "{Cur_notes}");''')
                 else:
                     cursor.execute(f'''
-                    insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
-                    values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}");''')
+                    insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
+                    values ("{Contributor}", "{Cont_date}", "{Curator}", "{Cur_date}", "{Cur_notes}", "{Add_info}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 cid = cursor.fetchall()[0][0]
                 cur_dict[N] = cid
+                print("cur_dict:", cur_dict, "\n")
             except pymysql.Error as e:
                 print(e)
-        print(org_dict, "\n", myc_dict, "\n",lit_dict, "\n",cur_dict, "\n")
+
         try:
             cursor.execute(f'''
             insert into Removal (OID, MID, LID, CID)
@@ -186,6 +194,10 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         except pymysql.Error as e:
             print(e)
        	line = f.readline()
+
+#replace null strings with null values
+cursor.execute("UPDATE Curation_Contribution SET Cur_notes=NULL WHERE Cur_notes=0")
+cursor.execute("UPDATE Curation_Contribution SET Additional_info=NULL WHERE Additional_info=0")
 
 #commit changes
 connection.commit()
