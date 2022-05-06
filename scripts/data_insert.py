@@ -21,6 +21,7 @@ if (form):
       cur_date = form.getvalue("cur_date", "")
       con_name = form.getvalue("con_name", "")
       con_date = form.getvalue("con_date", "")
+      ad_info = form.getvalue("ad_info", "")
       org_name = form.getvalue("org_name", "")
       input_domain = form.getvalue("input_domain", "")
       input_path = form.getvalue("input_path", "")
@@ -78,8 +79,8 @@ if (form):
               success = False
           try:
               cursor.execute(f'''
-              insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes)
-              values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}");''')
+              insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
+              values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
               cursor.execute("set @cid = LAST_INSERT_ID();")
           except pymysql.Error as e:
               print(e)
