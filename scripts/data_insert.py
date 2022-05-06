@@ -92,6 +92,9 @@ if (form):
           except pymysql.Error as e:
               print(e)
               success = False
+      else:
+          success = False
+
 
 if success:
     results = "Entry into database successful!"
