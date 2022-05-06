@@ -99,7 +99,7 @@ if (form):
       #else:
           #success = False
 
- if success:
+if success:
      results = f"Entry into database successful! entered: {link}"
      #connection.commit()
 else:
