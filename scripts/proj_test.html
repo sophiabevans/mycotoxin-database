@@ -97,7 +97,7 @@
 
       $(document).ready(function() {
         $("#submit_input").click(function() {
-          $("#insert_success").clear()
+          $("#insert_success").empty()
           $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
             {link:$("#lit_link").val()},
             function(data){

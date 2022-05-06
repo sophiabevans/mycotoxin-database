@@ -100,11 +100,11 @@ if (form):
 
 
 if success:
-    results = "Entry into database successful!"
+    results = f"Entry into database successful! entered: {link}"
     #connection.commit()
 
 else:
-    results = "Your data insertion was unsuccessful."
+    results = f"Your data insertion was unsuccessful. entered: {link}"
 
 #close cursor and connection
 cursor.close()
