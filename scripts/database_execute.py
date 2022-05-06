@@ -178,13 +178,13 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cur_dict[N] = cid
             except pymysql.Error as e:
                 print(e)
+        print(org_dict, myc_dict, lit_dict, cur_dict)
         try:
             cursor.execute(f'''
             insert into Removal (OID, MID, LID, CID)
             values ({org_dict[ON]}, {myc_dict[MN]}, {lit_dict[LN]}, {cur_dict[CN]});''')
         except pymysql.Error as e:
             print(e)
-            print(org_dict, myc_dict, lit_dict, cur_dict)
        	line = f.readline()
 
 #commit changes
