@@ -19,43 +19,43 @@ except pymysql.Error as e:
     print(e)
 cursor = connection.cursor()
 
-#next line is always required as first part of http output
+# next line is always required as first part of http output
 print("Content-type: text/html\n")
 
 if (form):
-      link = form.getvalue("link", "")
-      cite = form.getvalue("cite", "")
-      context = form.getvalue("context", "")
-      assay = form.getvalue("assay", "")
-      curator = form.getvalue("curator", "")
-      cur_notes = form.getvalue("cur_notes", "")
-      cur_date = form.getvalue("cur_date", "")
-      con_name = form.getvalue("con_name", "")
-      con_date = form.getvalue("con_date", "")
-      ad_info = form.getvalue("ad_info", "")
-      org_name = form.getvalue("org_name", "")
-      input_domain = form.getvalue("input_domain", "")
-      input_path = form.getvalue("input_path", "")
-      input_aeran = form.getvalue("input_aeran", "")
-      #input_env = form.getlist("input_env", "")
-      # env_hum = form.getvalue("env_hum", "")
-      # env_anim = form.getvalue("env_anim", "")
-      # env_plant = form.getvalue("env_plant", "")
-      # env_soil = form.getvalue("env_soil", "")
-      # env_water = form.getvalue("env_water", "")
-      # env_food = form.getvalue("env_food", "")
-      # env_other = form.getvalue("env_other", "")
-      myc_name= form.getvalue("myc_name", "")
-      removal = form.getvalue("removal", "")
-      enzymatic = form.getvalue("enzymatic", "")
-      loc = form.getvalue("loc", "")
-      #
-      # env = ""
-      # for e in [env_anim, env_food, env_hum, env_other, env_plant, env_soil, env_water]:
-      #     if e != "":
-      #         env += f"{e};"
+    link = form.getvalue("link", "")
+    cite = form.getvalue("cite", "")
+    context = form.getvalue("context", "")
+    assay = form.getvalue("assay", "")
+    curator = form.getvalue("curator", "")
+    cur_notes = form.getvalue("cur_notes", "")
+    cur_date = form.getvalue("cur_date", "")
+    con_name = form.getvalue("con_name", "")
+    con_date = form.getvalue("con_date", "")
+    ad_info = form.getvalue("ad_info", "")
+    org_name = form.getvalue("org_name", "")
+    input_domain = form.getvalue("input_domain", "")
+    input_path = form.getvalue("input_path", "")
+    input_aeran = form.getvalue("input_aeran", "")
+    #input_env = form.getlist("input_env", "")
+    # env_hum = form.getvalue("env_hum", "")
+    # env_anim = form.getvalue("env_anim", "")
+    # env_plant = form.getvalue("env_plant", "")
+    # env_soil = form.getvalue("env_soil", "")
+    # env_water = form.getvalue("env_water", "")
+    # env_food = form.getvalue("env_food", "")
+    # env_other = form.getvalue("env_other", "")
+    myc_name = form.getvalue("myc_name", "")
+    removal = form.getvalue("removal", "")
+    enzymatic = form.getvalue("enzymatic", "")
+    loc = form.getvalue("loc", "")
+     #
+     # env = ""
+     # for e in [env_anim, env_food, env_hum, env_other, env_plant, env_soil, env_water]:
+     #     if e != "":
+     #         env += f"{e};"
 
-      if link != "": #and org_name != "" and myc_name != "":
+     if link != "":  # and org_name != "" and myc_name != "":
           pass
           # try:
           #     cursor.execute(f'''
@@ -100,10 +100,10 @@ if (form):
           success = False
 
 if success:
-     results = f"Your data insertion was successful! {input_env}"
-     #connection.commit()
+    results = f"Your data insertion was successful! {input_env}"
+    #connection.commit()
 else:
-     results = f"Your data insertion was unsuccessful. {input_env}"
+    results = f"Your data insertion was unsuccessful. {input_env}"
 
 #close cursor and connection
 cursor.close()
