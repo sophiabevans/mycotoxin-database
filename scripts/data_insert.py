@@ -6,7 +6,7 @@ import json
 
 cgitb.enable()
 form = cgi.FieldStorage()
-success = True
+success = False
 
 try:
   connection = pymysql.connect(
