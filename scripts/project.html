@@ -346,7 +346,8 @@
 		<br>
 
 		<button id="submit_input">Submit Data Input</button><br><br>
-    
+
+    <div id="insert_success"></div>
     <script>
 
  $(document).ready(function() {
@@ -374,7 +375,11 @@
 
  function input_success (data) {
    if (data != "") {
+     $("#insert_success").append(data)
      return true;
+   }
+   else {
+     $("#insert_success").append("Your data insertion was unsuccessful.")
    }
    return false;
  }
