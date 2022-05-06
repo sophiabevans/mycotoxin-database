@@ -4,9 +4,9 @@ import pymysql
 # connecting Python to MySQL
 connection = pymysql.connect(
     host="bioed.bu.edu",
-    db="sbevans",
-    user="sbevans",
-    passwd="3d3np33d3n",
+    db="Group_M",
+    user="Group_M",
+    passwd="Group_M",
     port=4253,
     local_infile=True)
 
