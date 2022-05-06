@@ -54,8 +54,8 @@ if (form):
       #     if e != "":
       #         env += f"{e};"
 
-      if link != "": #and org_name != "" and myc_name != "":
-          pass
+      #if link != "": #and org_name != "" and myc_name != "":
+          #pass
           # try:
           #     cursor.execute(f'''
           #     insert into Literature (Context, Assay, Source, Link)
@@ -95,15 +95,15 @@ if (form):
           # except pymysql.Error as e:
           #     print(e)
           #     success = False
-      else:
-          success = False
+      #else:
+        #  success = False
 
-
-if success:
-    results = f"Entry into database successful! entered: {link}"
-    #connection.commit()
-if not success:
-    results = f"Your data insertion was unsuccessful. entered: {link}"
+results = f'you entered: [{link}], link == "": [{link == ""}]'
+# if success:
+#     results = f"Entry into database successful! entered: {link}"
+#     #connection.commit()
+# if not success:
+#     results = f"Your data insertion was unsuccessful. entered: {link}"
 
 #close cursor and connection
 cursor.close()
