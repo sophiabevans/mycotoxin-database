@@ -234,7 +234,7 @@
 					let miRNA_seq_input = $("#miRNA_seq").val();
 					//if data is returned from the AJAX call, build a new table
 					if (data != "") {
-						data = JSON.parse(data)
+						data = JSON.parse(data);
 						//loop through rows of the data
 						for (let row = 0; row < data.length; row++) {
 							//miRNA name is the first element of each row
