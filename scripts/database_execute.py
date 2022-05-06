@@ -93,8 +93,6 @@ with open("../data/curconN.txt", "r") as f:
 with open("../data/litN.txt", "r") as f:
     litN = list(f.readline().strip().split(" "))
 
-print(litN)
-
 org_dict = {}
 myc_dict = {}
 lit_dict = {}
