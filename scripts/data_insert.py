@@ -102,7 +102,11 @@ if (form):
 if success:
     results = "Entry into database successful!"
     connection.commit()
-    #close cursor and connection
+
+else:
+    results = "Your data insertion was unsuccessful."
+
+#close cursor and connection
 cursor.close()
 connection.close()
 print(json.dumps(results))
