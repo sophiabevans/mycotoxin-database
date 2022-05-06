@@ -102,7 +102,6 @@ if (form):
 if success:
     results = f"Entry into database successful! entered: {link}"
     #connection.commit()
-
 else:
     results = f"Your data insertion was unsuccessful. entered: {link}"
 
