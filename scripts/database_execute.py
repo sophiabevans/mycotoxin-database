@@ -127,6 +127,8 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         LN = fields[22]
         CN = fields [23]
 
+        print(f"ON: {ON}, MN: {MN}, LN: {LN}, CN: {CN}")
+
         # print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
         # Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
         # Source, Link, Add_info, Contributor, Cont_date, Curator, Cur_date, Cur_notes)
@@ -138,7 +140,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 values ("{Char_con}", "{Char_assay}", "{Source}", "{Link}");''')
                 cursor.execute("select LAST_INSERT_ID();")
                 lid = cursor.fetchall()[0][0]
-                print(lid)
                 lit_dict[N] = lid
             except pymysql.Error as e:
                 print(e)
@@ -150,7 +151,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 mid = cursor.fetchall()[0][0]
                 myc_dict[N] = mid
-                print(mid)
             except pymysql.Error as e:
                 print(e)
         if N in orgN:
@@ -161,7 +161,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 oid = cursor.fetchall()[0][0]
                 org_dict[N] = oid
-                print(oid)
             except pymysql.Error as e:
                 print(e)
         if N in curconN:
@@ -177,7 +176,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 cid = cursor.fetchall()[0][0]
                 cur_dict[N] = cid
-                print(cid)
             except pymysql.Error as e:
                 print(e)
         try:
