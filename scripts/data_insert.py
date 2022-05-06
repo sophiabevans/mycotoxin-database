@@ -34,25 +34,25 @@ if (form):
       con_date = form.getvalue("con_date", "")
       ad_info = form.getvalue("ad_info", "")
       org_name = form.getvalue("org_name", "")
-      # input_domain = form.getvalue("input_domain", "")
-      # input_path = form.getvalue("input_path", "")
-      # input_aeran = form.getvalue("input_aeran", "")
-      # env_hum = form.getvalue("env_hum", "")
-      # env_anim = form.getvalue("env_anim", "")
-      # env_plant = form.getvalue("env_plant", "")
-      # env_soil = form.getvalue("env_soil", "")
-      # env_water = form.getvalue("env_water", "")
-      # env_food = form.getvalue("env_food", "")
-      # env_other = form.getvalue("env_other", "")
-      # myc_name= form.getvalue("myc_name", "")
-      # removal = form.getvalue("removal", "")
-      # enzymatic = form.getvalue("enzymatic", "")
-      # loc = form.getvalue("loc", "")
-      #
-      # env = ""
-      # for e in [env_anim, env_food, env_hum, env_other, env_plant, env_soil, env_water]:
-      #     if e != "":
-      #         env += f"{e};"
+      input_domain = form.getvalue("input_domain", "")
+      input_path = form.getvalue("input_path", "")
+      input_aeran = form.getvalue("input_aeran", "")
+      env_hum = form.getvalue("env_hum", "")
+      env_anim = form.getvalue("env_anim", "")
+      env_plant = form.getvalue("env_plant", "")
+      env_soil = form.getvalue("env_soil", "")
+      env_water = form.getvalue("env_water", "")
+      env_food = form.getvalue("env_food", "")
+      env_other = form.getvalue("env_other", "")
+      myc_name= form.getvalue("myc_name", "")
+      removal = form.getvalue("removal", "")
+      enzymatic = form.getvalue("enzymatic", "")
+      loc = form.getvalue("loc", "")
+
+      env = ""
+      for e in [env_anim, env_food, env_hum, env_other, env_plant, env_soil, env_water]:
+          if e != "":
+              env += f"{e};"
 
       if link != "": #and org_name != "" and myc_name != "":
           pass
