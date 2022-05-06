@@ -349,7 +349,6 @@
 
       $(document).ready(function() {
         $("#submit_input").click(function() {
-          $("#insert_success").clear()
           $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
             {link:$("#lit_link").val(), cite:$("#lit_cite").val(),
             context:$("#char_con").val(), assay:$("#char_assay").val(),
