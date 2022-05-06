@@ -380,7 +380,160 @@
 	</div>
 
 	<div id="Demographic_breakdown" class="tabcontent">
-		<h3>maps!</h3>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+	<body>
+		<h1>Breakdown of Organisms and Mycotoxin Removal Mechanisms in MMRB.</h1><br><br>
+		<h2><i><u>Removal Mechanism Distribution</u></i></h2>
+
+		<div id="chart"></div>
+			<hr>
+			<h2><i><u>Domain Distribution</u></i></h2>
+		<div id="domain"></div>
+			<hr>
+			<h2><i><u>Respiration Distribution</u></i></h2>
+		<div id="respiration"></div>
+			<hr>
+		<script>
+        $(document).ready(function(){
+            
+			counts_pie();
+			domains_pie();
+			resp_pie();
+		});
+
+		function counts_pie() {
+				//let miRNA = $("#miRNA").val(); //taking input of miRNA name for histogram
+				$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+					{selector:"chart"}, //selector variable
+					function(data) {
+						pass_data(data);
+					},
+					"json"
+				);
+			}
+
+		function domains_pie() {				
+			$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+				{selector:"domain"}, //selector variable
+				function(data) {
+					pass_domain_data(data);
+				},
+				"json"
+			);
+		}
+
+		function resp_pie() {				
+			$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+				{selector:"respiration"}, //selector variable
+				function(data) {
+					pass_resp_data(data);
+				},
+				"json"
+			);
+		}
+					
+		function pass_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawChart(data);
+			});
+		}
+
+		function pass_domain_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawDomainChart(data);
+			});
+		}
+
+		function pass_resp_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawRespChart(data);
+			});
+		}
+
+		function drawChart(data) {
+			//data.unshift(["miRNA"]);
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'mechanism');
+			chart_data.addColumn('number', 'count');
+			
+			let mech = "";
+			let count = "";
+			
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				mech = data[row][0];
+				count = data[row][1];
+				row_contents.push([mech,count]); 
+			}
+			
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each of the removal mechanism for various toxins', 'width': 1200, 'height': 500};
+			var chart = new google.visualization.PieChart(document.getElementById('chart'));
+			chart.draw(chart_data, options);
+
+		}
+
+		function drawDomainChart(data) {
+				
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'Domain');
+			chart_data.addColumn('number', 'count');
+			
+			let dom = "";
+			let count = "";
+			
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				dom = data[row][0];
+				count = data[row][1];
+				row_contents.push([dom,count]); 
+			}
+			
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each domain for various mycotoxins', 'width': 1200, 'height': 500};
+			var chart = new google.visualization.PieChart(document.getElementById('domain'));
+			chart.draw(chart_data, options);
+		}
+
+		function drawRespChart(data) {
+				
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'Respiration');
+			chart_data.addColumn('number', 'count');
+			
+			let resp = "";
+			let count = "";
+			
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				resp = data[row][0];
+				count = data[row][1];
+				row_contents.push([resp,count]); 
+			}
+			
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each of the respiration types', 'width': 1200, 'height': 500};
+			var chart = new google.visualization.PieChart(document.getElementById('respiration'));
+			chart.draw(chart_data, options);
+		}	
+
+
+				
+		</script>
+
+	</body>
 	</div>
 
 	<div id="About" class="tabcontent">
