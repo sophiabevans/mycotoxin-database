@@ -100,10 +100,10 @@ if (form):
         success = False
 
 if success:
-    results = f"Your data insertion was successful! path:[{input_path}]"
+    results = "Your data insertion was successful!"
     # connection.commit()
 else:
-    results = f"Your data insertion was unsuccessful. path:[{input_path}]"
+    results = "Your data insertion was unsuccessful"
 
 # close cursor and connection
 cursor.close()

@@ -10,15 +10,76 @@
 		<h1>Data Insertion!</h1>
 		<h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database.</h3>
 		<h3>Please, *double check* the accuracy of all data entered into the input fields below! Typos could prevent your data from being found in future searches.</h3>
-    Literature Link: <input type="text" id="lit_link">
 
+		Literature Link: <input type="text" id="lit_link">
 		<br>
 		Literature Citation: <input type="text" id="lit_cite">
 		<br>
 		Characterization Context: <input type="text" id="char_con">
 		<br>
 		Characterization Assay: <input type="text" id="char_assay">
+		<br><br>
+
+		Organism Name: <input type="text" id="org_name">
 		<br>
+		Organism Domain:
+		<select id="input_domain" name="input_domain">
+			<option value="" selected disabled hidden>Select Domain</option>
+			<option value="Eukarya">Eukarya</option>
+			<option value="Bacteria">Bacteria</option>
+			<option value="Archaea">Archaea</option>
+		</select><br>
+		Organism Pathogenicity:
+		<select id="input_path" name="input_path">
+			<option value="" selected disabled hidden>Select Pathogenicity</option>
+			<option value="Pathogenic">Pathogenic</option>
+			<option value="Non-Pathogenic">Non-Pathogenic</option>
+			<option value="Opportunistic">Opportunistic</option>
+		</select><br>
+		Organism Respiration Type:
+		<select id="input_aeran" name="input_aeran">
+			<option value="" selected disabled hidden>Select Respiration</option>
+			<option value="Aerobic">Aerobic</option>
+			<option value="Anaerobic">Anaerobic</option>
+			<option value="Facultative">Facultative</option>
+		</select><br>
+		Organism Environment:
+		<input type="checkbox" name="env" id="human" value="Human"> Human
+		<input type="checkbox" name="env" id="animal" value="Animal"> Soil
+		<input type="checkbox" name="env" id="food" value="Food"> Food
+		<input type="checkbox" name="env" id="plants" value="Plants"> Plants
+		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
+		<input type="checkbox" name="env" id="water" value="Water"> Water
+		<input type="checkbox" name="env" id="other" value="Other"> Other
+		<br><br>
+
+		Mycotoxin Name: <input type="text" id="myc_name">
+		<br>
+		Mycotoxin Removal Mechanism:
+		<select id = "input_removal" name = "input_removal">
+			<option value="" selected disabled hidden>Select Removal</option>
+			<option value = "Biotransformation">Biotransformation</option>
+			<option value = "Regulation">Regulation</option>
+			<option value = "Adsorption">Adsorption</option>
+			<option value = "Absorption">Absorption</option>
+			<option value = "Biodegredation">Biodegradation</option>
+		</select><br>
+
+		Enzymatic Removal?:
+		<select id = "input_enz" name = "input_enz">
+			<option value="" selected disabled hidden>Select Enzymatic</option>
+			<option id = "yes_enz" value = "Yes">Yes</option>
+			<option id = "no_enz" value = "No">No</option>
+		</select><br>
+
+		Location:
+		<select id="input_loc" name="input_loc">
+			<option value="" selected disabled hidden>Select Location</option>
+			<option value="Intracellular">Intracellular</option>
+			<option value="Extracellular">Extracellular</option>
+			<option value="Unknown">Unknown</option>
+		</select><br><br>
+
 		Curator Name: <input type="text" id="cur_name">
 		<br>
 		Curation Date: <input type="date" id="cur_date">
@@ -29,67 +90,7 @@
 		<br>
 		Contributaion Date: <input type="date" id="con_date">
 		<br>
-    Additional Info: <input type="text" id="ad_info">
-    <br>
-		Organism Name: <input type="text" id="org_name">
-		<br>
-
-		Organism Domain:
-		<select id="input_domain" name="input_domain">
-			<option value="eukarya">Eukarya</option>
-			<option value="bacteria">Bacteria</option>
-			<option value="archaea">Archaea</option>
-		</select><br>
-
-		Organism Pathogenicity:
-		<select id="input_path" name="input_path">
-			<option value="pathogenic">Pathogenic</option>
-			<option value="non-path">Non-Pathogenic</option>
-			<option value="opportunistic">Opportunistic</option>
-		</select><br>
-
-		Organism Respiration Type:
-		<select id="input_aeran" name="input_aeran">
-			<option value="aerobic">Aerobic</option>
-			<option value="anaerobic">Anaerobic</option>
-			<option value="facultative">Facultative</option>
-		</select><br>
-	<!--
-		Organism Environment:
-		<input type="checkbox" name="env" id="human" value="Human"> Human
-		<input type="checkbox" name="env" id="animal" value="Animal"> Soil
-		<input type="checkbox" name="env" id="food" value="Food"> Food
-		<input type="checkbox" name="env" id="plants" value="Plants"> Plants
-		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
-		<input type="checkbox" name="env" id="water" value="Water"> Water
-		<input type="checkbox" name="env" id="other" value="Other"> Other
-		<br>
-	-->
-
-		Mycotoxin Name: <input type="text" id="myc_name">
-		<br>
-
-		Mycotoxin Removal Mechanism:
-		<select id = "input_removal" name = "input_removal">
-			<option id = "biotransformation_insert" value = "biotransformation">Biotransformation</option>
-			<option id = "regulation_insert" value = "Regulation">Regulation</option>
-			<option id = "adsorption_insert" value = "Adsorption">Adsorption</option>
-			<option id = "absorption_insert" value = "Absorption">Absorption</option>
-			<option id = "biodegredation_insert" value = "Biodegredation">Biodegradation</option>
-		</select><br>
-
-		Enzymatic Removal?:
-		<select id = "input_enz" name = "input_enz">
-			<option id = "yes_enz" value = "Yes">Yes</option>
-			<option id = "no_enz" value = "No">No</option>
-		</select><br>
-
-		Location:
-		<select id="input_loc" name="input_loc">
-			<option id="intracellular" value="intracellular">Intracellular</option>
-			<option id="extracellular" value="extracellular">Extracellular</option>
-			<option id="unknown" value="unknown">Unknown</option>
-		</select><br>
+		Additional Info: <input type="text" id="ad_info">
 		<br>
 
 		<button id="submit_input">Submit Data Input</button><br><br>
@@ -99,29 +100,60 @@
 
       $(document).ready(function() {
         $("#submit_input").click(function() {
-          $("#insert_success").empty()
-          $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
-            {link:$("#lit_link").val(), cite:$("#lit_cite").val(),
-						context:$("#char_con").val(), assay:$("#char_assay").val(),
-						curator:$("#cur_name").val(), cur_notes:$("#cur_notes").val(),
-						con_name:$("#con_name").val(), ad_info:$("#ad_info").val(),
-						org_name:$("#org_name").val(), cur_date:$("#cur_date").val(),
-						con_date:$("#con_date").val(), input_domain:$("#input_domain").val(),
-						input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
-						myc_name:$("#myc_name").(), removal:$("#input_removal").val(),
-						enzymatic:$("#input_enz").val(),loc:$("#input_loc").val()
-					},
-            function(data){
-              input_success(data);
-            },
-            "json"
-          );
+          $("#insert_success").empty();
+					let cite=$("#lit_cite").val();
+					let org_name=$("#org_name").val();
+					let myc_name=$("#myc_name").val();
+					let curator=$("#cur_name").val();
+					let removal=$("#input_removal").val();
+					if (checkInput(cite, org_name, myc_name, curator, removal)) {
+		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
+		          {link:$("#lit_link").val(), cite:cite,
+							context:$("#char_con").val(), assay:$("#char_assay").val(),
+							curator:curator, cur_date:$("#cur_date").val(),
+							cur_notes:$("#cur_notes").val(), con_name:$("#con_name").val(),
+							con_date:$("#con_date").val(), ad_info:$("#ad_info").val(),
+							org_name:org_name, input_domain:$("#input_domain").val(),
+							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
+							myc_name:myc_name, removal:removal,
+							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val()},
+		          function(data){
+		            input_success(data);
+		          },
+		          "json"
+		        );
+					}
         });
       });
 
       function input_success(data){
         $("#insert_success").append(data);
       }
+
+			function checkInput(cite, org_name, myc_name, curator, removal) {
+				if (cite == "") {
+					alert("You did not enter a citation");
+					return false;
+				}
+				else if (org_name == "") {
+					alert("You did not enter an organism name");
+					return false;
+				}
+				else if (myc_name == "") {
+					alert("You did not enter a mycotoxin name");
+					return false;
+				}
+				else if (curator == "") {
+					alert("You did not enter the curator name");
+					return false;
+				}
+				else if (removal == "") {
+					alert("You did not enter the removal mechanism")
+					return false;
+				}
+				return true;
+			}
+
     </script>
 	</div>
 </body>
