@@ -11,7 +11,7 @@
 		<h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database.</h3>
 		<h3>Please, *double check* the accuracy of all data entered into the input fields below! Typos could prevent your data from being found in future searches.</h3>
     Literature Link: <input type="text" id="lit_link">
-		<!--
+
 		<br>
 		Literature Citation: <input type="text" id="lit_cite">
 		<br>
@@ -33,6 +33,7 @@
     <br>
 		Organism Name: <input type="text" id="org_name">
 		<br>
+		<!--
 		Organism Domain:
 		<select id="input_domain" name="input_domain">
 			<option value="eukarya">Eukarya</option>
@@ -99,7 +100,12 @@
         $("#submit_input").click(function() {
           $("#insert_success").empty()
           $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
-            {link:$("#lit_link").val()},
+            {link:$("#lit_link", cite:$("#lit_cite").val(),
+						context:$("#char_con").val(), assay:$("#char_assay").val(),
+						curator:$("#cur_name").val(), cur_notes:$("#cur_notes").val(),
+						cur_date:$("#cur_date").val(), con_name:$("#con_name").val(),
+						con_date:$("#con_date").val(), ad_info:$("#ad_info").val()
+						org_name:$("#org_name").val()).val()},
             function(data){
               input_success(data);
             },

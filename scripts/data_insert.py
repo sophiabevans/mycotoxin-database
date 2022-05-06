@@ -24,16 +24,16 @@ print("Content-type: text/html\n")
 
 if (form):
       link = form.getvalue("link", "")
-      # cite = form.getvalue("cite", "")
-      # context = form.getvalue("context", "")
-      # assay = form.getvalue("assay", "")
-      # curator = form.getvalue("curator", "")
-      # cur_notes = form.getvalue("cur_notes", "")
-      # cur_date = form.getvalue("cur_date", "")
-      # con_name = form.getvalue("con_name", "")
-      # con_date = form.getvalue("con_date", "")
-      # ad_info = form.getvalue("ad_info", "")
-      # org_name = form.getvalue("org_name", "")
+      cite = form.getvalue("cite", "")
+      context = form.getvalue("context", "")
+      assay = form.getvalue("assay", "")
+      curator = form.getvalue("curator", "")
+      cur_notes = form.getvalue("cur_notes", "")
+      cur_date = form.getvalue("cur_date", "")
+      con_name = form.getvalue("con_name", "")
+      con_date = form.getvalue("con_date", "")
+      ad_info = form.getvalue("ad_info", "")
+      org_name = form.getvalue("org_name", "")
       # input_domain = form.getvalue("input_domain", "")
       # input_path = form.getvalue("input_path", "")
       # input_aeran = form.getvalue("input_aeran", "")
@@ -99,10 +99,10 @@ if (form):
           success = False
 
 if success:
-     results = f"Entry into database successful! entered: {link}"
+     results = f"Your data insertion was successful!"
      #connection.commit()
 else:
-     results = f"Your data insertion was unsuccessful. entered: {link}"
+     results = f"Your data insertion was unsuccessful."
 
 #close cursor and connection
 cursor.close()
