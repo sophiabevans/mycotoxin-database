@@ -94,7 +94,7 @@ if (form):
               success = False
 
 if success:
-    return "Entry into database successful!"
+    results = "Entry into database successful!"
     connection.commit()
     #close cursor and connection
 cursor.close()
