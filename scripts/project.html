@@ -69,7 +69,7 @@
 		#Help {background-color: white;}
 		#Demographic_breakdown {background-color: white;}
 	</style>
-
+<!--
 	<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
 	<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
 	<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
@@ -79,7 +79,7 @@
 </head>
 
 <body>
-
+//
 	<script>
 	// Moved this call down here because it was throwing an error about the defaultOpen id not existing when placed above the button objects, although that shouldn't matter
 	document.getElementById("defaultOpen").click();
@@ -87,7 +87,7 @@
 
 	<div id="Search" class="tabcontent">
 		<form action="/action_page.php">
-		<head> <!-- You might link CSS here -->
+		<head>
 			<title> Mycotoxin Removal Data Interface </title>
 		</head>
 			<h1>Query Preparation</h1>
@@ -112,7 +112,7 @@
 			<br>
 
 			Limit Search By: <br>
-			<!-- Drop boxes - maybe these would be checkboxes -->
+
 			Organism Domain:
 			<select class = "search_input" id = "choose_domain" name="choose_domain">
 				<option id = "all_dom" value="all">Include All Domains</option>
@@ -161,7 +161,6 @@
 				<option id = "intra" value = "intra">Intracellular</option>
 				<option id = "extra" value = "extra">Extracellular</option>
 			</select><br>
-			<!-- radio buttons -->
 
 			<h2>Optional: Search by Name</h2>
 			<p>To search for data pertaining to a *specific value* for one of the fields listed in the checkboxes above,
@@ -186,7 +185,6 @@
 			<input type="radio" class = "search_input" id = "tsv" name="download" value="tsv"> .tsv
 			<br>
 			<div id="table_id"></div>
-			<!-- Submit Button-->
 			<button id="button" type="submit"> Submit </button><br><br>
 			<input type="reset" value="Reset">
 
@@ -261,7 +259,7 @@
 			</script>
 	</form>
 	</div>
-
+-->
 	<div id="Data_insertion" class="tabcontent">
 		<h1>Data Insertion!</h1>
 		<h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database.</h3>
