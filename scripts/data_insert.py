@@ -100,12 +100,12 @@ if (form):
         success = False
 
 if success:
-    results = f"Your data insertion was successful!"
-    #connection.commit()
+    results = "Your data insertion was successful!"
+    # connection.commit()
 else:
-    results = f"Your data insertion was unsuccessful."
+    results = "Your data insertion was unsuccessful."
 
-#close cursor and connection
+# close cursor and connection
 cursor.close()
 connection.close()
 print(json.dumps(results))
