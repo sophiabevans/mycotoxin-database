@@ -130,12 +130,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
         LN = fields[22]
         CN = fields [23]
 
-        print(f"ON: {ON}, MN: {MN}, LN: {LN}, CN: {CN}")
-
-        # print(N, Domain, Organism, Pathogenicity, Respiration, Environment,
-        # Mycotoxin, Removal_mech, Enzymatic, Location, Char_con, Char_assay,
-        # Source, Link, Add_info, Contributor, Cont_date, Curator, Cur_date, Cur_notes)
-
         if N in litN:
             try:
                 cursor.execute(f'''
@@ -144,7 +138,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 lid = cursor.fetchall()[0][0]
                 lit_dict[N] = lid
-                print("lit_dict:", lit_dict, "\n")
 
             except pymysql.Error as e:
                 print(e)
@@ -156,7 +149,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 mid = cursor.fetchall()[0][0]
                 myc_dict[N] = mid
-                print("myc_dict", myc_dict, "\n")
 
             except pymysql.Error as e:
                 print(e)
@@ -168,7 +160,6 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 oid = cursor.fetchall()[0][0]
                 org_dict[N] = oid
-                print("org_dict", org_dict, "\n")
 
             except pymysql.Error as e:
                 print(e)
@@ -185,7 +176,7 @@ with open("../data/mycotoxinN.tsv", "r") as f:
                 cursor.execute("select LAST_INSERT_ID();")
                 cid = cursor.fetchall()[0][0]
                 cur_dict[N] = cid
-                print("cur_dict:", cur_dict, "\n")
+
             except pymysql.Error as e:
                 print(e)
 
@@ -198,8 +189,8 @@ with open("../data/mycotoxinN.tsv", "r") as f:
        	line = f.readline()
 
 #replace null strings with null values
-cursor.execute("UPDATE Curation_Contribution SET Cur_notes=NULL WHERE Cur_notes=0")
-cursor.execute("UPDATE Curation_Contribution SET Additional_info=NULL WHERE Additional_info=0")
+cursor.execute("UPDATE Curation_Contribution SET Cur_notes=NULL WHERE Cur_notes='NULL'")
+cursor.execute("UPDATE Curation_Contribution SET Additional_info=NULL WHERE Additional_info='NULL'")
 
 #commit changes
 connection.commit()
