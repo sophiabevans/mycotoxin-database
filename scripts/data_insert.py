@@ -22,7 +22,7 @@ cursor = connection.cursor()
 
 print("Content-type: text/html\n")
 
-if (form):
+if form:
     link = form.getvalue("link", "")
     cite = form.getvalue("cite", "")
     context = form.getvalue("context", "")
