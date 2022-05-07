@@ -37,13 +37,13 @@ if (form):
     input_domain = form.getvalue("input_domain", "")
     input_path = form.getvalue("input_path", "")
     input_aeran = form.getvalue("input_aeran", "")
-    #env_other = form.getvalue("other_env_txt", "").title()
-    #rem_other = form.getvalue("other_input_rem", "").title()
-    # test_env = form.getlist("test_env")
-    # test_rem = form.getlist("test_rem")
-    #
-    # test_env = ";".join(test_env)
-    # test_rem = ";".join(test_rem)
+    env_other = form.getvalue("other_env_txt", "").title()
+    rem_other = form.getvalue("other_input_rem", "").title()
+    test_env = form.getlist("test_env")
+    test_rem = form.getlist("test_rem")
+
+    test_env = ";".join(test_env)
+    test_rem = ";".join(test_rem)
 
     # try:
     #     cursor.execute(f'''
@@ -89,7 +89,8 @@ else:
     success = False
 
 if success:
-    results = """Your data insertion was successful!\n"""
+    results = f"""Your data insertion was successful!\n
+    {test_env}, {test_rem}"""
     #connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
