@@ -23,27 +23,27 @@ cursor = connection.cursor()
 print("Content-type: text/html\n")
 
 if (form):
-    link = form.getvalue("link", "NULL")
+    link = form.getvalue("link", "")
     cite = form.getvalue("cite")
-    context = form.getvalue("context", "NULL")
+    context = form.getvalue("context", "")
     assay = form.getvalue("assay", "NULL")
     cur_name = form.getvalue("curator")
-    cur_notes = form.getvalue("cur_notes", "NULL")
+    cur_notes = form.getvalue("cur_notes", "")
     cur_date = form.getvalue("cur_date")
-    con_name = form.getvalue("con_name", "NULL")
+    con_name = form.getvalue("con_name", "")
     con_date = form.getvalue("con_date")
-    ad_info = form.getvalue("ad_info", "NULL")
+    ad_info = form.getvalue("ad_info", "")
     org_name = form.getvalue("org_name").title()
-    input_domain = form.getvalue("input_domain", "NULL")
-    input_path = form.getvalue("input_path", "NULL")
-    input_aeran = form.getvalue("input_aeran", "NULL")
-    env_other = form.getvalue("other_env_txt", "NULL").title()
-    rem_other = form.getvalue("other_rem_txt", "NULL").title()
-    environment = form.getvalue("list_env", "NULL")
-    rem = form.getvalue("list_rem", "NULL")
+    input_domain = form.getvalue("input_domain", "")
+    input_path = form.getvalue("input_path", "")
+    input_aeran = form.getvalue("input_aeran", "")
+    env_other = form.getvalue("other_env_txt", "").title()
+    rem_other = form.getvalue("other_rem_txt", "").title()
+    environment = form.getvalue("list_env", "")
+    rem = form.getvalue("list_rem", "")
     myc_name = form.getvalue("myc_name").title()
-    enzymatic = form.getvalue("enzymatic", "NULL")
-    loc = form.getvalue("loc", "NULL")
+    enzymatic = form.getvalue("enzymatic", "")
+    loc = form.getvalue("loc", "")
 
     if "Other" in environment:
         environment = environment.replace("Other", env_other)
@@ -94,16 +94,16 @@ if (form):
     # try:
     #     for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
     #         cursor.execute(
-    #             f"UPDATE Organism SET {value}=NULL WHERE {value}='NULL' and OID=@oid;")
+    #             f"UPDATE Organism SET {value}=NULL WHERE {value}='' and OID=@oid;")
     #     for value in ["Removal_mech", "Enzymatic_or_not", "Location"]:
     #         cursor.execute(
-    #             f"UPDATE Mycotoxin SET {value}=NULL WHERE {value}='NULL' and MID=@mid;")
+    #             f"UPDATE Mycotoxin SET {value}=NULL WHERE {value}='' and MID=@mid;")
     #     for value in ["Con_name", "Cur_notes", "Additional_info"]:
     #         cursor.execute(
-    #             f"UPDATE Curation_Contribution SET {value}=NULL WHERE {value}='NULL' and CID=@cid;")
+    #             f"UPDATE Curation_Contribution SET {value}=NULL WHERE {value}='' and CID=@cid;")
     #     for value in ["Context", "Assay", "Link"]:
     #         cursor.execute(
-    #             f"UPDATE Literature SET {value}=NULL WHERE {value}='NULL' and LID=@lid;")
+    #             f"UPDATE Literature SET {value}=NULL WHERE {value}='' and LID=@lid;")
     # except pymysql.Error as e:
     #     print(e)
 
