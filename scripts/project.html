@@ -304,7 +304,7 @@
 		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
 		<input type="checkbox" name="env" id="water" value="Water"> Water
 		<input type="checkbox" name="env" id="other_env" value="Other" onclick="var input = document.getElementById('other_input_env'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_env" disabled="disabled">
+		<input type="text" id="other_input_env" name="env" disabled="disabled">
 		<br><br>
 
 		Mycotoxin Name: <input type="text" id="myc_name">
@@ -316,9 +316,10 @@
 		<input type="checkbox" name="input_removal" id="adsorp" value="Adsorption">Adsorption
 		<input type="checkbox" name="input_removal" id="absorp" value="Absorption">Absorption
 		<input type="checkbox" name="input_removal" id="deg" value="Degredation">Degradation
+		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
 		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
 		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_rem" disabled="disabled">
+		<input type="text" id="other_input_rem" name="input_removal" disabled="disabled">
 		<br><br>
 
 		Enzymatic Removal?:
@@ -352,7 +353,6 @@
 		<button id="submit_input">Submit Data Input</button><br><br>
 
     <div id="insert_success"></div>
-    <br><br>
     <script>
 
       $(document).ready(function() {
@@ -362,8 +362,6 @@
 					let org_name=$("#org_name").val();
 					let myc_name=$("#myc_name").val();
 					let curator=$("#cur_name").val();
-          let env_values = $(":checkbox[name = env]:checked")
-          let rem_values = $(":checkbox[name = input_removal]:checked")
 					if (checkInput(cite, org_name, myc_name, curator)) {
 		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
 		          {link:$("#lit_link").val(), cite:cite,
@@ -382,9 +380,7 @@
 							rem_biotran:$("#biotran").val(), rem_reg:$("#reg").val(),
 							rem_adsorp:$("#adsorp").val(), rem_absorp:$("#absorp").val(),
 							rem_deg:$("#deg").val(), rem_reg:$("#reg").val(), rem_unknown:$("#unknown_rem").val(),
-							rem_other:$("#other_rem").val(), other_rem_txt:$("#other_input_rem").val(),
-              test_env:$.makeArray(env_values), test_rem:$.makeArray(rem_values)
-            },
+							rem_other:$("#other_rem").val(), other_rem_txt:$("#other_input_rem").val()},
 		          function(data){
 		            input_success(data);
 		          },
