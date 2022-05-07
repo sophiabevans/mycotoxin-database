@@ -99,7 +99,7 @@ if (form):
 
 if success:
     results = "Your data insertion was successful!"
-    # connection.commit()
+    connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
 
