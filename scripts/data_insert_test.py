@@ -111,8 +111,11 @@ else:
     success = False
 
 if success:
-    results = "Your data insertion was successful!\n"
-    #cursor.commit()
+    #results = "Your data insertion was successful!\n"
+    #conection.commit()
+    results = ""
+    for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
+        results += f"UPDATE Organism SET {value}=NULL WHERE {value}='NULL' and OID=@oid;"
 else:
     results = "Your data insertion was unsuccessful"
 
