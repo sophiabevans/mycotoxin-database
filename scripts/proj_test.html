@@ -109,8 +109,8 @@
 					let org_name=$("#org_name").val();
 					let myc_name=$("#myc_name").val();
 					let curator=$("#cur_name").val();
-					let test_env=$(":checkbox[name = env]:checked");
-					let test_rem=$(":checkbox[name = input_removal]:checked");
+					let test_env=$("in[name = 'env']:checked");
+					let test_rem=$(":checkbox[name = 'input_removal']:checked");
 					if (checkInput(cite, org_name, myc_name, curator)) {
 		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert_test.py",
 		          {link:$("#lit_link").val(), cite:cite,

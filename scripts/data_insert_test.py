@@ -44,8 +44,6 @@ if (form):
     #
     # test_env = ";".join(test_env)
     # test_rem = ";".join(test_rem)
-    test_env = ""
-    test_rem = ""
 
     # try:
     #     cursor.execute(f'''
@@ -91,8 +89,7 @@ else:
     success = False
 
 if success:
-    results = f"""Your data insertion was successful!\n
-    {test_env}, {test_rem}"""
+    results = """Your data insertion was successful!\n"""
     #connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
