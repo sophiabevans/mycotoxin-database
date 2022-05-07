@@ -42,6 +42,9 @@ if (form):
     test_env = form.getlist("test_env")
     test_rem = form.getlist("test_rem")
 
+    test_env = ";".join(test_env)
+    test_rem = ";".join(test_rem)
+
     # try:
     #     cursor.execute(f'''
     #     insert into Literature (Context, Assay, Source, Link)
