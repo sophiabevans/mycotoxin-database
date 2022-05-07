@@ -304,7 +304,7 @@
 		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
 		<input type="checkbox" name="env" id="water" value="Water"> Water
 		<input type="checkbox" name="env" id="other_env" value="Other" onclick="var input = document.getElementById('other_input_env'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_env" name="env" disabled="disabled">
+		<input type="text" id="other_input_env" disabled="disabled">
 		<br><br>
 
 		Mycotoxin Name: <input type="text" id="myc_name">
@@ -319,7 +319,7 @@
 		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
 		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
 		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_rem" name="input_removal" disabled="disabled">
+		<input type="text" id="other_input_rem" disabled="disabled">
 		<br><br>
 
 		Enzymatic Removal?:
@@ -362,8 +362,10 @@
 					let org_name=$("#org_name").val();
 					let myc_name=$("#myc_name").val();
 					let curator=$("#cur_name").val();
+					var list_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
+					var list_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
 					if (checkInput(cite, org_name, myc_name, curator)) {
-		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
+		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert_test.py",
 		          {link:$("#lit_link").val(), cite:cite,
 							context:$("#char_con").val(), assay:$("#char_assay").val(),
 							curator:curator, cur_date:$("#cur_date").val(),
@@ -373,15 +375,9 @@
 							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
 							myc_name:myc_name,
 							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
-							env_hum:$("#human").val(), env_anim:$("#animal").val(),
-							env_plant:$("#plant").val(), env_soil:$("#soil").val(),
-							env_water:$("#water").val(), env_food:$("#food").val(),
-							env_other:$("#other_env").val(), other_env_txt:$("#other_input_env").val(),
-							rem_biotran:$("#biotran").val(), rem_reg:$("#reg").val(),
-							rem_adsorp:$("#adsorp").val(), rem_absorp:$("#absorp").val(),
-							rem_deg:$("#deg").val(), rem_reg:$("#reg").val(), rem_unknown:$("#unknown_rem").val(),
-							rem_other:$("#other_rem").val(), other_rem_txt:$("#other_input_rem").val()
-            },
+							list_env:list_env, list_rem:list_rem,
+							other_env_txt:$("#other_input_env").val(),
+							other_rem_txt:$("#other_input_rem").val()},
 		          function(data){
 		            input_success(data);
 		          },

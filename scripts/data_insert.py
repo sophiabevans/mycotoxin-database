@@ -11,9 +11,9 @@ success = True
 try:
     connection = pymysql.connect(
         host='bioed.bu.edu',
-        user="Group_M",
-        password='Group_M',
-        db='Group_M',
+        user="sbevans",
+        password='3d3np33d3n',
+        db='sbevans',
         port=4253)
 except pymysql.Error as e:
     print(e)
@@ -22,7 +22,7 @@ cursor = connection.cursor()
 
 print("Content-type: text/html\n")
 
-if form:
+if (form):
     link = form.getvalue("link", "")
     cite = form.getvalue("cite", "")
     context = form.getvalue("context", "")
@@ -37,44 +37,19 @@ if form:
     input_domain = form.getvalue("input_domain", "")
     input_path = form.getvalue("input_path", "")
     input_aeran = form.getvalue("input_aeran", "")
-    env_hum = form.getvalue("env_hum", "")
-    env_anim = form.getvalue("env_anim", "")
-    env_plant = form.getvalue("env_plant", "")
-    env_soil = form.getvalue("env_soil", "")
-    env_water = form.getvalue("env_water", "")
-    env_food = form.getvalue("env_food", "")
-    env_other = form.getvalue("env_other", "")
-    if env_other != "":
-        env_other = form.getvalue("other_env_txt", "").title()
-    rem_biotran = form.getvalue("biotran", "")
-    rem_reg = form.getvalue("reg", "")
-    rem_adsorp = form.getvalue("adsorp", "")
-    rem_absorp = form.getvalue("absorp", "")
-    rem_deg = form.getvalue("deg", "")
-    rem_reg = form.getvalue("reg", "")
-    rem_unknown = form.getvalue("unknown_rem", "")
-    rem_other = form.getvalue("other_rem", "")
-    if rem_other != "":
-        rem_other = form.getvalue("other_input_rem", "").title()
+    env_other = form.getvalue("other_env_txt", "").title()
+    rem_other = form.getvalue("other_rem_txt", "").title()
+    env = form.getvalue("list_env", "")
+    rem = form.getvalue("list_rem", "")
     myc_name = form.getvalue("myc_name", "").title()
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
 
-    env = ""
-    envs = [env_anim, env_food, env_hum,
-            env_other, env_plant, env_soil, env_water]
-    envs.sort()
-    for e in envs:
-        if e != "":
-            env += f"{e};"
+    if "Other" in env:
+        env = env.replace("Other", env_other)
 
-    rem = ""
-    rems = [rem_biotran, rem_reg, rem_adsorp, rem_absorp,
-            rem_deg, rem_reg, rem_unknown, rem_other]
-    rems.sort()
-    for r in rems:
-        if r != "":
-            rem += f"{r};"
+    if "Other" in rem:
+        rem = rem.replace("Other", rem_other)
 
     try:
         cursor.execute(f'''
