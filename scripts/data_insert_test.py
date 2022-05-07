@@ -94,16 +94,16 @@ if (form):
     try:
         for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
             cursor.execute(
-                f"UPDATE table Organism SET {value}=NULL WHERE {value} regexp 'NULL' and OID=@oid;")
+                f"UPDATE Organism SET {value}=NULL WHERE {value} regexp 'NULL' and OID=@oid;")
         for value in ["Removal_mech", "Enzymatic_or_not", "Location"]:
             cursor.execute(
-                f"UPDATE table Mycotoxin SET {value}=NULL WHERE {value} regexp 'NULL' and MID=@mid;")
+                f"UPDATE Mycotoxin SET {value}=NULL WHERE {value} regexp 'NULL' and MID=@mid;")
         for value in ["Con_name", "Cur_notes", "Additional_info"]:
             cursor.execute(
-                f"UPDATE table Curation_Contribution SET {value}=NULL WHERE {value} regexp 'NULL' and CID=@cid;")
+                f"UPDATE Curation_Contribution SET {value}=NULL WHERE {value} regexp 'NULL' and CID=@cid;")
         for value in ["Context", "Assay", "Link"]:
             cursor.execute(
-                f"UPDATE table Literature SET {value}=NULL WHERE {value} regexp 'NULL' and LID=@lid;")
+                f"UPDATE Literature SET {value}=NULL WHERE {value} regexp 'NULL' and LID=@lid;")
     except pymysql.Error as e:
         print(e)
 
