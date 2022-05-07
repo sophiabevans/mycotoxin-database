@@ -38,24 +38,24 @@ if (form):
 #     input_path = form.getvalue("input_path", "")
 #     input_aeran = form.getvalue("input_aeran", "")
 #     # input_env = form.getlist("input_env", "")
-#     env_hum = form.getvalue("env_hum", "")
-#     env_anim = form.getvalue("env_anim", "")
-#     env_plant = form.getvalue("env_plant", "")
-#     env_soil = form.getvalue("env_soil", "")
-#     env_water = form.getvalue("env_water", "")
-#     env_food = form.getvalue("env_food", "")
-#     env_other = form.getvalue("env_other", "")
+    env_hum = form.getvalue("env_hum", "")
+    env_anim = form.getvalue("env_anim", "")
+    env_plant = form.getvalue("env_plant", "")
+    env_soil = form.getvalue("env_soil", "")
+    env_water = form.getvalue("env_water", "")
+    env_food = form.getvalue("env_food", "")
+    env_other = form.getvalue("env_other", "")
 #     myc_name = form.getvalue("myc_name", "")
 #     removal = form.getvalue("removal", "")
 #     enzymatic = form.getvalue("enzymatic", "")
 #     loc = form.getvalue("loc", "")
 #
-#     env = ""
-#     envs = [env_anim, env_food, env_hum,
-#             env_other, env_plant, env_soil, env_water]
-#     for e in envs.sort():
-#         if e != "":
-#             env += f"{e};"
+    env = ""
+    envs = [env_anim, env_food, env_hum,
+            env_other, env_plant, env_soil, env_water]
+    for e in envs.sort():
+        if e != "":
+            env += f"{e};"
 #
 #     try:
 #         cursor.execute(f'''
