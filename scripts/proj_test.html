@@ -116,7 +116,11 @@
 							org_name:org_name, input_domain:$("#input_domain").val(),
 							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
 							myc_name:myc_name, removal:removal,
-							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val()},
+							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
+							env_hum:$("#human").val(),
+							env_anim:$("#animal").val(), env_plant:$("#plant").val(),
+							env_soil:$("#soil").val(), env_water:$("#water").val(),
+							env_food:$("#food").val(), env_other:$("#other").val()},
 		          function(data){
 		            input_success(data);
 		          },
