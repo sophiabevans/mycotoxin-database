@@ -110,7 +110,7 @@ else:
 
 if success:
     results = "Your data insertion was successful!\n"
-    cursor.commit()
+    #cursor.commit()
 else:
     results = "Your data insertion was unsuccessful"
 
