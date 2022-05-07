@@ -59,14 +59,14 @@ if (form):
     except pymysql.Error as e:
         print(e)
         success = False
-    # try:
-    #     cursor.execute(f'''
-    #     insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-    #     values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
-    #     cursor.execute("set @mid = LAST_INSERT_ID();")
-    # except pymysql.Error as e:
-    #     print(e)
-    #     success = False
+    try:
+        cursor.execute(f'''
+        insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
+        values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
+        cursor.execute("set @mid = LAST_INSERT_ID();")
+    except pymysql.Error as e:
+        print(e)
+        success = False
     # try:
     #     cursor.execute(f'''
     #     insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
