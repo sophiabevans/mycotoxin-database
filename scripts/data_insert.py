@@ -11,9 +11,9 @@ success = True
 try:
     connection = pymysql.connect(
         host='bioed.bu.edu',
-        user="Group_M",
-        password="Group_M",
-        db='Group_M',
+        user='sbevans',
+        password='3d3np33d3n',
+        db='sbevans',
         port=4253)
 except pymysql.Error as e:
     print(e)
@@ -111,7 +111,7 @@ else:
     success = False
 
 if success:
-    results = "Your data insertion was successful!\n"
+    results = "Your data insertion was successful!"
     connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
