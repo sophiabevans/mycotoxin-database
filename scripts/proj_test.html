@@ -50,8 +50,8 @@
 		<input type="checkbox" name="env" id="plants" value="Plants"> Plants
 		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
 		<input type="checkbox" name="env" id="water" value="Water"> Water
-		<input type="checkbox" name="env" id="other" value="Other" onclick="var input = document.getElementById('other_input'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input" name="env" disabled="disabled">
+		<input type="checkbox" name="env" id="other_env" value="Other" onclick="var input = document.getElementById('other_input_env'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
+		<input type="text" id="other_input_env" name="env" disabled="disabled">
 		<br><br>
 
 		Mycotoxin Name: <input type="text" id="myc_name">
@@ -65,6 +65,18 @@
 			<option value = "Absorption">Absorption</option>
 			<option value = "Biodegredation">Biodegradation</option>
 		</select><br>
+
+		Mycotoxin Removal Mechanism:
+		<input type="checkbox" name="input_removal" id="biotran" value="Biotransformation">Biotransformation
+		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
+		<input type="checkbox" name="input_removal" id="adsorp" value="Adsorption">Adsorption
+		<input type="checkbox" name="input_removal" id="absorp" value="Absorption">Absorption
+		<input type="checkbox" name="input_removal" id="deg" value="Degredation">Degradation
+		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
+		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
+		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
+		<input type="text" id="other_input_rem" name="input_removal" disabled="disabled">
+		<br><br>
 
 		Enzymatic Removal?:
 		<select id = "input_enz" name = "input_enz">
@@ -121,7 +133,11 @@
 							env_hum:$("#human").val(), env_anim:$("#animal").val(),
 							env_plant:$("#plant").val(), env_soil:$("#soil").val(),
 							env_water:$("#water").val(), env_food:$("#food").val(),
-							env_other:$("#other").val(), other_txt:$("#other_input").val()},
+							env_other:$("#other_env").val(), other_env_txt:$("#other_input_env").val(),
+							rem_biotran:$("#biotran").val(), rem_reg:$("#reg").val(),
+							rem_adsorp:$("#adsorp").val(), rem_absorp:$("#absorp").val(),
+							rem_deg:$("#deg").val(), rem_reg:$("#reg").val(), rem_unknown:$("#unknown_rem").val(),
+							rem_other:$("#other_rem").val(), other_rem_txt:$("#other_input_rem").val()},
 		          function(data){
 		            input_success(data);
 		          },

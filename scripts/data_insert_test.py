@@ -45,9 +45,18 @@ if (form):
     env_food = form.getvalue("env_food", "")
     env_other = form.getvalue("env_other", "")
     if env_other != "":
-        env_other = form.getvalue("other_txt", "")
+        env_other = form.getvalue("other_env_txt", "").title()
+    rem_biotran = form.getvalue("biotran", "")
+    rem_reg = form.getvalue("reg", "")
+    rem_adsorp = form.getvalue("adsorp", "")
+    rem_absorp = form.getvalue("absorp", "")
+    rem_deg = form.getvalue("deg", "")
+    rem_reg = form.getvalue("reg", "")
+    rem_unknown = form.getvalue("unknown_rem", "")
+    rem_other = form.getvalue("other_rem", "")
+    if rem_other != "":
+        rem_other = form.getvalue("other_input_rem", "")
     myc_name = form.getvalue("myc_name", "")
-    removal = form.getvalue("removal", "")
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
 
@@ -58,6 +67,14 @@ if (form):
     for e in envs:
         if e != "":
             env += f"{e};"
+
+    rem = ""
+    rems = [rem_biotran, rem_reg, rem_adsorp, rem_absorp,
+            rem_deg, rem_reg, rem_unknown, rem_other]
+    rems.sort()
+    for r in rems:
+        if r != "":
+            rem += f"{r};"
 
     try:
         cursor.execute(f'''
@@ -70,7 +87,7 @@ if (form):
     try:
         cursor.execute(f'''
         insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-        values ("{myc_name}", "{removal}", "{enzymatic}", "{loc}");''')
+        values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
         cursor.execute("set @mid = LAST_INSERT_ID();")
     except pymysql.Error as e:
         print(e)
