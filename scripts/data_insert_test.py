@@ -22,8 +22,8 @@ cursor = connection.cursor()
 
 print("Content-type: text/html\n")
 
-# if (form):
-#     link = form.getvalue("link", "")
+if (form):
+    link = form.getvalue("link", "")
 #     cite = form.getvalue("cite", "")
 #     context = form.getvalue("context", "")
 #     assay = form.getvalue("assay", "")
@@ -96,8 +96,8 @@ print("Content-type: text/html\n")
 #     except pymysql.Error as e:
 #         print(e)
 #         success = False
-# else:
-#     success = False
+else:
+    success = False
 
 if success:
     results = "Your data insertion was successful!"
