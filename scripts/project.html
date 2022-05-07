@@ -357,8 +357,8 @@
     <script>
 
       $(document).ready(function() {
-        $('#cur_date').val(new Date().toDateInputValue());
-        $('#con_date').val(new Date().toDateInputValue());
+        document.getElementById('cur_date').valueAsDate = new Date();
+        document.getElementById('con_date').valueAsDate = new Date();
         $("#submit_input").click(function() {
           $("#insert_success").empty();
 					let cite=$("#lit_cite").val();

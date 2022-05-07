@@ -91,6 +91,15 @@ if (form):
         print(e)
         success = False
 
+    try:
+        cursor.execute(
+            "UPDATE table Organism SET value=NULL WHERE value='NULL';")
+        cursor.execute(
+            "UPDATE table Mycotoxin SET value=NULL WHERE value='NULL';")
+        cursor.execute(
+            "UPDATE table Curation_Contribution SET value=NULL WHERE value='NULL';")
+        cursor.execute(
+            "UPDATE table Literature SET value=NULL WHERE value='NULL';")
 else:
     success = False
 
