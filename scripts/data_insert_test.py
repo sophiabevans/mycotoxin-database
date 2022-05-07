@@ -84,6 +84,7 @@ if (form):
         cursor.execute("set @lid = LAST_INSERT_ID();")
     except pymysql.Error as e:
         print(e)
+        print(json.dumps(e))
         success = False
 # try:
 #     cursor.execute(f'''
@@ -108,6 +109,7 @@ if (form):
         cursor.execute("set @cid = LAST_INSERT_ID();")
     except pymysql.Error as e:
         print(e)
+        print(json.dumps(e))
         success = False
 # try:
 #     cursor.execute('''
