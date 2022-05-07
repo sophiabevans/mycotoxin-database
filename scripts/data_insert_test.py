@@ -49,14 +49,15 @@ if (form):
     removal = form.getvalue("removal", "")
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
-#
-    # env = ""
-    # envs = [env_anim, env_food, env_hum,
-    #         env_other, env_plant, env_soil, env_water]
-    # for e in envs.sort():
-    #     if e != "":
-    #         env += f"{e};"
-#
+
+    env = ""
+    envs = [env_anim, env_food, env_hum,
+            env_other, env_plant, env_soil, env_water]
+    envs.sort()
+    for e in envs:
+        if e != "":
+            env += f"{e};"
+
 #     try:
 #         cursor.execute(f'''
 #         insert into Literature (Context, Assay, Source, Link)
