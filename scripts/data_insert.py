@@ -62,19 +62,19 @@ if (form):
     test_env = form.getlist("test_env")
     test_rem = form.getlist("test_rem")
 
-    if "Other" in test_env:
-        test_env.append(form.getvalue("other_input_env", "").title())
-        test_env.remove("Other")
-
-    if "Other" in test_rem:
-        test_rem.append(form.getvalue("other_input_rem", "").title())
-        test_rem.remove("Other")
-
-    test_env.sort()
-    test_rem.sort()
-
-    env = ";".join(test_env)
-    rem = ";".join(test_rem)
+    # if "Other" in test_env:
+    #     test_env.append(form.getvalue("other_input_env", "").title())
+    #     test_env.remove("Other")
+    #
+    # if "Other" in test_rem:
+    #     test_rem.append(form.getvalue("other_input_rem", "").title())
+    #     test_rem.remove("Other")
+    #
+    # test_env.sort()
+    # test_rem.sort()
+    #
+    # env = ";".join(test_env)
+    # rem = ";".join(test_rem)
 
     # env = ""
     # envs = [env_anim, env_food, env_hum,
@@ -92,50 +92,50 @@ if (form):
     #     if r != "":
     #         rem += f"{r};"
 
-    try:
-        cursor.execute(f'''
-        insert into Literature (Context, Assay, Source, Link)
-        values ("{context}", "{assay}", "{cite}", "{link}");''')
-        cursor.execute("set @lid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute(f'''
-        insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-        values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
-        cursor.execute("set @mid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute(f'''
-        insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-        values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{env}");''')
-        cursor.execute("set @oid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute(f'''
-        insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
-        values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
-        cursor.execute("set @cid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute('''
-        insert into Removal (OID, MID, LID, CID)
-        values (@oid, @mid, @lid, @cid);''')
-    except pymysql.Error as e:
-        print(e)
-        success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Literature (Context, Assay, Source, Link)
+    #     values ("{context}", "{assay}", "{cite}", "{link}");''')
+    #     cursor.execute("set @lid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
+    #     values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
+    #     cursor.execute("set @mid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
+    #     values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{env}");''')
+    #     cursor.execute("set @oid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
+    #     values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
+    #     cursor.execute("set @cid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute('''
+    #     insert into Removal (OID, MID, LID, CID)
+    #     values (@oid, @mid, @lid, @cid);''')
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
 else:
     success = False
 
 if success:
-    results = "Your data insertion was successful!"
+    results = f"Your data insertion was successful! env: {test_env}, rem: {test_rem}"
     connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
