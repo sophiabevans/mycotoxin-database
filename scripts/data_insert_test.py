@@ -113,9 +113,8 @@ else:
 if success:
     #results = "Your data insertion was successful!\n"
     #conection.commit()
-    results = ""
-    for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
-        results += f"UPDATE Organism SET {value}=NULL WHERE {value}='NULL' and OID=@oid;"
+    cursor.execute("select @oid;")
+    results = cursor.fetchall()
 else:
     results = "Your data insertion was unsuccessful"
 
