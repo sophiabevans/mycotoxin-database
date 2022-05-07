@@ -39,14 +39,14 @@ if (form):
     input_aeran = form.getvalue("input_aeran", "")
     env_other = form.getvalue("other_env_txt", "").title()
     rem_other = form.getvalue("other_rem_txt", "").title()
-    env = form.getvalue("list_env", "")
+    environment = form.getvalue("list_env", "")
     rem = form.getvalue("list_rem", "")
     myc_name = form.getvalue("myc_name", "").title()
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
 
-    if "Other" in env:
-        env = env.replace("Other", env_other)
+    if "Other" in environment:
+        environment = environment.replace("Other", env_other)
 
     if "Other" in rem:
         rem = rem.replace("Other", rem_other)
@@ -70,7 +70,7 @@ if (form):
     try:
         cursor.execute(f'''
         insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-        values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{env}");''')
+        values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{environment}");''')
         cursor.execute("set @oid = LAST_INSERT_ID();")
     except pymysql.Error as e:
         print(e)
