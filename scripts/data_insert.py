@@ -10,11 +10,12 @@ success = True
 
 try:
     connection = pymysql.connect(
-        host='bioed.bu.edu',
-        user='sbevans',
-        password='3d3np33d3n',
-        db='sbevans',
-        port=4253)
+        host="bioed.bu.edu",
+        db="Group_M",
+        user="Group_M",
+        passwd="Group_M",
+        port=4253,
+        local_infile=True)
 except pymysql.Error as e:
     print(e)
     success = False
