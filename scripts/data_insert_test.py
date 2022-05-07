@@ -59,37 +59,37 @@ if (form):
     except pymysql.Error as e:
         print(e)
         success = False
-    try:
-        cursor.execute(f'''
-        insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
-        values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
-        cursor.execute("set @mid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute(f'''
-        insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-        values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{environment}");''')
-        cursor.execute("set @oid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute(f'''
-        insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
-        values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
-        cursor.execute("set @cid = LAST_INSERT_ID();")
-    except pymysql.Error as e:
-        print(e)
-        success = False
-    try:
-        cursor.execute('''
-        insert into Removal (OID, MID, LID, CID)
-        values (@oid, @mid, @lid, @cid);''')
-    except pymysql.Error as e:
-        print(e)
-        success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
+    #     values ("{myc_name}", "{rem}", "{enzymatic}", "{loc}");''')
+    #     cursor.execute("set @mid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
+    #     values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{environment}");''')
+    #     cursor.execute("set @oid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute(f'''
+    #     insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
+    #     values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
+    #     cursor.execute("set @cid = LAST_INSERT_ID();")
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
+    # try:
+    #     cursor.execute('''
+    #     insert into Removal (OID, MID, LID, CID)
+    #     values (@oid, @mid, @lid, @cid);''')
+    # except pymysql.Error as e:
+    #     print(e)
+    #     success = False
 
     # try:
     #     for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
