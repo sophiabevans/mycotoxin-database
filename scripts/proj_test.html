@@ -45,12 +45,13 @@
 		</select><br>
 		Organism Environment:
 		<input type="checkbox" name="env" id="human" value="Human"> Human
-		<input type="checkbox" name="env" id="animal" value="Animal"> Soil
+		<input type="checkbox" name="env" id="animal" value="Animal"> Animal
 		<input type="checkbox" name="env" id="food" value="Food"> Food
 		<input type="checkbox" name="env" id="plants" value="Plants"> Plants
 		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
 		<input type="checkbox" name="env" id="water" value="Water"> Water
-		<input type="checkbox" name="env" id="other" value="Other"> Other
+		<input type="checkbox" name="env" id="other" value="Other" onclick="var input = document.getElementById('other_input'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
+		<input type="text" id="other_input" name="env" disabled="disabled">
 		<br><br>
 
 		Mycotoxin Name: <input type="text" id="myc_name">
@@ -117,10 +118,10 @@
 							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
 							myc_name:myc_name, removal:removal,
 							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
-							env_hum:$("#human").val(),
-							env_anim:$("#animal").val(), env_plant:$("#plant").val(),
-							env_soil:$("#soil").val(), env_water:$("#water").val(),
-							env_food:$("#food").val(), env_other:$("#other").val()},
+							env_hum:$("#human").val(), env_anim:$("#animal").val(),
+							env_plant:$("#plant").val(), env_soil:$("#soil").val(),
+							env_water:$("#water").val(), env_food:$("#food").val(),
+							env_other:$("#other").val(), other_txt:$("#other_input").val()},
 		          function(data){
 		            input_success(data);
 		          },

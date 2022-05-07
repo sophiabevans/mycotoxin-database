@@ -37,7 +37,6 @@ if (form):
     input_domain = form.getvalue("input_domain", "")
     input_path = form.getvalue("input_path", "")
     input_aeran = form.getvalue("input_aeran", "")
-    # input_env = form.getlist("input_env", "")
     env_hum = form.getvalue("env_hum", "")
     env_anim = form.getvalue("env_anim", "")
     env_plant = form.getvalue("env_plant", "")
@@ -45,6 +44,8 @@ if (form):
     env_water = form.getvalue("env_water", "")
     env_food = form.getvalue("env_food", "")
     env_other = form.getvalue("env_other", "")
+    if env_other != "":
+        env_other = form.getvalue("other_txt", "")
     myc_name = form.getvalue("myc_name", "")
     removal = form.getvalue("removal", "")
     enzymatic = form.getvalue("enzymatic", "")
