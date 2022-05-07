@@ -73,8 +73,8 @@ if (form):
     test_env.sort()
     test_rem.sort()
 
-    env = test_env.join(";")
-    rem = test_rem.join(";")
+    env = ";".join(test_env)
+    rem = ";".join(test_rem)
 
     # env = ""
     # envs = [env_anim, env_food, env_hum,
