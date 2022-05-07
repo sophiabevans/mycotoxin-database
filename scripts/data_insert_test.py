@@ -67,14 +67,14 @@ if (form):
     except pymysql.Error as e:
         print(e)
         success = False
-    # try:
-    #     cursor.execute(f'''
-    #     insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
-    #     values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{env}");''')
-    #     cursor.execute("set @oid = LAST_INSERT_ID();")
-    # except pymysql.Error as e:
-    #     print(e)
-    #     success = False
+    try:
+        cursor.execute(f'''
+        insert into Organism (Domain, Name, Pathogenicity, Respiration, Environment)
+        values ("{input_domain}", "{org_name}", "{input_path}", "{input_aeran}", "{env}");''')
+        cursor.execute("set @oid = LAST_INSERT_ID();")
+    except pymysql.Error as e:
+        print(e)
+        success = False
     # try:
     #     cursor.execute(f'''
     #     insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
