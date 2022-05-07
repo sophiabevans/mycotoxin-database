@@ -43,10 +43,10 @@ if (form):
     test_rem = form.getvalue("test_rem", "")
 
     if "Other" in test_env:
-        test_env.replace("Other", env_other)
+        test_env = test_env.replace("Other", env_other)
 
     if "Other" in test_rem:
-        test_rem.replace("Other", rem_other)
+        test_rem = test_rem.replace("Other", rem_other)
 
     # try:
     #     cursor.execute(f'''
