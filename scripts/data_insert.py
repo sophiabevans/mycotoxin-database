@@ -92,22 +92,6 @@ if (form):
         print(e)
         success = False
 
-    # try:
-    #     for value in ["Domain", "Pathogenicity", "Respiration", "Enviroment"]:
-    #         cursor.execute(
-    #             f"UPDATE Organism SET {value}=NULL WHERE {value}='' and OID=@oid;")
-    #     for value in ["Removal_mech", "Enzymatic_or_not", "Location"]:
-    #         cursor.execute(
-    #             f"UPDATE Mycotoxin SET {value}=NULL WHERE {value}='' and MID=@mid;")
-    #     for value in ["Con_name", "Cur_notes", "Additional_info"]:
-    #         cursor.execute(
-    #             f"UPDATE Curation_Contribution SET {value}=NULL WHERE {value}='' and CID=@cid;")
-    #     for value in ["Context", "Assay", "Link"]:
-    #         cursor.execute(
-    #             f"UPDATE Literature SET {value}=NULL WHERE {value}='' and LID=@lid;")
-    # except pymysql.Error as e:
-    #     print(e)
-
 else:
     success = False
 
