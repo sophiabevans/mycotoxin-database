@@ -33,7 +33,7 @@ if (form):
     con_name = form.getvalue("con_name", "")
     con_date = form.getvalue("con_date", "")
     ad_info = form.getvalue("ad_info", "")
-    org_name = form.getvalue("org_name", "")
+    org_name = form.getvalue("org_name", "").title()
     input_domain = form.getvalue("input_domain", "")
     input_path = form.getvalue("input_path", "")
     input_aeran = form.getvalue("input_aeran", "")
@@ -56,7 +56,7 @@ if (form):
     rem_other = form.getvalue("other_rem", "")
     if rem_other != "":
         rem_other = form.getvalue("other_input_rem", "")
-    myc_name = form.getvalue("myc_name", "")
+    myc_name = form.getvalue("myc_name", "").title()
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
 
