@@ -109,8 +109,8 @@
 					let org_name=$("#org_name").val();
 					let myc_name=$("#myc_name").val();
 					let curator=$("#cur_name").val();
-					var test_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
-					var test_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
+					var list_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
+					var list_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
 					if (checkInput(cite, org_name, myc_name, curator)) {
 		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert_test.py",
 		          {link:$("#lit_link").val(), cite:cite,
@@ -122,7 +122,7 @@
 							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
 							myc_name:myc_name,
 							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
-							test_env:test_env, test_rem:test_rem,
+							list_env:list_env, list_rem:list_rem,
 							other_env_txt:$("#other_input_env").val(),
 							other_rem_txt:$("#other_input_rem").val()},
 		          function(data){
