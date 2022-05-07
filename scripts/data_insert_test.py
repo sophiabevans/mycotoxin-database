@@ -24,10 +24,10 @@ print("Content-type: text/html\n")
 
 if (form):
     pass
-#     link = form.getvalue("link", "")
-#     cite = form.getvalue("cite", "")
-#     context = form.getvalue("context", "")
-#     assay = form.getvalue("assay", "")
+    link = form.getvalue("link", "")
+    cite = form.getvalue("cite", "")
+    context = form.getvalue("context", "")
+    assay = form.getvalue("assay", "")
 #     cur_name = form.getvalue("curator", "")
 #     cur_notes = form.getvalue("cur_notes", "")
 #     cur_date = form.getvalue("cur_date", "")
