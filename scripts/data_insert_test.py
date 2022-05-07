@@ -41,12 +41,20 @@ if (form):
     rem_other = form.getvalue("other_rem_txt", "").title()
     env = form.getvalue("list_env", "")
     rem = form.getvalue("list_rem", "")
+    myc_name = form.getvalue("myc_name", "").title()
+    enzymatic = form.getvalue("enzymatic", "")
+    loc = form.getvalue("loc", "")
 
     if "Other" in env:
         env = env.replace("Other", env_other)
 
     if "Other" in rem:
         rem = rem.replace("Other", rem_other)
+
+    try:
+        cursor.execute("select * from Organism limit 1;")
+    except pymysql.Error as e:
+        print(e)
 
     # try:
     #     cursor.execute(f'''
@@ -92,9 +100,9 @@ else:
     success = False
 
 if success:
-    results = f"""Your data insertion was successful!\n
-    {env}, {rem}"""
+    #results = f"""Your data insertion was successful!\n"""
     #connection.commit()
+    results = cursor.fetchall()
 else:
     results = "Your data insertion was unsuccessful"
 
