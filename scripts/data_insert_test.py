@@ -55,7 +55,7 @@ if (form):
     rem_unknown = form.getvalue("unknown_rem", "")
     rem_other = form.getvalue("other_rem", "")
     if rem_other != "":
-        rem_other = form.getvalue("other_input_rem", "")
+        rem_other = form.getvalue("other_input_rem", "").title()
     myc_name = form.getvalue("myc_name", "").title()
     enzymatic = form.getvalue("enzymatic", "")
     loc = form.getvalue("loc", "")
