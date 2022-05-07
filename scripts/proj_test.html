@@ -51,7 +51,7 @@
 		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
 		<input type="checkbox" name="env" id="water" value="Water"> Water
 		<input type="checkbox" name="env" id="other_env" value="Other" onclick="var input = document.getElementById('other_input_env'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_env" name="env" disabled="disabled">
+		<input type="text" id="other_input_env" disabled="disabled">
 		<br><br>
 
 		Mycotoxin Name: <input type="text" id="myc_name">
@@ -66,7 +66,7 @@
 		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
 		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
 		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
-		<input type="text" id="other_input_rem" name="input_removal" disabled="disabled">
+		<input type="text" id="other_input_rem" disabled="disabled">
 		<br><br>
 
 		Enzymatic Removal?:
@@ -109,8 +109,8 @@
 					let org_name=$("#org_name").val();
 					let myc_name=$("#myc_name").val();
 					let curator=$("#cur_name").val();
-					let test_env=$("input[name='env']:checked").map(function () {return this.value;});
-					let test_rem=$(":checkbox[name='input_removal']:checked").map(function () {return this.value;});
+					var test_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
+					var test_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
 					if (checkInput(cite, org_name, myc_name, curator)) {
 		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert_test.py",
 		          {link:$("#lit_link").val(), cite:cite,
@@ -122,7 +122,7 @@
 							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
 							myc_name:myc_name,
 							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
-							test_env:$.makeArray(test_env), test_rem:$.makeArray(test_rem),
+							test_env:test_env, test_rem:test_rem,
 							other_env_txt:$("#other_input_env").val(),
 							other_rem_txt:$("#other_input_rem").val()},
 		          function(data){
