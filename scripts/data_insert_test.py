@@ -111,10 +111,8 @@ else:
     success = False
 
 if success:
-    #results = "Your data insertion was successful!\n"
-    #conection.commit()
-    cursor.execute("select @oid;")
-    results = cursor.fetchall()
+    results = "Your data insertion was successful!\n"
+    connection.commit()
 else:
     results = "Your data insertion was unsuccessful"
 
