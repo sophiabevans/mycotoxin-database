@@ -75,14 +75,14 @@ if (form):
     except pymysql.Error as e:
         print(e)
         success = False
-    # try:
-    #     cursor.execute(f'''
-    #     insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
-    #     values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
-    #     cursor.execute("set @cid = LAST_INSERT_ID();")
-    # except pymysql.Error as e:
-    #     print(e)
-    #     success = False
+    try:
+        cursor.execute(f'''
+        insert into Curation_Contribution (Con_name, Con_date, Cur_name, Cur_date, Cur_notes, Additional_info)
+        values ("{con_name}", "{con_date}", "{cur_name}", "{cur_date}", "{cur_notes}", "{ad_info}");''')
+        cursor.execute("set @cid = LAST_INSERT_ID();")
+    except pymysql.Error as e:
+        print(e)
+        success = False
     # try:
     #     cursor.execute('''
     #     insert into Removal (OID, MID, LID, CID)
