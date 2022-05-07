@@ -11,9 +11,9 @@ success = True
 try:
     connection = pymysql.connect(
         host='bioed.bu.edu',
-        user="sbevans",
-        password='3d3np33d3n',
-        db='sbevans',
+        user="Group_M",
+        password="Group_M",
+        db='Group_M',
         port=4253)
 except pymysql.Error as e:
     print(e)
