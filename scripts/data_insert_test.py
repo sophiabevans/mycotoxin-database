@@ -39,11 +39,13 @@ if (form):
     input_aeran = form.getvalue("input_aeran", "")
     #env_other = form.getvalue("other_env_txt", "").title()
     #rem_other = form.getvalue("other_input_rem", "").title()
-    test_env = form.getlist("test_env")
-    test_rem = form.getlist("test_rem")
-
-    test_env = ";".join(test_env)
-    test_rem = ";".join(test_rem)
+    # test_env = form.getlist("test_env")
+    # test_rem = form.getlist("test_rem")
+    #
+    # test_env = ";".join(test_env)
+    # test_rem = ";".join(test_rem)
+    test_env = ""
+    test_rem = ""
 
     # try:
     #     cursor.execute(f'''
