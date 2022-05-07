@@ -51,14 +51,14 @@ if (form):
     if "Other" in rem:
         rem = rem.replace("Other", rem_other)
 
-    # try:
-    #     cursor.execute(f'''
-    #     insert into Literature (Context, Assay, Source, Link)
-    #     values ("{context}", "{assay}", "{cite}", "{link}");''')
-    #     cursor.execute("set @lid = LAST_INSERT_ID();")
-    # except pymysql.Error as e:
-    #     print(e)
-    #     success = False
+    try:
+        cursor.execute(f'''
+        insert into Literature (Context, Assay, Source, Link)
+        values ("{context}", "{assay}", "{cite}", "{link}");''')
+        cursor.execute("set @lid = LAST_INSERT_ID();")
+    except pymysql.Error as e:
+        print(e)
+        success = False
     # try:
     #     cursor.execute(f'''
     #     insert into Mycotoxin (Name, Removal_mech, Enzymatic_or_not, Location)
@@ -95,31 +95,31 @@ else:
     success = False
 
 if success:
-    #results = f"""Your data insertion was successful!\n"""
+    results = "Your data insertion was successful!\n"
     #connection.commit()
-    results = f"""
-        link = {link}\n
-        cite = {cite}\n
-        context = {context}\n
-        assay = {assay}\n
-        cur_name = {cur_name}\n
-        cur_notes = {cur_notes}\n
-        cur_date = {cur_date}\n
-        con_name = {con_name}\n
-        con_date = {con_date}\n
-        ad_info = {ad_info}\n
-        org_name = {org_name}\n
-        input_domain = {input_domain}\n
-        input_path = {input_path}\n
-        input_aeran = {input_aeran}\n
-        env_other = {env_other}\n
-        rem_other = {rem_other}\n
-        env = {env}\n
-        rem = {rem}\n
-        myc_name = {myc_name}\n
-        enzymatic = {enzymatic}\n
-        loc = {loc}\n
-    """
+    # results = f"""
+    #     link = {link}\n
+    #     cite = {cite}\n
+    #     context = {context}\n
+    #     assay = {assay}\n
+    #     cur_name = {cur_name}\n
+    #     cur_notes = {cur_notes}\n
+    #     cur_date = {cur_date}\n
+    #     con_name = {con_name}\n
+    #     con_date = {con_date}\n
+    #     ad_info = {ad_info}\n
+    #     org_name = {org_name}\n
+    #     input_domain = {input_domain}\n
+    #     input_path = {input_path}\n
+    #     input_aeran = {input_aeran}\n
+    #     env_other = {env_other}\n
+    #     rem_other = {rem_other}\n
+    #     env = {env}\n
+    #     rem = {rem}\n
+    #     myc_name = {myc_name}\n
+    #     enzymatic = {enzymatic}\n
+    #     loc = {loc}\n
+    # """
 else:
     results = "Your data insertion was unsuccessful"
 
