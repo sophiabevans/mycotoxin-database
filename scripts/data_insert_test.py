@@ -42,10 +42,11 @@ if (form):
     test_env = form.getvalue("test_env", "")
     test_rem = form.getvalue("test_rem", "")
 
-    # test_env = ";".join(test_env)
-    # test_rem = ";".join(test_rem)
-    # test_env = ""
-    # test_rem = ""
+    if "Other" in test_env:
+        test_env.replace("Other", env_other)
+
+    if "Other" in test_rem:
+        test_rem.replace("Other", rem_other)
 
     # try:
     #     cursor.execute(f'''
