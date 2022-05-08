@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+	<title>Microbial Mycotoxin Removal Database (MMRB)</title>
+	<script>
+	function openPage(pageName, elmnt, color) {
+	  // Hide all elements with class="tabcontent" by default */
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
+
+	  // Remove the background color of all tablinks/buttons
+	  tablinks = document.getElementsByClassName("tablink");
+	  for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].style.backgroundColor = "";
+	  }
+
+	  // Show the specific tab content
+	  document.getElementById(pageName).style.display="block";
+
+	  // Add the specific color to the button used to open the tab content
+	  //elmnt.style.backgroundColor = color;
+	}
+	// Get the element with id="defaultOpen" and click on it
+
+
+	</script>
+	<style>
+		table {
+			border: 1px solid;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 15px;
+			text-align: left;
+		}
+		tr:nth-child(even) {background-color: #f2f2f2;}
+		th {
+			background-color: #04AA6D;
+			color: white;
+		}
+		h1 {
+			text-decoration: underline;
+		}
+		* {box-sizing: border-box}
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		  font-family: Arial;
+		}
+
+		/* Style tab links */
+		.tablink {
+		  background-color: green;
+		  opacity: 0.9;
+		  color: white;
+		  float: left;
+		  outline: none;
+		  cursor: pointer;
+		  padding: 14px 16px;
+		  font-size: 17px;
+		  width: 20%;
+		}
+
+		.tablink:hover {
+		  background-color: #777;
+		}
+
+		/* Style the tab content (and add height:100% for full page content) */
+		.tabcontent {
+		  color: black;
+		  display: none;
+		  padding: 100px 20px;
+		  height: 100%;
+		}
+		#About {background-color: white;}
+		#Search {background-color: white;}
+		#Data_insertion {background-color: white;}
+		#Help {background-color: white;}
+		#Demographic_breakdown {background-color: white;}
+	</style>
+
+	<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
+	<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
+	<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
+	<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+	<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
+
+
+	<script>
+	// Moved this call down here because it was throwing an error about the defaultOpen id not existing when placed above the button objects, although that shouldn't matter
+	document.getElementById("defaultOpen").click();
+	</script>
+
+</head>
+  <body>
+	<div id="Search" class="tabcontent">
+		<head>
+			<title> Mycotoxin Removal Data Interface </title>
+		</head>
+			<h1>Welcome! Explore our database using the search options below.</h1><br><br>
+			<h3>List organisms that remove a particular mycotoxin:</h3>
+			<label for "myco_name1">Please enter the name of a mycotoxin.</label>
+			<input type="text" id="myco_name1" name="myco_name"><br>
+			<!--<div id="query1_table"></div></br><br/>-->
+			<button id="query1_button" type="submit" onclick="check_input1()">GO!</button><br/><br/>
+			<h3>List species that remove multiple mycotoxins:</h3>
+			<!--<div id="query2_table"></div></br><br/>-->
+			<button id="query2_button" type="submit">GO!</button><br/><br/>
+			<h3>List species that use more than one mycotoxin removal mechanism:</h3>
+			<!--<div id="query3_table"></div></br><br/>-->
+			<button id="query3_button" type="submit">GO!</button><br/><br/>
+			<h3>List organisms that remove a particular mycotoxin under specific conditions:</h3>
+			<label for "myco_name2">Please enter the name of a mycotoxin and select conditions.</label>
+			<input type="text" id="myco_name2" name="myco_name2"><br>
+			Organism Domain:
+			<select class = "search_input" id = "choose_domain" name="choose_domain">
+				<option value="" selected disabled hidden>Select Domain</option>
+				<option id = "eukarya" value="eukarya">Eukarya</option>
+				<option id = "bacteria" value="bacteria">Bacteria</option>
+				<option id = "archaea" value="archaea">Archaea</option>
+			</select><br>
+			Organism Pathogenicity:
+			<select class = "search_input" id = "choose_path" name="choose_path">
+				<option value="" selected disabled hidden>Select Pathogenicity</option>
+				<option id = "pathogenic" value="pathogenic">Pathogenic</option>
+				<option id = "non_path" value="non_path">Non-Pathogenic</option>
+				<option id = "opportunistic" value="opportunistic">Opportunistic</option>
+			</select><br>
+			Organism Respiration Type:
+			<select class = "search_input" id = "choose_aeran" name="choose_aeran">
+				<option value="" selected disabled hidden>Select Respiration Type</option>
+				<option id = "aerobic" value="aerobic">Aerobic</option>
+				<option id = "anaerobic" value="anaerobic">Anaerobic</option>
+				<option id = "facultative" value="facultative">Facultative</option>
+			</select><br>
+			<!--<div id="query4_table"></div></br><br/>-->
+			<button id="query4_button" type="submit" onclick="check_input2()">GO!</button><br/><br/>  
+			<h3>List the literature sources describing the removal of a particular mycotoxin:</h3>
+			<label for "myco_name3">Please enter the name of a mycotoxin.</label>
+			<input type="text" id="myco_name3" name="myco_name3"><br>
+			<!--<div id="query5_table"></div></br><br/>-->
+			<button id="query5_button" type="submit" onclick="check_input3()">GO!</button><br/><br/>
+		<script>
+            
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+
+        function check_input1() {
+            var query1_text = document.getElementById('myco_name1').value;
+            if (query1_text == "") {
+                alert("You did not name a mycotoxin");
+                return false;
+            } else {
+                $("#all_table").empty();
+                return true;
+            }
+        }
+		
+		function check_input2() {
+            var query2_text = document.getElementById('myco_name2').value;
+            if (query2_text == "") {
+                alert("You did not name a mycotoxin");
+                return false;
+            } else {
+                $("#all_table").empty();
+                return true;
+            }
+        }
+		
+		function check_input3() {
+            var query3_text = document.getElementById('myco_name3').value;
+            if (query3_text == "") {
+                alert("You did not name a mycotoxin");
+                return false;
+            } else {
+                $("#all_table").empty();
+                return true;
+            }
+        }
+		
+		
+        $(document).ready(function() {
+            $("#query1_button").click(function() {
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query1_ajax.py", {
+                        'query1_text': $("#myco_name1").val()
+                    },
+                    function(data) { //data is what comes back from the cgi program
+						if (data != "") {
+							draw_table1(data); //function to send the data to
+						}
+						else {
+							let query1_input = $("#myco_name1").val();
+							document.getElementById("all_table").innerHTML = "There was no data for the mycotoxin name " + query1_input;
+						}
+                    },
+                    "json"
+                );
+            });
+            $("#query2_button").click(function() {
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query2_ajax.py", 
+                    function(data) { //data is what comes back from the cgi program
+						if (data != "") {
+							draw_table2(data); //function to send the data to
+						}
+						else {
+							document.getElementById("all_table").innerHTML = "The database has failed to return any results."
+						}
+                    },
+                    "json"
+                );
+            });
+			$("#query3_button").click(function() {
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query3_ajax.py", 
+                    function(data) { //data is what comes back from the cgi program
+						if (data != "") {
+							draw_table3(data); //function to send the data to
+						}
+						else {
+							document.getElementById("all_table").innerHTML = "The database has failed to return any results."
+						}
+                    },
+                    "json"
+                );
+            });
+			$("#query4_button").click(function() {
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query4_ajax.py", {
+                        'query4_text': $("#myco_name2").val(), 'choose_domain':$("#choose_domain").val(), 'choose_path':$("#choose_path").val(), 'choose_aeran':$("#choose_aeran").val()
+                    },
+                    function(data) { //data is what comes back from the cgi program
+						if (data != "") {
+							draw_table4(data); //function to send the data to
+						}
+						else {
+							let query4_input = $("#query4_text").val();
+							document.getElementById("all_table").innerHTML = "There was no data for the mycotoxin name " + query4_input;
+						}
+                    },
+                    "json"
+                );
+            });
+			$("#query5_button").click(function() {
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query5_ajax.py", {
+                        'query5_text': $("#myco_name3").val()
+                    },
+                    function(data) { //data is what comes back from the cgi program
+						if (data != "") {
+							draw_table5(data); //function to send the data to
+						}
+						else {
+							let query5_input = $("#myco_name3").val();
+							document.getElementById("all_table").innerHTML = "There was no data for the mycotoxin name " + query5_input;
+						}
+                    },
+                    "json"
+                );
+            });
+
+		function draw_table1(data) {
+			let myco_name1 = $("#myco_name1").val();
+			let table_body_contents = "";
+			$("#all_table").empty();
+			document.getElementById("all_table").innerHTML = "";
+			if (data != "") {
+				data = JSON.parse(data)
+				for (let row = 0; row < data.length; row++) {
+					org_name = data[row][0];
+					org_dom = data[row][1];
+					org_path = data[row][2];
+					org_resp = data[row][3];
+					org_env = data[row][4];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+				}
+				let table_template = `<table><caption>Table of organisms that remove ${myco_name1}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				$("#all_table").append(table_template);
+			}
+			else {
+				$("#all_table").empty();
+				document.getElementById("all_table").innerHTML = "";
+			}
+		}
+		
+		function draw_table2(data) {
+			let table_body_contents = "";
+			$("#all_table").empty();
+			document.getElementById("all_table").innerHTML = "";
+			if (data != "") {
+				data = JSON.parse(data)
+				for (let row = 0; row < data.length; row++) {
+					org_name = data[row][0];
+					org_dom = data[row][1];
+					org_path = data[row][2];
+					org_resp = data[row][3];
+					org_env = data[row][4];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+				}
+				let table_template = `<table><caption>Table of organisms that remove more than one mycotoxin</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				$("#all_table").append(table_template);
+			}
+			else {
+				$("#all_table").empty();
+				document.getElementById("all_table").innerHTML = "";
+			}
+		}
+		
+		function draw_table3(data) {
+			let table_body_contents = "";
+			$("#all_table").empty();
+			document.getElementById("all_table").innerHTML = "";
+			if (data != "") {
+				data = JSON.parse(data)
+				for (let row = 0; row < data.length; row++) {
+					org_name = data[row][0];
+					org_dom = data[row][1];
+					org_path = data[row][2];
+					org_resp = data[row][3];
+					org_env = data[row][4];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+				}
+				let table_template = `<table><caption>Table of organisms that with more than one removal mechanism</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				$("#all_table").append(table_template);
+			}
+			else {
+				$("#all_table").empty();
+				document.getElementById("all_table").innerHTML = "";
+			}
+		}
+		
+		function draw_table4(data) {
+			let myco_name2 = $("#myco_name2").val();
+			let table_body_contents = "";
+			$("#all_table").empty();
+			document.getElementById("all_table").innerHTML = "";
+			if (data != "") {
+				data = JSON.parse(data)
+				for (let row = 0; row < data.length; row++) {
+					org_name = data[row][0];
+					org_dom = data[row][1];
+					org_path = data[row][2];
+					org_resp = data[row][3];
+					org_env = data[row][4];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+				}
+				let table_template = `<table><caption>Table of organisms that remove ${myco_name2}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				$("#all_table").append(table_template);
+			}
+			else {
+				$("#all_table").empty();
+				document.getElementById("all_table").innerHTML = "";
+			}
+		}		
+		
+		function draw_table5(data) {
+			let myco_name3 = $("#myco_name3").val();
+			let table_body_contents = "";
+			$("#all_table").empty();
+			document.getElementById("all_table").innerHTML = "";
+			if (data != "") {
+				data = JSON.parse(data)
+				for (let row = 0; row < data.length; row++) {
+					source = data[row][0];
+					link = data[row][1];
+					table_body_contents += `<tr><td> ${source}</td><td>${link}</td></tr>`;
+				}
+				let table_template = `<table><caption>Sources for the removal of ${myco_name3}</caption><thead><tr><th>Source</th><th>Link</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				$("#all_table").append(table_template);
+			}
+			else {
+				$("#all_table").empty();
+				document.getElementById("all_table").innerHTML = "";
+			}
+		}
+    });
+		</script>
+
+			Download Format:
+			<!--<input type="radio" class = "search_input" id = "csv" name="download" value="csv"> .csv
+			<input type="radio" class = "search_input" id = "txt" name="download" value="txt"> .txt
+			<input type="radio" class = "search_input" id = "tsv" name="download" value="tsv"> .tsv
+			<br>-->
+			<div id="table_id"></div>
+			<button id="btnExportToCsv" type="button" class="button">Export to CSV</button><br><br>
+			<input type="reset" value="Reset All Search Input">
+			<div id="all_table"></div>
+			    <script>
+					class TableCSVExporter {
+						constructor (table, includeHeaders = true) {
+							this.table = table;
+							this.rows = Array.from(table.querySelectorAll("tr"));
+
+							if (!includeHeaders && this.rows[0].querySelectorAll("th").length) {
+								this.rows.shift();
+							}
+						}
+
+						convertToCSV () {
+							const lines = [];
+							const numCols = this._findLongestRowLength();
+
+							for (const row of this.rows) {
+								let line = "";
+
+								for (let i = 0; i < numCols; i++) {
+									if (row.children[i] !== undefined) {
+										line += TableCSVExporter.parseCell(row.children[i]);
+									}
+
+									line += (i !== (numCols - 1)) ? "," : "";
+								}
+
+								lines.push(line);
+							}
+
+							return lines.join("\n");
+						}
+
+						_findLongestRowLength () {
+							return this.rows.reduce((l, row) => row.childElementCount > l ? row.childElementCount : l, 0);
+						}
+
+						static parseCell (tableCell) {
+							let parsedValue = tableCell.textContent;
+
+							// Replace all double quotes with two double quotes
+							parsedValue = parsedValue.replace(/"/g, `""`);
+
+							// If value contains comma, new-line or double-quote, enclose in double quotes
+							parsedValue = /[",\n]/.test(parsedValue) ? `"${parsedValue}"` : parsedValue;
+
+							return parsedValue;
+						}
+					}					
+					
+					const dataTable = document.getElementById("all_table");
+					const btnExportToCsv = document.getElementById("btnExportToCsv");
+
+					btnExportToCsv.addEventListener("click", () => {
+						const exporter = new TableCSVExporter(dataTable);
+						const csvOutput = exporter.convertToCSV();
+						const csvBlob = new Blob([csvOutput], { type: "text/csv" });
+						const blobUrl = URL.createObjectURL(csvBlob);
+						const anchorElement = document.createElement("a");
+
+						anchorElement.href = blobUrl;
+						anchorElement.download = "table-export.csv";
+						anchorElement.click();
+
+						setTimeout(() => {
+							URL.revokeObjectURL(blobUrl);
+						}, 500);
+					});
+
+				//$("#clear").click(function() {
+				//	$("#Search").reset();
+				//});
+
+				function reset_search() {
+					document.getElementsByClassName("search_input").value = "";
+				}
+
+
+				google.charts.load('current', {
+					'packages': ['corechart']
+				});
+			</script>
+	</div>
+
+  <div id="Data_insertion" class="tabcontent">
+		<h1>Data Insertion Interface</h1>
+		<h3>Fill out the following fields to insert new data into the Mycotoxin Removal Database.</h3>
+		<h3>Please, *double check* the accuracy of all data entered into the input fields below! Typos could prevent your data from being found in future searches.</h3>
+
+		Literature Link: <input type="text" id="lit_link">
+		<br>
+		Literature Citation: <input type="text" id="lit_cite">
+		<br>
+		Characterization Context: <input type="text" id="char_con">
+		<br>
+		Characterization Assay: <input type="text" id="char_assay">
+		<br><br>
+
+		Organism Name: <input type="text" id="org_name">
+		<br>
+		Organism Domain:
+		<select id="input_domain" name="input_domain">
+			<option value="" selected disabled hidden>Select Domain</option>
+			<option value="Eukarya">Eukarya</option>
+			<option value="Bacteria">Bacteria</option>
+			<option value="Archaea">Archaea</option>
+		</select><br>
+		Organism Pathogenicity:
+		<select id="input_path" name="input_path">
+			<option value="" selected disabled hidden>Select Pathogenicity</option>
+			<option value="Pathogenic">Pathogenic</option>
+			<option value="Non-Pathogenic">Non-Pathogenic</option>
+			<option value="Opportunistic">Opportunistic</option>
+		</select><br>
+		Organism Respiration Type:
+		<select id="input_aeran" name="input_aeran">
+			<option value="" selected disabled hidden>Select Respiration</option>
+			<option value="Aerobic">Aerobic</option>
+			<option value="Anaerobic">Anaerobic</option>
+			<option value="Facultative">Facultative</option>
+		</select><br>
+		Organism Environment:
+		<input type="checkbox" name="env" id="human" value="Human"> Human
+		<input type="checkbox" name="env" id="animal" value="Animal"> Animal
+		<input type="checkbox" name="env" id="food" value="Food"> Food
+		<input type="checkbox" name="env" id="plants" value="Plants"> Plants
+		<input type="checkbox" name="env" id="soil" value="Soil"> Soil
+		<input type="checkbox" name="env" id="water" value="Water"> Water
+		<input type="checkbox" name="env" id="other_env" value="Other" onclick="var input = document.getElementById('other_input_env'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
+		<input type="text" id="other_input_env" disabled="disabled">
+		<br><br>
+
+		Mycotoxin Name: <input type="text" id="myc_name">
+		<br>
+
+		Mycotoxin Removal Mechanism:
+		<input type="checkbox" name="input_removal" id="biotran" value="Biotransformation">Biotransformation
+		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
+		<input type="checkbox" name="input_removal" id="adsorp" value="Adsorption">Adsorption
+		<input type="checkbox" name="input_removal" id="absorp" value="Absorption">Absorption
+		<input type="checkbox" name="input_removal" id="deg" value="Degredation">Degradation
+		<input type="checkbox" name="input_removal" id="reg" value="Regulation">Regulation
+		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
+		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
+		<input type="text" id="other_input_rem" disabled="disabled">
+		<br><br>
+
+		Enzymatic Removal?:
+		<select id = "input_enz" name = "input_enz">
+			<option value="" selected disabled hidden>Select Enzymatic</option>
+			<option id = "yes_enz" value = "Yes">Yes</option>
+			<option id = "no_enz" value = "No">No</option>
+		</select><br>
+
+		Location:
+		<select id="input_loc" name="input_loc">
+			<option value="" selected disabled hidden>Select Location</option>
+			<option value="Intracellular">Intracellular</option>
+			<option value="Extracellular">Extracellular</option>
+			<option value="Unknown">Unknown</option>
+		</select><br><br>
+
+		Curator Name: <input type="text" id="cur_name">
+		<br>
+		Curation Date: <input type="date" id="cur_date">
+		<br>
+		Curation Notes: <input type="text" id="cur_notes">
+		<br>
+		Contributor Name: <input type="text" id="con_name">
+		<br>
+		Contributaion Date: <input type="date" id="con_date">
+		<br>
+		Additional Info: <input type="text" id="ad_info">
+		<br>
+
+		<button id="submit_input">Submit Data Input</button><br><br>
+
+    <div id="insert_success"></div>
+    <br><br>
+    <script>
+
+      $(document).ready(function() {
+        document.getElementById('cur_date').valueAsDate = new Date();
+        document.getElementById('con_date').valueAsDate = new Date();
+        $("#submit_input").click(function() {
+          $("#insert_success").empty();
+					let cite=$("#lit_cite").val();
+					let org_name=$("#org_name").val();
+					let myc_name=$("#myc_name").val();
+					let curator=$("#cur_name").val();
+					var list_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
+					var list_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
+					if (checkInput(cite, org_name, myc_name, curator)) {
+		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
+		          {link:$("#lit_link").val(), cite:cite,
+							context:$("#char_con").val(), assay:$("#char_assay").val(),
+							curator:curator, cur_date:$("#cur_date").val(),
+							cur_notes:$("#cur_notes").val(), con_name:$("#con_name").val(),
+							con_date:$("#con_date").val(), ad_info:$("#ad_info").val(),
+							org_name:org_name, input_domain:$("#input_domain").val(),
+							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
+							myc_name:myc_name,
+							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
+							list_env:list_env, list_rem:list_rem,
+							other_env_txt:$("#other_input_env").val(),
+							other_rem_txt:$("#other_input_rem").val()},
+		          function(data){
+		            input_success(data);
+		          },
+		          "json"
+		        );
+					}
+        });
+      });
+
+      function input_success(data){
+        $("#insert_success").append(data);
+      }
+
+			function checkInput(cite, org_name, myc_name, curator) {
+				if (cite == "") {
+					alert("You did not enter a citation");
+					return false;
+				}
+				else if (org_name == "") {
+					alert("You did not enter an organism name");
+					return false;
+				}
+				else if (myc_name == "") {
+					alert("You did not enter a mycotoxin name");
+					return false;
+				}
+				else if (curator == "") {
+					alert("You did not enter the curator name");
+					return false;
+				}
+				return true;
+			}
+
+    </script>
+	</div>
+
+	<div id="Demographic_breakdown" class="tabcontent">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+		<script src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+	<body>
+		<h1>Breakdown of Organisms and Mycotoxin Removal Mechanisms in MMRB.</h1><br><br>
+		<h2><i><u>Removal Mechanism Distribution</u></i></h2>
+
+		<div id="chart"></div>
+			<hr>
+			<h2><i><u>Domain Distribution</u></i></h2>
+		<div id="domain"></div>
+			<hr>
+			<h2><i><u>Respiration Distribution</u></i></h2>
+		<div id="respiration"></div>
+			<hr>
+		<script>
+        $(document).ready(function(){
+
+			counts_pie();
+			domains_pie();
+			resp_pie();
+		});
+
+		function counts_pie() {
+				//let miRNA = $("#miRNA").val(); //taking input of miRNA name for histogram
+				$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+					{selector:"chart"}, //selector variable
+					function(data) {
+						pass_data(data);
+					},
+					"json"
+				);
+			}
+
+		function domains_pie() {
+			$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+				{selector:"domain"}, //selector variable
+				function(data) {
+					pass_domain_data(data);
+				},
+				"json"
+			);
+		}
+
+		function resp_pie() {
+			$.get("https://bioed.bu.edu/cgi-bin/students_22/mranawee/mycotox_AJAX.py", //send AJAX request to CGI
+				{selector:"respiration"}, //selector variable
+				function(data) {
+					pass_resp_data(data);
+				},
+				"json"
+			);
+		}
+
+		function pass_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawChart(data);
+			});
+		}
+
+		function pass_domain_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawDomainChart(data);
+			});
+		}
+
+		function pass_resp_data(data) {
+			//Google Char stuff starts here
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(function(){
+				drawRespChart(data);
+			});
+		}
+
+		function drawChart(data) {
+			//data.unshift(["miRNA"]);
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'mechanism');
+			chart_data.addColumn('number', 'count');
+
+			let mech = "";
+			let count = "";
+
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				mech = data[row][0];
+				count = data[row][1];
+				row_contents.push([mech,count]);
+			}
+
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each of the removal mechanism for various toxins', 'width': 1200, 'height': 500, pieSliceText: 'none'};
+			var chart = new google.visualization.PieChart(document.getElementById('chart'));
+			chart.draw(chart_data, options);
+
+		}
+
+		function drawDomainChart(data) {
+
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'Domain');
+			chart_data.addColumn('number', 'count');
+
+			let dom = "";
+			let count = "";
+
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				dom = data[row][0];
+				count = data[row][1];
+				row_contents.push([dom,count]);
+			}
+
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each domain for various mycotoxins', 'width': 1200, 'height': 500, pieSliceText: 'none'};
+			var chart = new google.visualization.PieChart(document.getElementById('domain'));
+			chart.draw(chart_data, options);
+		}
+
+		function drawRespChart(data) {
+
+			var chart_data = new google.visualization.DataTable();
+			chart_data.addColumn('string', 'Respiration');
+			chart_data.addColumn('number', 'count');
+
+			let resp = "";
+			let count = "";
+
+			row_contents = [];
+			for(let row = 0; row < data.length; row++) {
+				resp = data[row][0];
+				count = data[row][1];
+				row_contents.push([resp,count]);
+			}
+
+			chart_data.addRows(row_contents);
+
+			var options = {'title': 'Piechart representing the frequency of each of the respiration types', 'width': 1200, 'height': 500, pieSliceText: 'none'};
+			var chart = new google.visualization.PieChart(document.getElementById('respiration'));
+			chart.draw(chart_data, options);
+		}
+
+
+
+		</script>
+
+	</body>
+	</div>
+
+	<div id="About" class="tabcontent">
+		<h1>More about the MMRB:</h1><br>
+		<h2>For whom is the MMRB useful?</h2>
+		<p>This database may be useful for you if you are seeking to identify microbes that can remove certain mycotoxins from their environments, or if you want to know what mycotoxins are removed by a specific microbe.
+		It has many other useful applications beyond these, however.</p>
+		<h2>Who contributes data to the MMRB?</h2>
+		<p>This database has been constructed from a dataset generated by Boston College students and Dr. Babak Momeni. If you would like to learn more about the Momeni lab, click the link <a href="http://www.momenilab.org/">here</a>.
+		<h2>Where can I find more information about mycotoxins?</h2>
+		<p>The World Health Organization provides comprehensive information and resources on the topic of mycotoxins. If you're curious, click the link <a href="https://www.who.int/news-room/fact-sheets/detail/mycotoxins">here</a>.
+	</div>
+
+	<div id="Help" class="tabcontent">
+		<h1>FAQs</h1>
+		<h2>1: I'm getting no results for what I wrote in the input text box!</h2>
+		<p>In this scenario, the explanation is most likely either (1) you have mistyped your input, or (2) there is no value in our database matching the input that you have provided.</p>
+		<br>
+		<h2>2: I've looked closely at the search and/or data insertion pages, but I'm *still* not sure how to search and/or add data!</h2>
+		<p>If you're struggling for any reason to use the interface, you might find it helpful to refer to the walkthrough Youtube video at this link: <YOUTUBE_URL></p>
+		<br>
+		<h2>If the FAQ responses above are not sufficient to solve your problem, please direct further inquiries to Daniel Golden at the email address dgolden1@bu.edu</h2>
+	</div>
+</body>
+</html>
