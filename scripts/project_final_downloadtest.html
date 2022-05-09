@@ -40,11 +40,12 @@
 		}
 		tr:nth-child(even) {background-color: #f2f2f2;}
 		th {
-			background-color: #04AA6D;
+			background-color: #6495ED;
 			color: white;
 		}
 		h1 {
 			text-decoration: underline;
+			text-align: center;
 		}
 		* {box-sizing: border-box}
 		body, html {
@@ -55,7 +56,7 @@
 
 		/* Style tab links */
 		.tablink {
-		  background-color: green;
+		  background-color: #6495ED;
 		  opacity: 0.9;
 		  color: white;
 		  float: left;
@@ -84,7 +85,7 @@
 		#Demographic_breakdown {background-color: white;}
 	</style>
 
-	<button class="tablink" onclick="openPage('Search', this, 'lightgreen')" id="defaultOpen">Search</button>
+	<button class="tablink" onclick="openPage('Search', this, 'white')" id="defaultOpen">Search</button>
 	<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
 	<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
 	<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
@@ -102,7 +103,7 @@
 		<head>
 			<title> Mycotoxin Removal Data Interface </title>
 		</head>
-			<h1>Welcome! Explore our database using the search options below.</h1><br><br>
+			<h1>Database Queries and Exploration</h1><br>
 			<h3>List organisms that remove a particular mycotoxin:</h3>
 			<label for "myco_name1">Please enter the name of a mycotoxin.</label>
 			<input type="text" id="myco_name1" name="myco_name"><br>
@@ -145,8 +146,11 @@
 			<input type="text" id="myco_name3" name="myco_name3"><br>
 			<!--<div id="query5_table"></div></br><br/>-->
 			<button id="query5_button" type="submit" onclick="check_input3()">GO!</button><br/><br/>
+			<button id="btnExportToCsv" type="button" class="button">Export table to CSV</button><br><br>
+			<!--<input type="reset" value="Reset All Search Input" style="background-color: red; 
+                        color: white" /><br>-->
 		<script>
-            
+
         google.charts.load('current', {
             'packages': ['corechart']
         });
@@ -191,7 +195,7 @@
                         'query1_text': $("#myco_name1").val()
                     },
                     function(data) { //data is what comes back from the cgi program
-						if (data != "") {
+						if (JSON.parse(data) != "") {
 							draw_table1(data); //function to send the data to
 						}
 						else {
@@ -205,7 +209,7 @@
             $("#query2_button").click(function() {
                 $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query2_ajax.py", 
                     function(data) { //data is what comes back from the cgi program
-						if (data != "") {
+						if (JSON.parse(data) != "") {
 							draw_table2(data); //function to send the data to
 						}
 						else {
@@ -218,7 +222,7 @@
 			$("#query3_button").click(function() {
                 $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/dgolden1/query3_ajax.py", 
                     function(data) { //data is what comes back from the cgi program
-						if (data != "") {
+						if (JSON.parse(data) != "") {
 							draw_table3(data); //function to send the data to
 						}
 						else {
@@ -233,11 +237,11 @@
                         'query4_text': $("#myco_name2").val(), 'choose_domain':$("#choose_domain").val(), 'choose_path':$("#choose_path").val(), 'choose_aeran':$("#choose_aeran").val()
                     },
                     function(data) { //data is what comes back from the cgi program
-						if (data != "") {
+						if (JSON.parse(data) != "") {
 							draw_table4(data); //function to send the data to
 						}
 						else {
-							let query4_input = $("#query4_text").val();
+							let query4_input = $("#myco_name2").val();
 							document.getElementById("all_table").innerHTML = "There was no data for the mycotoxin name " + query4_input;
 						}
                     },
@@ -249,7 +253,7 @@
                         'query5_text': $("#myco_name3").val()
                     },
                     function(data) { //data is what comes back from the cgi program
-						if (data != "") {
+						if (JSON.parse(data) != "") {
 							draw_table5(data); //function to send the data to
 						}
 						else {
@@ -378,14 +382,6 @@
     });
 		</script>
 
-			Download Format:
-			<!--<input type="radio" class = "search_input" id = "csv" name="download" value="csv"> .csv
-			<input type="radio" class = "search_input" id = "txt" name="download" value="txt"> .txt
-			<input type="radio" class = "search_input" id = "tsv" name="download" value="tsv"> .tsv
-			<br>-->
-			<div id="table_id"></div>
-			<button id="btnExportToCsv" type="button" class="button">Export to CSV</button><br><br>
-			<input type="reset" value="Reset All Search Input">
 			<div id="all_table"></div>
 			    <script>
 					class TableCSVExporter {
@@ -634,7 +630,7 @@
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 	</head>
 	<body>
-		<h1>Breakdown of Organisms and Mycotoxin Removal Mechanisms in MMRB.</h1><br><br>
+		<h1>Breakdown of Organisms and Mycotoxin Removal Mechanisms in MMRB</h1><br><br>
 		<h2><i><u>Removal Mechanism Distribution</u></i></h2>
 
 		<div id="chart"></div>
@@ -786,7 +782,7 @@
 	</div>
 
 	<div id="About" class="tabcontent">
-		<h1>More about the MMRB:</h1><br>
+		<h1>More about the MMRB</h1><br>
 		<h2>For whom is the MMRB useful?</h2>
 		<p>This database may be useful for you if you are seeking to identify microbes that can remove certain mycotoxins from their environments, or if you want to know what mycotoxins are removed by a specific microbe.
 		It has many other useful applications beyond these, however.</p>
