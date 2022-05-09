@@ -567,6 +567,7 @@
         document.getElementById('cur_date').valueAsDate = new Date();
         document.getElementById('con_date').valueAsDate = new Date();
         $("#submit_input").click(function() {
+		if (confirm("Are you sure that all of your input is completely correct?") == true) {
           $("#insert_success").empty();
 					let cite=$("#lit_cite").val();
 					let org_name=$("#org_name").val();
@@ -594,6 +595,8 @@
 		          "json"
 		        );
 					}
+		} else {
+			return false;
         });
       });
 
