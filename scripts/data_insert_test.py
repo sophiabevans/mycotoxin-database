@@ -48,8 +48,16 @@ if (form):
     if "Other" in environment:
         environment = environment.replace("Other", env_other)
 
+    environment = environment.split(";")
+    enviromnent.sort()
+    environment = ";".join(environment)
+
     if "Other" in rem:
         rem = rem.replace("Other", rem_other)
+
+    rem = rem.split(";")
+    rem.sort()
+    rem = ";".join(rem)
 
     try:
         cursor.execute(f'''

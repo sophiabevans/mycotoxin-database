@@ -78,7 +78,7 @@
 		  padding: 100px 20px;
 		  height: 100%;
 		}
-		
+
 		#About {background-color: white;}
 		#Search {background-color: white;}
 		#Data_insertion {background-color: white;}
@@ -126,7 +126,7 @@
 			</select><br>
 			Organism Pathogenicity:
 			<select class = "search_input" id = "choose_path" name="choose_path">
-				<option value="" selected disabled hidden>Select Pathogenicity</option>				
+				<option value="" selected disabled hidden>Select Pathogenicity</option>
 				<option id = "" value = ""></option>
 				<option id = "pathogenic" value="pathogenic">Pathogenic</option>
 				<option id = "non_path" value="non_path">Non-Pathogenic</option>
@@ -140,7 +140,7 @@
 				<option id = "anaerobic" value="anaerobic">Anaerobic</option>
 				<option id = "facultative" value="facultative">Facultative</option>
 			</select><br>
-			<button id="query4_button" type="submit" onclick="check_input2()">GO!</button><br/><br/>  
+			<button id="query4_button" type="submit" onclick="check_input2()">GO!</button><br/><br/>
 			<h3>List the literature sources describing the removal of a particular mycotoxin:</h3>
 			<label for "myco_name3">Please enter the name of a mycotoxin.</label>
 			<input type="text" id="myco_name3" name="myco_name3"><br>
@@ -164,7 +164,7 @@
                 return true;
             }
         }
-		
+
 		function check_input2() {
             var query2_text = document.getElementById('myco_name2').value;
             if (query2_text == "") {
@@ -175,7 +175,7 @@
                 return true;
             }
         }
-		
+
 		function check_input3() {
             var query5_myco = document.getElementById('myco_name3').value;
 			var query5_org = document.getElementById('org_nameQ5').value;
@@ -187,8 +187,8 @@
                 return true;
             }
         }
-		
-		
+
+
         $(document).ready(function() {
             $("#query1_button").click(function() {
                 $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query1_ajax.py", {
@@ -207,7 +207,7 @@
                 );
             });
             $("#query2_button").click(function() {
-                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query2_ajax.py", 
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query2_ajax.py",
                     function(data) { //data is what comes back from the cgi program
 						if (JSON.parse(data) != "") {
 							draw_table2(data); //function to send the data to
@@ -220,7 +220,7 @@
                 );
             });
 			$("#query3_button").click(function() {
-                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query3_ajax.py", 
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query3_ajax.py",
                     function(data) { //data is what comes back from the cgi program
 						if (JSON.parse(data) != "") {
 							draw_table3(data); //function to send the data to
@@ -288,7 +288,7 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-		
+
 		function draw_table2(data) {
 			let table_body_contents = "";
 			$("#all_table").empty();
@@ -311,7 +311,7 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-		
+
 		function draw_table3(data) {
 			let table_body_contents = "";
 			$("#all_table").empty();
@@ -334,7 +334,7 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-		
+
 		function draw_table4(data) {
 			let myco_name2 = $("#myco_name2").val();
 			let table_body_contents = "";
@@ -357,8 +357,8 @@
 				$("#all_table").empty();
 				document.getElementById("all_table").innerHTML = "";
 			}
-		}		
-		
+		}
+
 		function draw_table5(data) {
 			let myco_name3 = $("#myco_name3").val();
 			let table_body_contents = "";
@@ -430,8 +430,8 @@
 
 							return parsedValue;
 						}
-					}					
-					
+					}
+
 					const dataTable = document.getElementById("all_table");
 					const btnExportToCsv = document.getElementById("btnExportToCsv");
 
@@ -469,14 +469,14 @@
 
 		Literature Link: <input type="text" id="lit_link">
 		<br>
-		Literature Citation: <input type="text" id="lit_cite">
+		*Literature Citation: <input type="text" id="lit_cite">
 		<br>
 		Characterization Context: <input type="text" id="char_con">
 		<br>
 		Characterization Assay: <input type="text" id="char_assay">
 		<br><br>
 
-		Organism Name: <input type="text" id="org_name">
+		*Organism Name: <input type="text" id="org_name">
 		<br>
 		Organism Domain:
 		<select id="input_domain" name="input_domain">
@@ -510,7 +510,7 @@
 		<input type="text" id="other_input_env" disabled="disabled">
 		<br><br>
 
-		Mycotoxin Name: <input type="text" id="myc_name">
+		*Mycotoxin Name: <input type="text" id="myc_name">
 		<br>
 
 		Mycotoxin Removal Mechanism:
@@ -523,7 +523,7 @@
 		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
 		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
 		<input type="text" id="other_input_rem" disabled="disabled">
-		<br><br>
+		<br>
 
 		Enzymatic Removal?:
 		<select id = "input_enz" name = "input_enz">
@@ -540,7 +540,7 @@
 			<option value="Unknown">Unknown</option>
 		</select><br><br>
 
-		Curator Name: <input type="text" id="cur_name">
+		*Curator Name: <input type="text" id="cur_name">
 		<br>
 		Curation Date: <input type="date" id="cur_date">
 		<br>
@@ -552,6 +552,8 @@
 		<br>
 		Additional Info: <input type="text" id="ad_info">
 		<br>
+    <br>
+    *required fields<br><br>
 
 		<button id="submit_input">Submit Data Input</button><br><br>
 
@@ -563,7 +565,6 @@
         document.getElementById('cur_date').valueAsDate = new Date();
         document.getElementById('con_date').valueAsDate = new Date();
         $("#submit_input").click(function() {
-		if (confirm("Are you sure that all of your input is completely correct?") == true) {
           $("#insert_success").empty();
 					let cite=$("#lit_cite").val();
 					let org_name=$("#org_name").val();
@@ -572,28 +573,29 @@
 					var list_env = $('input[name="env"]:checked').map(function(){return $(this).val();}).get().join(';');
 					var list_rem = $('input[name="input_removal"]:checked').map(function(){return $(this).val();}).get().join(';');
 					if (checkInput(cite, org_name, myc_name, curator)) {
-		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
-		          {link:$("#lit_link").val(), cite:cite,
-							context:$("#char_con").val(), assay:$("#char_assay").val(),
-							curator:curator, cur_date:$("#cur_date").val(),
-							cur_notes:$("#cur_notes").val(), con_name:$("#con_name").val(),
-							con_date:$("#con_date").val(), ad_info:$("#ad_info").val(),
-							org_name:org_name, input_domain:$("#input_domain").val(),
-							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
-							myc_name:myc_name,
-							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
-							list_env:list_env, list_rem:list_rem,
-							other_env_txt:$("#other_input_env").val(),
-							other_rem_txt:$("#other_input_rem").val()},
-		          function(data){
-		            input_success(data);
-		          },
-		          "json"
-		        );
-					}
-		} else {
-			return false;
-		}
+            if (confirm("Are you sure that all of your input is completely correct?") == true) {
+  		        $.get("https://bioed.bu.edu/cgi-bin/students_22/Group_M/data_insert.py",
+  		          {link:$("#lit_link").val(), cite:cite,
+  							context:$("#char_con").val(), assay:$("#char_assay").val(),
+  							curator:curator, cur_date:$("#cur_date").val(),
+  							cur_notes:$("#cur_notes").val(), con_name:$("#con_name").val(),
+  							con_date:$("#con_date").val(), ad_info:$("#ad_info").val(),
+  							org_name:org_name, input_domain:$("#input_domain").val(),
+  							input_path:$("#input_path").val(), input_aeran:$("#input_aeran").val(),
+  							myc_name:myc_name,
+  							enzymatic:$("#input_enz").val(),loc:$("#input_loc").val(),
+  							list_env:list_env, list_rem:list_rem,
+  							other_env_txt:$("#other_input_env").val(),
+  							other_rem_txt:$("#other_input_rem").val()},
+  		          function(data){
+  		            input_success(data);
+  		          },
+  		          "json"
+  		        );
+  					}
+		        } else {
+			           return false;
+          }
         });
       });
 
