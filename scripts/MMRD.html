@@ -4,32 +4,16 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://www.gstatic.com/charts/loader.js"></script>
 	<title>Microbial Mycotoxin Removal Database (MMRD)</title>
-	<script>
-	function openPage(pageName, elmnt, color) {
-	  // Hide all elements with class="tabcontent" by default */
-	  var i, tabcontent, tablinks;
-	  tabcontent = document.getElementsByClassName("tabcontent");
-	  for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	  }
-
-	  // Remove the background color of all tablinks/buttons
-	  tablinks = document.getElementsByClassName("tablink");
-	  for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].style.backgroundColor = "";
-	  }
-
-	  // Show the specific tab content
-	  document.getElementById(pageName).style.display="block";
-
-	  // Add the specific color to the button used to open the tab content
-	  //elmnt.style.backgroundColor = color;
-	}
-	// Get the element with id="defaultOpen" and click on it
-
-
-	</script>
 	<style>
+		.image {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;
+		}
+		#Landing_h3 {
+			text-align: center;
+		}
 		table {
 			border: 1px solid;
 			border-collapse: collapse;
@@ -78,7 +62,7 @@
 		  padding: 100px 20px;
 		  height: 100%;
 		}
-
+		
 		#About {background-color: white;}
 		#Search {background-color: white;}
 		#Data_insertion {background-color: white;}
@@ -86,36 +70,29 @@
 		#Demographic_breakdown {background-color: white;}
 	</style>
 
-	<button class="tablink" onclick="openPage('Search', this, 'white')" id="defaultOpen">Search</button>
+	<button class="tablink" onclick="openPage('Search', this, 'white')">Search</button>
 	<button class="tablink" onclick="openPage('Data_insertion', this, 'white')">Data Insertion</button>
 	<button class="tablink" onclick="openPage('Demographic_breakdown', this, 'white')">Demographic Breakdown</button>
-	<button class="tablink" onclick="openPage('About', this, 'white')">About</button>
+	<button class="tablink" onclick="openPage('About', this, 'white')" id="defaultOpen">About</button>
 	<button class="tablink" onclick="openPage('Help', this, 'white')">Help</button>
 
-
-	<script>
-	// Moved this call down here because it was throwing an error about the defaultOpen id not existing when placed above the button objects, although that shouldn't matter
-	document.getElementById("defaultOpen").click();
-	</script>
-
-</head>
-  <body>
 	<div id="Search" class="tabcontent">
 		<head>
 			<title> Mycotoxin Removal Data Interface </title>
 		</head>
 			<h1>Database Queries and Exploration</h1><br>
 			<h3>List organisms that remove a particular mycotoxin:</h3>
-			<label for "myco_name1">Please enter the name of a mycotoxin.</label>
+			<label for "myco_name1">Please enter the name of a mycotoxin. As an example, try "Patulin".</label>
 			<input type="text" id="myco_name1" name="myco_name"><br>
 			<button id="query1_button" type="submit" onclick="check_input1()">GO!</button><br/><br/>
 			<h3>List organisms that remove multiple mycotoxins:</h3>
 			<button id="query2_button" type="submit">GO!</button><br/><br/>
 			<h3>List organisms that use more than one mycotoxin removal mechanism:</h3>
 			<button id="query3_button" type="submit">GO!</button><br/><br/>
-			<h3>List organisms that remove a particular mycotoxin under specific conditions:</h3>
-			<label for "myco_name2">Please enter the name of a mycotoxin and select conditions.</label>
-			<input type="text" id="myco_name2" name="myco_name2"><br>
+			<h3>List organisms that remove a particular mycotoxin under various conditions:</h3>
+			<label for "myco_name2">Please enter the name of a mycotoxin. As an example, try "Aflatoxin B1".</label>
+			<input type="text" id="myco_name2" name="myco_name2"><br><br>
+			<label for "choose_domain">Select from the fields below to limit your search results.</label><br>
 			Organism Domain:
 			<select class = "search_input" id = "choose_domain" name="choose_domain">
 				<option value="" selected disabled hidden>Select Domain</option>
@@ -126,7 +103,7 @@
 			</select><br>
 			Organism Pathogenicity:
 			<select class = "search_input" id = "choose_path" name="choose_path">
-				<option value="" selected disabled hidden>Select Pathogenicity</option>
+				<option value="" selected disabled hidden>Select Pathogenicity</option>				
 				<option id = "" value = ""></option>
 				<option id = "pathogenic" value="pathogenic">Pathogenic</option>
 				<option id = "non_path" value="non_path">Non-Pathogenic</option>
@@ -140,7 +117,7 @@
 				<option id = "anaerobic" value="anaerobic">Anaerobic</option>
 				<option id = "facultative" value="facultative">Facultative</option>
 			</select><br>
-			<button id="query4_button" type="submit" onclick="check_input2()">GO!</button><br/><br/>
+			<button id="query4_button" type="submit" onclick="check_input2()">GO!</button><br/><br/>  
 			<h3>List the literature sources describing the removal of a particular mycotoxin:</h3>
 			<label for "myco_name3">Please enter the name of a mycotoxin.</label>
 			<input type="text" id="myco_name3" name="myco_name3"><br>
@@ -164,7 +141,7 @@
                 return true;
             }
         }
-
+		
 		function check_input2() {
             var query2_text = document.getElementById('myco_name2').value;
             if (query2_text == "") {
@@ -175,7 +152,7 @@
                 return true;
             }
         }
-
+		
 		function check_input3() {
             var query5_myco = document.getElementById('myco_name3').value;
 			var query5_org = document.getElementById('org_nameQ5').value;
@@ -187,8 +164,8 @@
                 return true;
             }
         }
-
-
+		
+		
         $(document).ready(function() {
             $("#query1_button").click(function() {
                 $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query1_ajax.py", {
@@ -207,7 +184,7 @@
                 );
             });
             $("#query2_button").click(function() {
-                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query2_ajax.py",
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query2_ajax.py", 
                     function(data) { //data is what comes back from the cgi program
 						if (JSON.parse(data) != "") {
 							draw_table2(data); //function to send the data to
@@ -220,7 +197,7 @@
                 );
             });
 			$("#query3_button").click(function() {
-                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query3_ajax.py",
+                $("#all_table").load("https://bioed.bu.edu/cgi-bin/students_22/Group_M/query3_ajax.py", 
                     function(data) { //data is what comes back from the cgi program
 						if (JSON.parse(data) != "") {
 							draw_table3(data); //function to send the data to
@@ -278,9 +255,10 @@
 					org_path = data[row][2];
 					org_resp = data[row][3];
 					org_env = data[row][4];
-					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+					mech = data[row][5];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td><td>${mech}</td></tr>`;
 				}
-				let table_template = `<table><caption>Table of organisms that remove ${myco_name1}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				let table_template = `<table><caption>Table of organisms that remove ${myco_name1}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th><th>Removal Mechanism(s)</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
 				$("#all_table").append(table_template);
 			}
 			else {
@@ -288,22 +266,24 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-
+		
 		function draw_table2(data) {
+			let myco_name1 = $("#myco_name1").val();
 			let table_body_contents = "";
 			$("#all_table").empty();
 			document.getElementById("all_table").innerHTML = "";
 			if (data != "") {
 				data = JSON.parse(data)
 				for (let row = 0; row < data.length; row++) {
-					org_name = data[row][0];
-					org_dom = data[row][1];
-					org_path = data[row][2];
-					org_resp = data[row][3];
-					org_env = data[row][4];
-					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+					count = data[row][0];
+					org_name = data[row][1];
+					org_dom = data[row][2];
+					org_path = data[row][3];
+					org_resp = data[row][4];
+					org_env = data[row][5];
+					table_body_contents += `<tr><td>${count}</td><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
 				}
-				let table_template = `<table><caption>Table of organisms that remove more than one mycotoxin</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				let table_template = `<table><caption>Table of organisms that remove more than one mycotoxin</caption><thead><tr><th>Mycotoxin Count</th><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
 				$("#all_table").append(table_template);
 			}
 			else {
@@ -311,7 +291,7 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-
+		
 		function draw_table3(data) {
 			let table_body_contents = "";
 			$("#all_table").empty();
@@ -319,14 +299,15 @@
 			if (data != "") {
 				data = JSON.parse(data)
 				for (let row = 0; row < data.length; row++) {
-					org_name = data[row][0];
-					org_dom = data[row][1];
-					org_path = data[row][2];
-					org_resp = data[row][3];
-					org_env = data[row][4];
-					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+					count = data[row][0];
+					org_name = data[row][1];
+					org_dom = data[row][2];
+					org_path = data[row][3];
+					org_resp = data[row][4];
+					org_env = data[row][5];
+					table_body_contents += `<tr><td>${count}</td><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
 				}
-				let table_template = `<table><caption>Table of organisms that with more than one removal mechanism</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				let table_template = `<table><caption>Table of organisms that use more than one removal mechanism</caption><thead><tr><th>Mechanism Count</th><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
 				$("#all_table").append(table_template);
 			}
 			else {
@@ -334,7 +315,7 @@
 				document.getElementById("all_table").innerHTML = "";
 			}
 		}
-
+		
 		function draw_table4(data) {
 			let myco_name2 = $("#myco_name2").val();
 			let table_body_contents = "";
@@ -348,17 +329,18 @@
 					org_path = data[row][2];
 					org_resp = data[row][3];
 					org_env = data[row][4];
-					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td></tr>`;
+					mech = data[row][5];
+					table_body_contents += `<tr><td>${org_name}</td><td>${org_dom}</td><td>${org_path}</td><td>${org_resp}</td><td>${org_env}</td><td>${mech}</td></tr>`;
 				}
-				let table_template = `<table><caption>Table of organisms that remove ${myco_name2}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
+				let table_template = `<table><caption>Table of organisms that remove ${myco_name2}</caption><thead><tr><th>Organism</th><th>Domain</th><th>Pathogenicity</th><th>Respiration</th><th>Environment</th><th>Removal Mechanism(s)</th></tr></thead><tbody>${table_body_contents}</tbody></table>`;
 				$("#all_table").append(table_template);
 			}
 			else {
 				$("#all_table").empty();
 				document.getElementById("all_table").innerHTML = "";
 			}
-		}
-
+		}		
+		
 		function draw_table5(data) {
 			let myco_name3 = $("#myco_name3").val();
 			let table_body_contents = "";
@@ -384,6 +366,7 @@
 
 			<div id="all_table"></div>
 			    <script>
+       //CSV export code adapted from online tutorial here https://www.youtube.com/watch?v=cpHCv3gbPuk
 					class TableCSVExporter {
 						constructor (table, includeHeaders = true) {
 							this.table = table;
@@ -430,8 +413,8 @@
 
 							return parsedValue;
 						}
-					}
-
+					}					
+					
 					const dataTable = document.getElementById("all_table");
 					const btnExportToCsv = document.getElementById("btnExportToCsv");
 
@@ -469,14 +452,14 @@
 
 		Literature Link: <input type="text" id="lit_link">
 		<br>
-		*Literature Citation: <input type="text" id="lit_cite">
+		Literature Citation: <input type="text" id="lit_cite">
 		<br>
 		Characterization Context: <input type="text" id="char_con">
 		<br>
 		Characterization Assay: <input type="text" id="char_assay">
 		<br><br>
 
-		*Organism Name: <input type="text" id="org_name">
+		Organism Name: <input type="text" id="org_name">
 		<br>
 		Organism Domain:
 		<select id="input_domain" name="input_domain">
@@ -510,7 +493,7 @@
 		<input type="text" id="other_input_env" disabled="disabled">
 		<br><br>
 
-		*Mycotoxin Name: <input type="text" id="myc_name">
+		Mycotoxin Name: <input type="text" id="myc_name">
 		<br>
 
 		Mycotoxin Removal Mechanism:
@@ -523,7 +506,7 @@
 		<input type="checkbox" name="input_removal" id="unknown_rem" value="Unknown">Unknown
 		<input type="checkbox" name="input_removal" id="other_rem" value="Other" onclick="var input = document.getElementById('other_input_rem'); if(this.checked){input.disabled = false; input.focus();}else{input.disabled=true;}"> Other
 		<input type="text" id="other_input_rem" disabled="disabled">
-		<br>
+		<br><br>
 
 		Enzymatic Removal?:
 		<select id = "input_enz" name = "input_enz">
@@ -540,7 +523,7 @@
 			<option value="Unknown">Unknown</option>
 		</select><br><br>
 
-		*Curator Name: <input type="text" id="cur_name">
+		Curator Name: <input type="text" id="cur_name">
 		<br>
 		Curation Date: <input type="date" id="cur_date">
 		<br>
@@ -552,8 +535,6 @@
 		<br>
 		Additional Info: <input type="text" id="ad_info">
 		<br>
-    <br>
-    *required fields<br><br>
 
 		<button id="submit_input">Submit Data Input</button><br><br>
 
@@ -595,7 +576,7 @@
   					}
 		        } else {
 			           return false;
-          }
+		}
         });
       });
 
@@ -789,11 +770,11 @@
 		<p>This database may be useful for you if you are seeking to identify microbes that can remove certain mycotoxins from their environments, or if you want to know what mycotoxins are removed by a specific microbe.
 		It has many other useful applications beyond these, however.</p>
 		<h2>Who contributes data to the MMRD?</h2>
-		<p>This database has been constructed from a dataset generated by Boston College students and Dr. Babak Momeni. If you would like to learn more about the Momeni lab, click the link <a href="http://www.momenilab.org/">here</a>.
+		<p>This database has been constructed from a dataset generated by Boston College students and Dr. Babak Momeni. If you would like to learn more about the Momeni lab, click the link <a href="http://www.momenilab.org/" target="_blank" rel="noopener">here</a>.
 		<h2>Who created this database and its website?</h2>
 		<p>The MMRD and this website were constructed by Sophia Bevans, Daniel Golden, Shreen Katyan, and Mano Ranaweera as partial fulfillment of the coursework in Boston University's BF768 course, taught by Dr. Gary Benson.</p>
 		<h2>Where can I find more information about mycotoxins?</h2>
-		<p>The World Health Organization provides comprehensive information and resources on the topic of mycotoxins. If you're curious, click the link <a href="https://www.who.int/news-room/fact-sheets/detail/mycotoxins">here</a>.
+		<p>The World Health Organization provides comprehensive information and resources on the topic of mycotoxins. If you're curious, click the link <a href="https://www.who.int/news-room/fact-sheets/detail/mycotoxins" target="_blank" rel="noopener">here</a>.
 	</div>
 
 	<div id="Help" class="tabcontent">
@@ -814,5 +795,30 @@
 		<h2>4: None of these FAQs solved my problem!</h2>
 		<p>If the FAQ responses above are not sufficient to solve your problem, please direct further inquiries to Daniel Golden at the email address dgolden1@bu.edu</p>
 	</div>
+	<script>
+	function openPage(pageName, elmnt, color) {
+	  // Hide all elements with class="tabcontent" by default */
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
+
+	  // Remove the background color of all tablinks/buttons
+	  tablinks = document.getElementsByClassName("tablink");
+	  for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].style.backgroundColor = "";
+	  }
+
+	  // Show the specific tab content
+	  document.getElementById(pageName).style.display="block";
+	  evt.currentTarget.className += " active";
+	}
+
+	document.getElementById("defaultOpen").click();
+	function clear_landing() {
+            document.getElementById(Landing).innerHTML = "";
+        }
+	</script>
 </body>
 </html>
